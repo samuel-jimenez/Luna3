@@ -7,7 +7,9 @@ full moon, third quarter and next new moon). You can navigate to previous or
 future moon phases by clicking the arrow keys. Clicking the middle button
 returns to the current dates.
 
-This plasmoid is a port to Plasma 5 of Luna QML 1.4 (https://store.kde.org/p/1002036/)
+
+This plasmoid is a port to Plasma 6 of Luna II (https://store.kde.org/p/1165459/),
+which is a port to Plasma 5 of Luna QML 1.4 (https://store.kde.org/p/1002036/)
 
 Installation
 ------------
@@ -16,21 +18,21 @@ A. Command line, installs to ~/local/share/plasma/plasmoids
 
    This works the same way as loading a new widget from "Add Widgets..."
 
-   Install:    $ plasmapkg2 -i Luna-II-<ver>.plasmoid
+   Install:    $ plasmapkg2 -i Luna3-<ver>.plasmoid
 
-   Update:     $ plasmapkg2 -u Luna-II-<ver>.plasmoid
+   Update:     $ plasmapkg2 -u Luna3-<ver>.plasmoid
 
-   Uninstall:  $ plasmapkg2 -r org.kde.userbase.plasma.luna-ii
+   Uninstall:  $ plasmapkg2 -r org.kde.userbase.plasma.Luna3
 
    See README_TRANSLATIONS.txt (Step 4) for installing localisations.
 
 B. Command line, installs to /usr/local/share/plasma/plasmoids
 
-   Install:   # plasmapkg2 -g -i Luna-II-<ver>.plasmoid
+   Install:   # plasmapkg2 -g -i Luna3-<ver>.plasmoid
 
-   Update:    # plasmapkg2 -g -u Luna-II-<ver>.plasmoid
+   Update:    # plasmapkg2 -g -u Luna3-<ver>.plasmoid
 
-   Uninstall: # plasmapkg2 -g -r org.kde.userbase.plasma.luna-ii
+   Uninstall: # plasmapkg2 -g -r org.kde.userbase.plasma.Luna3
 
    See README_TRANSLATIONS.txt (Step 4) for installing localisations.
 
@@ -38,9 +40,9 @@ C. CMake, installs to /usr/local/share/plasma/plasmoids
 
    WARNING: this works but is not really maintained.
 
-  0. Unpack Luna-II-<ver>.plasmoid - it's a zip file.
+  0. Unpack Luna3-<ver>.plasmoid - it's a zip file.
   1. The top directory contains the CMakeLists.txt file
-  2. Create an empty directory, luna-ii-plasmoid-build, and cd into it
+  2. Create an empty directory, Luna3-plasmoid-build, and cd into it
   3. Run: # cmake <path to source dir>
   4. Run: # make install
 

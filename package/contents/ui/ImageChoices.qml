@@ -25,11 +25,41 @@ Defines the list of images of the moon.
   tweak - degrees to rotate the image, which is helpful if you can't draw
 */
 QtQuick.ListModel {
-  id: imageChoices
-  QtQuick.ListElement { key: "Light";        value: 0; filename: "fife-moon.svg"; tweak: 4 }
-  QtQuick.ListElement { key: "Dark";         value: 1; filename: "full-moon-dark.svg"; tweak: -15 }
-  QtQuick.ListElement { key: "Original";     value: 2; filename: "luna-gskbyte13.svg"; tweak: 0 }
-  QtQuick.ListElement { key: "Example";      value: 3; filename: "custom.svg"; tweak: 0 }
-  QtQuick.ListElement { key: "Generic Disk"; value: 4; filename: ""; tweak: 0 }
+    id: imageChoices
+
+    QtQuick.ListElement {
+        key: "Light"
+        value: 0
+        filename: "fife-moon.svg"
+        tweak: 4
+    }
+
+    QtQuick.ListElement {
+        key: "Dark"
+        value: 1
+        filename: "full-moon-dark.svg"
+        tweak: -15
+    }
+
+    QtQuick.ListElement {
+        key: "Original"
+        value: 2
+        filename: "luna-gskbyte13.svg"
+        tweak: 0
+    }
+
+    QtQuick.ListElement {
+        key: "Example"
+        value: 3
+        filename: "custom.svg"
+        tweak: 0
+    }
+
+    QtQuick.ListElement {
+        key: "Generic Disk"
+        value: 4
+        filename: ""
+        tweak: 0
+    }
 
 }

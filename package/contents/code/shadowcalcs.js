@@ -32,8 +32,8 @@ function setup(r) {
     for (var z=-r; z<=r; z++) {
         rlookup[z] = r*Math.sqrt(1 - sqr(z*1.0/r));
     }
-    //console.log("Radius: " + r.toString());
-    //console.log("Size:   " + rlookup.length.toString());
+    // console.log("Radius: " + r.toString());
+    // console.log("Size:   " + rlookup.length.toString());
 
     return radius;
 }

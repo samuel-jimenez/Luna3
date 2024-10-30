@@ -1,13 +1,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-#: ui/configGeneral.qml:195
 # Heimen Stoffels <vistausss@outlook.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://github.com/wwjjbb/Luna-II/issues\n"
-"POT-Creation-Date: 2019-09-18 23:42+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
+"POT-Creation-Date: 2024-10-30 09:02-0500\n"
 "PO-Revision-Date: 2019-09-22 13:13+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <kde-i18n-doc@kde.org>\n"
@@ -82,7 +81,7 @@ msgstr "Gisteren was het volle maan"
 msgid "%1 days since Full Moon"
 msgstr "%1 dagen verstreken sinds volle maan"
 
-#: config/config.qml:24
+#: config/config.qml:23
 msgid "General"
 msgstr "Algemeen"
 
@@ -96,43 +95,40 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vistausss@outlook.com"
 
-#: ui/configGeneral.qml:77
-msgid "Pick a colour for the moon"
+#: ui/configGeneral.qml:59
+#, fuzzy
+msgid "Pick a color for the moon"
 msgstr "Kies een maankleur"
 
-#: ui/configGeneral.qml:90
+#: ui/configGeneral.qml:70
 msgid "Preview"
 msgstr "Voorbeeld"
 
-#: ui/configGeneral.qml:133
+#: ui/configGeneral.qml:118
 msgid "Show grid"
 msgstr "Raster tonen"
 
-#: ui/configGeneral.qml:138
+#: ui/configGeneral.qml:124
 msgid "Tycho"
 msgstr "Tycho"
 
-#: ui/configGeneral.qml:143
+#: ui/configGeneral.qml:130
 msgid "Copernicus"
 msgstr "Copernicus"
 
-#: ui/configGeneral.qml:150
-msgid "Disk Colour"
+#: ui/configGeneral.qml:138
+msgid "Disk Color"
 msgstr "Schijfkleur"
 
-#: ui/configGeneral.qml:172
+#: ui/configGeneral.qml:163
 msgid "Latitude"
 msgstr "Breedtegraad"
 
-#: ui/configGeneral.qml:201
-msgid "Use current latitude"
-msgstr "Huidige breedtegraad gebruiken"
-
-#: ui/configGeneral.qml:211
+#: ui/configGeneral.qml:204
 msgid "Date Format"
 msgstr "Datumopmaak"
 
-#: ui/configGeneral.qml:220
+#: ui/configGeneral.qml:217
 msgid "Text date"
 msgstr "Tekstdatum"
 
@@ -140,50 +136,53 @@ msgstr "Tekstdatum"
 msgid "Short date"
 msgstr "Verkorte datum"
 
-#: ui/configGeneral.qml:222
+#: ui/configGeneral.qml:225
 msgid "Long date"
 msgstr "Volledige datum"
 
-#: ui/configGeneral.qml:223
+#: ui/configGeneral.qml:229
 msgid "ISO date"
 msgstr "ISO-datum"
 
-#: ui/configGeneral.qml:224
+#: ui/configGeneral.qml:233
 msgid "Custom"
 msgstr "Aangepast"
 
-#: ui/configGeneral.qml:230
+#: ui/configGeneral.qml:242
 msgid "Date Format String"
 msgstr "Datumopmaakstring"
 
-#: ui/configGeneral.qml:239
+#: ui/configGeneral.qml:254
 msgid "Background"
 msgstr "Achtergrond"
 
-#: ui/configGeneral.qml:243
+#: ui/configGeneral.qml:260
 msgid "Show background"
 msgstr "Achtergrond tonen"
 
-#: ui/configGeneral.qml:250
+#: ui/configGeneral.qml:270
 msgid "Transparent shadow"
 msgstr "Doorzichtige schaduw"
 
-#: ui/LunaWidget.qml:116
+#: ui/LunaWidget.qml:114
 msgid "Last new:"
 msgstr "Vorige nieuwe:"
 
-#: ui/LunaWidget.qml:123
+#: ui/LunaWidget.qml:124
 msgid "First quarter:"
 msgstr "Eerste kwartier:"
 
-#: ui/LunaWidget.qml:130
+#: ui/LunaWidget.qml:134
 msgid "Full moon:"
 msgstr "Volle maan:"
 
-#: ui/LunaWidget.qml:137
+#: ui/LunaWidget.qml:144
 msgid "Third quarter:"
 msgstr "Derde kwartier:"
 
-#: ui/LunaWidget.qml:144
+#: ui/LunaWidget.qml:154
 msgid "Next new:"
 msgstr "Volgende nieuwe:"
+
+#~ msgid "Use current latitude"
+#~ msgstr "Huidige breedtegraad gebruiken"

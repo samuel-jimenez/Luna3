@@ -16,13 +16,13 @@
  */
 
 import QtQuick 2.1
-
-import org.kde.plasma.configuration 2.0
+import org.kde.plasma.configuration
 
 ConfigModel {
     ConfigCategory {
-         name: i18n("General")
-         icon: "preferences-desktop-user"
-         source: "configGeneral.qml"
+        name: i18n("General")
+        icon: "preferences-desktop-user"
+        source: "configGeneral.qml"
     }
+
 }

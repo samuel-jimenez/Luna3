@@ -1,5 +1,8 @@
 /**
 
+    Copyright (C) 2024 Samuel Jimenez <therealsamueljimenez@gmail.com>
+          Ported the Luna Plasmoid to Plasma 6.
+
     Copyright 2016,2017 Bill Binder <dxtwjb@gmail.com>
     Copyright (C) 2011, 2012, 2013 Glad Deschrijver <glad.deschrijver@gmail.com>
 
@@ -18,184 +21,161 @@
 
 */
 
-import QtQuick 2.1
-import QtGraphicalEffects 1.12
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.plasmoid 2.0
-
 import "../code/shadowcalcs.js" as ShadowCalcs
+import Qt5Compat.GraphicalEffects
+import QtQuick 2.1
+import org.kde.ksvg as KSvg
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasmoid
 
 Item {
     id: lunaIcon
 
     property int phaseNumber: 0
-    property int latitude: 90  //Degrees: 0=Equator, 90=North Pole, -90=South Pole
+    property int latitude: 90 //Degrees: 0=Equator, 90=North Pole, -90=South Pole
     property bool showShadow: true
     property bool transparentShadow: true
-
     property string lunarImage: ''
-    property color diskColour: '#ffffff'
+    property color diskColor: '#ffffff'
     property int lunarImageTweak: 0
-
     property bool showGrid: false
     property bool showTycho: false
     property bool showCopernicus: false
-
     // Degrees. 0= new moon, 90= first quarter, 180= full moon, 270= third quarter
     property int theta: 45
 
-    PlasmaCore.Svg {
+    KSvg.Svg {
         id: lunaSvg
-        imagePath: lunarImage === '' ? '' : plasmoid.file("data", lunarImage)
+
+        imagePath: lunarImage === '' ? '' : Qt.resolvedUrl("../data/" + lunarImage)
     }
 
-    PlasmaCore.SvgItem {
+    KSvg.SvgItem {
         id: lunaSvgItem
-        visible: false 
 
+        visible: false
         anchors.centerIn: parent
         width: Math.min(parent.width, parent.height)
         height: Math.min(parent.width, parent.height)
-
         svg: lunaSvg
-
         // Rotation to compensate the moon's image basic position to a north pole view
         // FIXME: Somehow it does not work when applied to OpacityMask or Blend
         transformOrigin: Item.Center
-        rotation: -lunarImageTweak  
+        rotation: -lunarImageTweak
     }
 
     Canvas {
         id: shadow
-        width: lunaSvgItem.width
-        height: lunaSvgItem.height
-        visible: false
 
         property int latitude: lunaIcon.latitude
         property int theta: lunaIcon.theta
         property bool showShadow: lunaIcon.showShadow
         property string lunarImage: lunaIcon.lunarImage
-        property string diskColour: lunaIcon.diskColour
+        property string diskColor: lunaIcon.diskColor
         property bool showGrid: lunaIcon.showGrid
         property bool showTycho: lunaIcon.showTycho
         property bool showCopernicus: lunaIcon.showCopernicus
 
+        function radians(deg) {
+            return deg / 180 * Math.PI;
+        }
+
+        function marker(radius, latitude, longitude) {
+            var dy = radius * Math.sin(radians(latitude));
+            var dx = radius * Math.cos(radians(latitude)) * Math.sin(radians(longitude));
+            // console.log("dx: " + dx.toString());
+            // console.log("dy: " + dy.toString());
+            context.beginPath();
+            context.strokeStyle = "#FF0000";
+            context.arc(dx, -dy, 5, 0, 2 * Math.PI);
+            context.moveTo(dx - 5, -dy - 5);
+            context.lineTo(dx + 5, -dy + 5);
+            context.moveTo(dx - 5, -dy + 5);
+            context.lineTo(dx + 5, -dy - 5);
+            context.stroke();
+        }
+
+        function grid(radius) {
+            context.beginPath();
+            context.strokeStyle = "#FF4040";
+            context.moveTo(0, -radius);
+            context.lineTo(0, radius);
+            context.moveTo(-radius, 0);
+            context.lineTo(radius, 0);
+            context.stroke();
+            context.beginPath();
+            context.strokeStyle = "#40FF40";
+            for (var ll = 10; ll < 65; ll += 10) {
+                var dy = radius * Math.sin(radians(ll));
+                context.moveTo(-radius, dy);
+                context.lineTo(radius, dy);
+                context.moveTo(-radius, -dy);
+                context.lineTo(radius, -dy);
+            }
+            context.stroke();
+        }
+
+        width: lunaSvgItem.width
+        height: lunaSvgItem.height
+        visible: false
         anchors.centerIn: parent
         contextType: "2d"
-
         onLatitudeChanged: requestPaint()
-
         onThetaChanged: requestPaint()
-
         onLunarImageChanged: requestPaint()
-
-        onDiskColourChanged: requestPaint()
-
+        onDiskColorChanged: requestPaint()
         onShowGridChanged: requestPaint()
         onShowTychoChanged: requestPaint()
         onShowCopernicusChanged: requestPaint()
-
-        onPaint:
-        {
-            context.reset()
-            context.globalAlpha = 0.9
-            context.fillStyle = '#000000'
-
-            function radians(deg) {
-                return deg / 180.0 * Math.PI;
-            }
-
-            function marker(latitude,longitude) {
-              var dy = radius * Math.sin(radians(latitude))
-              var dx = radius * Math.cos(radians(latitude)) * Math.sin(radians(longitude))
-              //console.log("dx: " + dx.toString())
-              //console.log("dy: " + dy.toString())
-              context.beginPath()
-              context.strokeStyle = "#FF0000"
-              context.arc(dx,-dy,5,0,2*Math.PI)
-              context.moveTo(dx-5, -dy-5)
-              context.lineTo(dx+5, -dy+5)
-              context.moveTo(dx-5, -dy+5)
-              context.lineTo(dx+5, -dy-5)
-              context.stroke()
-            }
-
-            function grid() {
-
-              context.beginPath()
-              context.strokeStyle = "#FF4040"
-              context.moveTo(0,-radius)
-              context.lineTo(0,radius)
-              context.moveTo(-radius,0)
-              context.lineTo(radius,0)
-              context.stroke()
-
-              context.beginPath()
-              context.strokeStyle = "#40FF40"
-              for (var ll=10;ll<65;ll+=10) {
-                var dy = radius * Math.sin(radians(ll))
-                context.moveTo(-radius,dy)
-                context.lineTo(radius,dy)
-                context.moveTo(-radius,-dy)
-                context.lineTo(radius,-dy)
-              }
-              context.stroke()
-            }
-
-            //console.log("Angle: " + theta.toString())
-
-            var ct = Math.cos(theta/180*Math.PI)
-            var radius = ShadowCalcs.setup(Math.floor(shadow.height/2))
-
-            //console.log("radius: " + radius.toString())
-
-            context.translate(radius,radius)
-
-            // These two determine which side of the centre meridan to draw
+        onPaint: {
+            context.reset();
+            context.globalAlpha = 0.9;
+            context.fillStyle = '#000000';
+            var ct = Math.cos(theta / 180 * Math.PI);
+            var radius = ShadowCalcs.setup(Math.floor(shadow.height / 2));
+            context.translate(radius, radius);
+            // These two determine which side of the center meridian to draw
             // the two arcs enclosing the shadow area.
-            var terminator = (theta <= 180) ? 1 : -1
-            var edge = (theta <= 180) ? -1 : 1
-
-            var z
-
+            var terminator = (theta <= 180) ? 1 : -1;
+            var edge = (theta <= 180) ? -1 : 1;
             if (lunarImage === '') {
-                context.beginPath()
-                context.fillStyle = diskColour
-                context.arc(0,0,radius,0,2*Math.PI)
-                context.closePath()
-                context.fill()
+                context.beginPath();
+                context.fillStyle = diskColor;
+                context.arc(0, 0, radius, 0, 2 * Math.PI);
+                context.closePath();
+                context.fill();
             }
-
             if (showShadow) {
-              context.beginPath()
-              context.fillStyle = '#000000'
-              context.moveTo(ShadowCalcs.get(-radius), -radius)
-              for (z = -radius+1; z <= radius; z++ ) {
-                  context.lineTo(terminator*ShadowCalcs.get(z)*ct, z)
-              }
+                context.beginPath();
+                context.fillStyle = '#000000';
+                context.moveTo(ShadowCalcs.get(-radius), -radius);
+                for (var z = -radius; z < radius; z++) {
+                    context.lineTo(terminator * ShadowCalcs.get(z) * ct, z);
+                }
+                for (var z = radius; z > -radius; z--) {
+                    context.lineTo(edge * ShadowCalcs.get(z), z);
+                }
+                context.closePath();
+                context.stroke();
+                context.fill();
+            } else {
+                // Calibration markers
+                if (showGrid)
+                    grid(radius);
 
-              for (z = radius-1; z >= -radius+1; --z) {
-                context.lineTo(edge*ShadowCalcs.get(z), z)
-              }
+                // Tycho
+                if (showTycho)
+                    marker(radius, -43, -11.5);
 
-              context.closePath()
-              context.fill()
-            }
-            else {
-              // Callibration markers
-              if (showGrid)
-                  grid()
+                // Copernicus
+                if (showCopernicus)
+                    marker(radius, 9.6, -20);
 
-              if (showTycho)
-                  marker(-43,-11.5)  // Tycho
-
-              if (showCopernicus)
-                  marker(9.6,-20)    // Copernicus
             }
         }
     }
 
-    // Shadow acts as a transparecy mask
+    // Shadow acts as a transparency mask
     OpacityMask {
         anchors.fill: lunaSvgItem
         source: lunaSvgItem
@@ -214,4 +194,5 @@ Item {
         mode: "normal"
         visible: !transparentShadow
     }
+
 }

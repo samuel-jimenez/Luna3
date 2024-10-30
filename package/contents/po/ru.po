@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Bill Binder <dxtwjb@gmail.com>, 2017
 #
-#: ui/configGeneral.qml:195
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.1\n"
-"Report-Msgid-Bugs-To: https://github.com/wwjjbb/Luna-II/issues\n"
-"POT-Creation-Date: 2019-09-18 23:42+0100\n"
+"Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
+"POT-Creation-Date: 2024-10-30 09:02-0500\n"
 "PO-Revision-Date: 2017-07-01 14:29+0100\n"
 "Last-Translator: Bill Binder <dxtwjb@gmail.com>\n"
 "Language-Team: n/a\n"
@@ -83,7 +82,7 @@ msgstr "Вчера была полная луна"
 msgid "%1 days since Full Moon"
 msgstr "%1 дня с полной луны"
 
-#: config/config.qml:24
+#: config/config.qml:23
 msgid "General"
 msgstr "Общие настройки"
 
@@ -97,43 +96,40 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "dxtwjb@gmail.com"
 
-#: ui/configGeneral.qml:77
-msgid "Pick a colour for the moon"
+#: ui/configGeneral.qml:59
+#, fuzzy
+msgid "Pick a color for the moon"
 msgstr "Выберите цвет для луны"
 
-#: ui/configGeneral.qml:90
+#: ui/configGeneral.qml:70
 msgid "Preview"
 msgstr "Лунное изображение"
 
-#: ui/configGeneral.qml:133
+#: ui/configGeneral.qml:118
 msgid "Show grid"
 msgstr "Показывать фон"
 
-#: ui/configGeneral.qml:138
+#: ui/configGeneral.qml:124
 msgid "Tycho"
 msgstr "Тихо"
 
-#: ui/configGeneral.qml:143
+#: ui/configGeneral.qml:130
 msgid "Copernicus"
 msgstr "Коперник"
 
-#: ui/configGeneral.qml:150
-msgid "Disk Colour"
+#: ui/configGeneral.qml:138
+msgid "Disk Color"
 msgstr "Цвет луны"
 
-#: ui/configGeneral.qml:172
+#: ui/configGeneral.qml:163
 msgid "Latitude"
 msgstr ""
 
-#: ui/configGeneral.qml:201
-msgid "Use current latitude"
-msgstr ""
-
-#: ui/configGeneral.qml:211
+#: ui/configGeneral.qml:204
 msgid "Date Format"
 msgstr "Формат даты"
 
-#: ui/configGeneral.qml:220
+#: ui/configGeneral.qml:217
 msgid "Text date"
 msgstr "Дата форматирования текста"
 
@@ -141,52 +137,52 @@ msgstr "Дата форматирования текста"
 msgid "Short date"
 msgstr "Краткая дата в формате"
 
-#: ui/configGeneral.qml:222
+#: ui/configGeneral.qml:225
 msgid "Long date"
 msgstr "Длинная форма дата"
 
-#: ui/configGeneral.qml:223
+#: ui/configGeneral.qml:229
 msgid "ISO date"
 msgstr "Дата формата ISO"
 
-#: ui/configGeneral.qml:224
+#: ui/configGeneral.qml:233
 msgid "Custom"
 msgstr "Дата пользовательского формата"
 
-#: ui/configGeneral.qml:230
+#: ui/configGeneral.qml:242
 msgid "Date Format String"
 msgstr "Строка формата даты"
 
-#: ui/configGeneral.qml:239
+#: ui/configGeneral.qml:254
 #, fuzzy
 msgid "Background"
 msgstr "Показывать фон"
 
-#: ui/configGeneral.qml:243
+#: ui/configGeneral.qml:260
 msgid "Show background"
 msgstr "Показывать фон"
 
-#: ui/configGeneral.qml:250
+#: ui/configGeneral.qml:270
 msgid "Transparent shadow"
 msgstr ""
 
-#: ui/LunaWidget.qml:116
+#: ui/LunaWidget.qml:114
 msgid "Last new:"
 msgstr "Последняя новолуния:"
 
-#: ui/LunaWidget.qml:123
+#: ui/LunaWidget.qml:124
 msgid "First quarter:"
 msgstr "Первая четверть луны:"
 
-#: ui/LunaWidget.qml:130
+#: ui/LunaWidget.qml:134
 msgid "Full moon:"
 msgstr "Полнолуние:"
 
-#: ui/LunaWidget.qml:137
+#: ui/LunaWidget.qml:144
 msgid "Third quarter:"
 msgstr "Третья четверть луны"
 
-#: ui/LunaWidget.qml:144
+#: ui/LunaWidget.qml:154
 msgid "Next new:"
 msgstr "Следующая новолуние"
 

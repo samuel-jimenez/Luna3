@@ -15,7 +15,7 @@ Step 1: Creating a new <locale>.po file
 ---------------------------------------------
 Under the "contents/po" folder, make a copy of
 
-  plasma_applet_org.kde.userbase.plasma.luna-ii.pot
+  plasma_applet_org.kde.userbase.plasma.luna3.pot
 
 Name this copy for the locale, e.g:
 
@@ -46,7 +46,7 @@ all the .po files.
 
 The .mo files are placed in the locale directory under contents/po,
 
-e.g. locale/fr/LC_MESSAGES/plasma_applet_org.kde.userbase.plasma.luna-ii.mo
+e.g. locale/fr/LC_MESSAGES/plasma_applet_org.kde.userbase.plasma.luna3.mo
 
 ----------------------------
 Step 4: Install the .mo file
@@ -54,11 +54,11 @@ Step 4: Install the .mo file
 First locate where the plasmoid has been installed.
 
 if it was installed using Add Widgets menu, it will probably be:
-  ~/.local/share/plasma/plasmoids/org.kde.userbase.plasma.luna-ii/
+  ~/.local/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/
 Copy the contents/po/locale directory into ~/.local/share.
 
 If you did a global install of the plasmoid, it's probably under:
-  /usr/share/plasma/plasmoids/org.kde.userbase.plasma.luna-ii/
+  /usr/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/
 In this case, there will be a /usr/share/locale directory already;
 copy the contents/po/locale directory into /usr/share.
 
@@ -69,14 +69,14 @@ Step 5: Send the translation for inclusion with the widget
 ----------------------------------------------------------
 Once you are happy with the translation please send the .po file to the
 author along with translations for the following two strings (see
-metadata.desktop):
+metadata.json):
 
 For the "add widgets" screen:
-   "Luna (QML)"
+   "Luna 3"
    "Display moon phases for your location"
 
 Please send the translations for these two strings only when the
 translation is not yet in metadata.desktop.
 
-Alternatively, fork on Github (wwjjbb/Luna-II), do your changes there, and
+Alternatively, fork on Github (samuel-jimenez/Luna3), do your changes there, and
 then send a pull request.

@@ -24,7 +24,7 @@ var lunation = 0;
 
 function getLunation(time)
 {
-//	var lunation = 0;
+	//var lunation = 0;
 	var nextNew = new Date(0);
 
 	// obtain reasonable start value for lunation so that the while loop below has a minimal amount of iterations (for faster startup of the plasmoid)

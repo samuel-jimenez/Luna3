@@ -1,4 +1,4 @@
-# Luna II
+# Luna 3
 
 This plasmoid displays the current phase of the moon.
 
@@ -12,8 +12,7 @@ You can navigate to previous or future moon phases by clicking the arrow buttons
 pressing the arrow keys. Clicking the middle button or pressing the "Home" key 
 returns to the current dates.
 
-This is a port to Plasma 5 of:
+This is a port to Plasma 6 of:
 
-* Luna QML
-* Version 1.4
-* <https://store.kde.org/p/1002036/>
+* Luna II, Version 2.1.2, <https://store.kde.org/p/1165459/>
+* Luna QML, Version 1.4, <https://store.kde.org/p/1002036/>
