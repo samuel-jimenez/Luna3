@@ -21,7 +21,6 @@
 
 */
 
-import "../code/shadowcalcs.js" as ShadowCalcs
 import Qt5Compat.GraphicalEffects
 import QtQuick 2.1
 import org.kde.ksvg as KSvg
@@ -41,8 +40,7 @@ Item {
     property bool showGrid: false
     property bool showTycho: false
     property bool showCopernicus: false
-    // Degrees. 0= new moon, 90= first quarter, 180= full moon, 270= third quarter
-    property int theta: 45
+    property int theta: 45 // Degrees: 0= new moon, 90= first quarter, 180= full moon, 270= third quarter
 
     KSvg.Svg {
         id: lunaSvg
@@ -59,7 +57,6 @@ Item {
         height: Math.min(parent.width, parent.height)
         svg: lunaSvg
         // Rotation to compensate the moon's image basic position to a north pole view
-        // FIXME: Somehow it does not work when applied to OpacityMask or Blend
         transformOrigin: Item.Center
         rotation: -lunarImageTweak
     }
@@ -127,17 +124,15 @@ Item {
         onShowGridChanged: requestPaint()
         onShowTychoChanged: requestPaint()
         onShowCopernicusChanged: requestPaint()
+        onShowShadowChanged: requestPaint()
         onPaint: {
             context.reset();
             context.globalAlpha = 0.9;
             context.fillStyle = '#000000';
-            var ct = Math.cos(theta / 180 * Math.PI);
-            var radius = ShadowCalcs.setup(Math.floor(shadow.height / 2));
+            var radius = Math.floor(height / 2);
+            var cosTheta = Math.cos(theta / 180 * Math.PI);
             context.translate(radius, radius);
-            // These two determine which side of the center meridian to draw
-            // the two arcs enclosing the shadow area.
-            var terminator = (theta <= 180) ? 1 : -1;
-            var edge = (theta <= 180) ? -1 : 1;
+            var counterclockwisep = (theta < 180);
             if (lunarImage === '') {
                 context.beginPath();
                 context.fillStyle = diskColor;
@@ -146,18 +141,19 @@ Item {
                 context.fill();
             }
             if (showShadow) {
-                context.beginPath();
-                context.fillStyle = '#000000';
-                context.moveTo(ShadowCalcs.get(-radius), -radius);
-                for (var z = -radius; z < radius; z++) {
-                    context.lineTo(terminator * ShadowCalcs.get(z) * ct, z);
+                if (theta != 180) {
+                    context.beginPath();
+                    context.fillStyle = '#000000';
+                    context.strokeStyle = '#000000';
+                    context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
+                    if ((theta % 180) != 90) {
+                        context.scale(cosTheta, 1);
+                        context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, counterclockwisep);
+                    }
+                    context.closePath();
+                    context.fill();
+                    context.stroke();
                 }
-                for (var z = radius; z > -radius; z--) {
-                    context.lineTo(edge * ShadowCalcs.get(z), z);
-                }
-                context.closePath();
-                context.stroke();
-                context.fill();
             } else {
                 // Calibration markers
                 if (showGrid)

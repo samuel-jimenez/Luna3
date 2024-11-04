@@ -29,6 +29,7 @@ KCM.SimpleKCM {
     id: generalPage
 
     property alias cfg_latitude: latitude.value // 0=Equator, +90=North Pole, -90=South Pole
+    property alias cfg_phase: phase.value
     property alias cfg_transparentShadow: transparentShadow.checked // boolean
     property alias cfg_showBackground: showBackground.checked // boolean
     property alias cfg_dateFormat: dateFormat.currentIndex // code: 0= 1= 2=...
@@ -37,6 +38,7 @@ KCM.SimpleKCM {
     property int cfg_lunarIndex: 0 // index into imageChoices
     property string cfg_lunarImage: '' // filename (from imageChoices)
     property int cfg_lunarImageTweak: 0 // rotation angle adjustment for the image (from imageChoices)
+    property alias cfg_showShadow: showShadow.checked
     property alias cfg_showGrid: showGrid.checked
     property alias cfg_showTycho: showTycho.checked
     property alias cfg_showCopernicus: showCopernicus.checked
@@ -46,7 +48,7 @@ KCM.SimpleKCM {
         cfg_lunarImageTweak = imageChoices.get(cfg_lunarIndex).tweak;
         if (cfg_lunarImage == '')
             cfg_transparentShadow = false;
- //transparentShadow does not work with diskColor
+
     }
 
     ImageChoices {
@@ -89,7 +91,8 @@ KCM.SimpleKCM {
                 width: 200
                 height: 200
                 latitude: cfg_latitude
-                showShadow: false
+                theta: cfg_phase
+                showShadow: cfg_showShadow
                 transparentShadow: false
                 lunarImage: cfg_lunarImage
                 lunarImageTweak: cfg_lunarImageTweak
@@ -111,6 +114,12 @@ KCM.SimpleKCM {
 
             QtLayouts.ColumnLayout {
                 spacing: 20
+
+                QtControls.CheckBox {
+                    id: showShadow
+
+                    text: i18n("Show shadow")
+                }
 
                 QtControls.CheckBox {
                     id: showGrid
@@ -196,6 +205,35 @@ KCM.SimpleKCM {
 
                 QtLayouts.Layout.fillWidth: true
                 horizontalAlignment: Text.AlignRight
+            }
+
+        }
+
+        QtControls.Label {
+            text: i18n("Phase Preview")
+            QtLayouts.Layout.preferredWidth: 85
+            horizontalAlignment: Text.AlignRight
+        }
+
+        QtLayouts.RowLayout {
+            spacing: 20
+
+            QtControls.Label {
+                id: lbl_phase
+
+                text: Math.abs(phase.value) + "º "
+                QtLayouts.Layout.preferredWidth: 40
+                horizontalAlignment: Text.AlignRight
+            }
+
+            QtControls.Slider {
+                id: phase
+
+                value: lunaPreview.theta
+                QtLayouts.Layout.fillWidth: true
+                from: 0
+                to: 360
+                stepSize: 1
             }
 
         }
