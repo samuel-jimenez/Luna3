@@ -42,23 +42,52 @@ Item {
     property bool showCopernicus: false
     property int theta: 45 // Degrees: 0= new moon, 90= first quarter, 180= full moon, 270= third quarter
 
-    KSvg.Svg {
-        id: lunaSvg
-
-        imagePath: lunarImage === '' ? '' : Qt.resolvedUrl("../data/" + lunarImage)
-    }
-
-    KSvg.SvgItem {
-        id: lunaSvgItem
+    Item {
+        id: lunaBackground
 
         visible: false
         anchors.centerIn: parent
         width: Math.min(parent.width, parent.height)
         height: Math.min(parent.width, parent.height)
-        svg: lunaSvg
+    }
+
+    KSvg.SvgItem {
+        id: lunaSvgItem
+
+        imagePath: lunarImage === '' ? '' : Qt.resolvedUrl("../data/" + lunarImage)
+        visible: false
+        anchors.centerIn: parent
+        width: lunaBackground.width
+        height: lunaBackground.height
         // Rotation to compensate the moon's image basic position to a north pole view
         transformOrigin: Item.Center
         rotation: -lunarImageTweak
+    }
+
+    Canvas {
+        id: lunaCanvas
+
+        property string lunarImage: lunaIcon.lunarImage
+        property string diskColor: lunaIcon.diskColor
+
+        width: lunaBackground.width
+        height: lunaBackground.height
+        visible: false
+        anchors.centerIn: parent
+        contextType: "2d"
+        onLunarImageChanged: requestPaint()
+        onDiskColorChanged: requestPaint()
+        onPaint: {
+            var radius = Math.floor(height / 2);
+            context.reset();
+            context.globalAlpha = (lunarImage === '') ? 1 : 0;
+            context.fillStyle = diskColor;
+            context.translate(radius, radius);
+            context.beginPath();
+            context.arc(0, 0, radius, 0, 2 * Math.PI);
+            context.closePath();
+            context.fill();
+        }
     }
 
     Canvas {
@@ -67,8 +96,6 @@ Item {
         property int latitude: lunaIcon.latitude
         property int theta: lunaIcon.theta
         property bool showShadow: lunaIcon.showShadow
-        property string lunarImage: lunaIcon.lunarImage
-        property string diskColor: lunaIcon.diskColor
         property bool showGrid: lunaIcon.showGrid
         property bool showTycho: lunaIcon.showTycho
         property bool showCopernicus: lunaIcon.showCopernicus
@@ -112,34 +139,24 @@ Item {
             context.stroke();
         }
 
-        width: lunaSvgItem.width
-        height: lunaSvgItem.height
+        width: lunaBackground.width
+        height: lunaBackground.height
         visible: false
         anchors.centerIn: parent
         contextType: "2d"
         onLatitudeChanged: requestPaint()
         onThetaChanged: requestPaint()
-        onLunarImageChanged: requestPaint()
-        onDiskColorChanged: requestPaint()
         onShowGridChanged: requestPaint()
         onShowTychoChanged: requestPaint()
         onShowCopernicusChanged: requestPaint()
         onShowShadowChanged: requestPaint()
         onPaint: {
-            context.reset();
-            context.globalAlpha = 0.9;
-            context.fillStyle = '#000000';
             var radius = Math.floor(height / 2);
             var cosTheta = Math.cos(theta / 180 * Math.PI);
-            context.translate(radius, radius);
             var counterclockwisep = (theta < 180);
-            if (lunarImage === '') {
-                context.beginPath();
-                context.fillStyle = diskColor;
-                context.arc(0, 0, radius, 0, 2 * Math.PI);
-                context.closePath();
-                context.fill();
-            }
+            context.reset();
+            context.globalAlpha = 0.9;
+            context.translate(radius, radius);
             if (showShadow) {
                 if (theta != 180) {
                     context.beginPath();
@@ -171,10 +188,20 @@ Item {
         }
     }
 
+    Blend {
+        id: lunaSource
+
+        anchors.fill: lunaBackground
+        source: lunaSvgItem
+        foregroundSource: lunaCanvas
+        mode: "normal"
+        visible: false
+    }
+
     // Shadow acts as a transparency mask
     OpacityMask {
-        anchors.fill: lunaSvgItem
-        source: lunaSvgItem
+        anchors.fill: lunaBackground
+        source: lunaSource
         maskSource: shadow
         invert: true
         rotation: latitude - 90
@@ -183,8 +210,8 @@ Item {
 
     // Shadow is printed on top of the moon image
     Blend {
-        anchors.fill: lunaSvgItem
-        source: lunaSvgItem
+        anchors.fill: lunaBackground
+        source: lunaSource
         foregroundSource: shadow
         rotation: latitude - 90
         mode: "normal"

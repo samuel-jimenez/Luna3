@@ -46,9 +46,6 @@ KCM.SimpleKCM {
     onCfg_lunarIndexChanged: {
         cfg_lunarImage = imageChoices.get(cfg_lunarIndex).filename;
         cfg_lunarImageTweak = imageChoices.get(cfg_lunarIndex).tweak;
-        if (cfg_lunarImage == '')
-            cfg_transparentShadow = false;
-
     }
 
     ImageChoices {
@@ -306,7 +303,6 @@ KCM.SimpleKCM {
             id: transparentShadow
 
             text: i18n("Transparent shadow")
-            enabled: cfg_lunarImage != ""
         }
 
     }
