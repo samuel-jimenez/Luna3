@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1\n"
 "Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
-"POT-Creation-Date: 2024-10-30 09:02-0500\n"
+"POT-Creation-Date: 2024-11-05 14:46-0600\n"
 "PO-Revision-Date: 2017-07-01 23:54+0100\n"
 "Last-Translator: Bill Binder <dxtwjb@gmail.com>\n"
 "Language-Team: n/a\n"
@@ -20,73 +20,173 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: code/lunacalc.js:129
+#: package/contents/code/lunacalc.js:129
 msgid "First Quarter"
 msgstr "Premier quartier"
 
-#: code/lunacalc.js:133 code/lunacalc.js:147
+#: package/contents/code/lunacalc.js:133 package/contents/code/lunacalc.js:147
 msgid "New Moon"
 msgstr "Nouvelle Lune"
 
-#: code/lunacalc.js:135 code/lunacalc.js:137
+#: package/contents/code/lunacalc.js:135 package/contents/code/lunacalc.js:137
 msgid "Waxing Crescent"
 msgstr "Premier croissant"
 
-#: code/lunacalc.js:135
+#: package/contents/code/lunacalc.js:135
 msgid "Yesterday was New Moon"
 msgstr "La nouvelle Lune était hier"
 
-#: code/lunacalc.js:137
+#: package/contents/code/lunacalc.js:137
 msgid "%1 days since New Moon"
 msgstr "%1 jours depuis la nouvelle Lune"
 
-#: code/lunacalc.js:143
+#: package/contents/code/lunacalc.js:143
 msgid "Last Quarter"
 msgstr "Dernier quartier"
 
-#: code/lunacalc.js:149 code/lunacalc.js:151
+#: package/contents/code/lunacalc.js:149 package/contents/code/lunacalc.js:151
 msgid "Waning Crescent"
 msgstr "Dernier croissant"
 
-#: code/lunacalc.js:149
+#: package/contents/code/lunacalc.js:149
 msgid "Tomorrow is New Moon"
 msgstr "La nouvelle Lune est demain"
 
-#: code/lunacalc.js:151
+#: package/contents/code/lunacalc.js:151
 msgid "%1 days to New Moon"
 msgstr "%1 jours avant la nouvelle Lune"
 
-#: code/lunacalc.js:157
+#: package/contents/code/lunacalc.js:157
 msgid "Full Moon"
 msgstr "Pleine Lune"
 
-#: code/lunacalc.js:159 code/lunacalc.js:161
+#: package/contents/code/lunacalc.js:159 package/contents/code/lunacalc.js:161
 msgid "Waxing Gibbous"
 msgstr "Lune gibbeuse croissante"
 
-#: code/lunacalc.js:159
+#: package/contents/code/lunacalc.js:159
 msgid "Tomorrow is Full Moon"
 msgstr "La pleine Lune est demain"
 
-#: code/lunacalc.js:161
+#: package/contents/code/lunacalc.js:161
 msgid "%1 days to Full Moon"
 msgstr "%1 jours avant la pleine Lune"
 
-#: code/lunacalc.js:163 code/lunacalc.js:165
+#: package/contents/code/lunacalc.js:163 package/contents/code/lunacalc.js:165
 msgid "Waning Gibbous"
 msgstr "Lune gibbeuse décroissante"
 
-#: code/lunacalc.js:163
+#: package/contents/code/lunacalc.js:163
 msgid "Yesterday was Full Moon"
 msgstr "La pleine Lune était hier"
 
-#: code/lunacalc.js:165
+#: package/contents/code/lunacalc.js:165
 msgid "%1 days since Full Moon"
 msgstr "%1 jours depuis la pleine Lune"
 
-#: config/config.qml:23
+#: package/contents/config/config.qml:23
 msgid "General"
 msgstr "Général"
+
+#: package/contents/ui/configGeneral.qml:58
+#, fuzzy
+msgid "Pick a color for the moon"
+msgstr "Choisissez une couleur pour la lune"
+
+#: package/contents/ui/configGeneral.qml:69
+msgid "Preview"
+msgstr "Aperçu de l'image"
+
+#: package/contents/ui/configGeneral.qml:118
+#, fuzzy
+msgid "Show shadow"
+msgstr "Afficher la grille de la carte"
+
+#: package/contents/ui/configGeneral.qml:124
+msgid "Show grid"
+msgstr "Afficher la grille de la carte"
+
+#: package/contents/ui/configGeneral.qml:130
+msgid "Tycho"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:136
+msgid "Copernicus"
+msgstr "Copernic"
+
+#: package/contents/ui/configGeneral.qml:144
+msgid "Disk Color"
+msgstr "Couleur de la lune"
+
+#: package/contents/ui/configGeneral.qml:169
+msgid "Latitude"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:210
+#, fuzzy
+msgid "Phase Preview"
+msgstr "Aperçu de l'image"
+
+#: package/contents/ui/configGeneral.qml:239
+msgid "Date Format"
+msgstr "Format des dates"
+
+#: package/contents/ui/configGeneral.qml:252
+msgid "Text date"
+msgstr "Date textuelle"
+
+#: package/contents/ui/configGeneral.qml:256
+msgid "Short date"
+msgstr "Date courte"
+
+#: package/contents/ui/configGeneral.qml:260
+msgid "Long date"
+msgstr "Date longue"
+
+#: package/contents/ui/configGeneral.qml:264
+msgid "ISO date"
+msgstr "Date de l'ISO"
+
+#: package/contents/ui/configGeneral.qml:268
+msgid "Custom"
+msgstr "Personnaliser"
+
+#: package/contents/ui/configGeneral.qml:277
+msgid "Date Format String"
+msgstr "Format des dates personnalisé"
+
+#: package/contents/ui/configGeneral.qml:289
+#, fuzzy
+msgid "Background"
+msgstr "Montrer arrière-plan"
+
+#: package/contents/ui/configGeneral.qml:295
+msgid "Show background"
+msgstr "Montrer arrière-plan"
+
+#: package/contents/ui/configGeneral.qml:305
+msgid "Transparent shadow"
+msgstr ""
+
+#: package/contents/ui/LunaWidget.qml:114
+msgid "Last new:"
+msgstr "Nouvelle Lune précédente :"
+
+#: package/contents/ui/LunaWidget.qml:124
+msgid "First quarter:"
+msgstr "Premier quartier :"
+
+#: package/contents/ui/LunaWidget.qml:134
+msgid "Full moon:"
+msgstr "Pleine Lune :"
+
+#: package/contents/ui/LunaWidget.qml:144
+msgid "Third quarter:"
+msgstr "Dernier quartier :"
+
+#: package/contents/ui/LunaWidget.qml:154
+msgid "Next new:"
+msgstr "Nouvelle Lune suivante :"
 
 #: po/rc.js:1
 msgctxt "NAME OF TRANSLATORS"
@@ -97,96 +197,6 @@ msgstr "Glad Deschrijver, Bill Binder"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "dxtwjb@gmail.com"
-
-#: ui/configGeneral.qml:59
-#, fuzzy
-msgid "Pick a color for the moon"
-msgstr "Choisissez une couleur pour la lune"
-
-#: ui/configGeneral.qml:70
-msgid "Preview"
-msgstr "Aperçu de l'image"
-
-#: ui/configGeneral.qml:118
-msgid "Show grid"
-msgstr "Afficher la grille de la carte"
-
-#: ui/configGeneral.qml:124
-msgid "Tycho"
-msgstr ""
-
-#: ui/configGeneral.qml:130
-msgid "Copernicus"
-msgstr "Copernic"
-
-#: ui/configGeneral.qml:138
-msgid "Disk Color"
-msgstr "Couleur de la lune"
-
-#: ui/configGeneral.qml:163
-msgid "Latitude"
-msgstr ""
-
-#: ui/configGeneral.qml:204
-msgid "Date Format"
-msgstr "Format des dates"
-
-#: ui/configGeneral.qml:217
-msgid "Text date"
-msgstr "Date textuelle"
-
-#: ui/configGeneral.qml:221
-msgid "Short date"
-msgstr "Date courte"
-
-#: ui/configGeneral.qml:225
-msgid "Long date"
-msgstr "Date longue"
-
-#: ui/configGeneral.qml:229
-msgid "ISO date"
-msgstr "Date de l'ISO"
-
-#: ui/configGeneral.qml:233
-msgid "Custom"
-msgstr "Personnaliser"
-
-#: ui/configGeneral.qml:242
-msgid "Date Format String"
-msgstr "Format des dates personnalisé"
-
-#: ui/configGeneral.qml:254
-#, fuzzy
-msgid "Background"
-msgstr "Montrer arrière-plan"
-
-#: ui/configGeneral.qml:260
-msgid "Show background"
-msgstr "Montrer arrière-plan"
-
-#: ui/configGeneral.qml:270
-msgid "Transparent shadow"
-msgstr ""
-
-#: ui/LunaWidget.qml:114
-msgid "Last new:"
-msgstr "Nouvelle Lune précédente :"
-
-#: ui/LunaWidget.qml:124
-msgid "First quarter:"
-msgstr "Premier quartier :"
-
-#: ui/LunaWidget.qml:134
-msgid "Full moon:"
-msgstr "Pleine Lune :"
-
-#: ui/LunaWidget.qml:144
-msgid "Third quarter:"
-msgstr "Dernier quartier :"
-
-#: ui/LunaWidget.qml:154
-msgid "Next new:"
-msgstr "Nouvelle Lune suivante :"
 
 #~ msgid "Hemisphere"
 #~ msgstr "Montrer dans l'hémisphère"

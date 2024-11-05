@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
-"POT-Creation-Date: 2024-10-30 09:02-0500\n"
+"POT-Creation-Date: 2024-11-05 14:46-0600\n"
 "PO-Revision-Date: 2019-09-22 13:13+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <kde-i18n-doc@kde.org>\n"
@@ -17,73 +17,172 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 19.11.70\n"
 
-#: code/lunacalc.js:129
+#: package/contents/code/lunacalc.js:129
 msgid "First Quarter"
 msgstr "Eerste kwartier"
 
-#: code/lunacalc.js:133 code/lunacalc.js:147
+#: package/contents/code/lunacalc.js:133 package/contents/code/lunacalc.js:147
 msgid "New Moon"
 msgstr "Nieuwe maan"
 
-#: code/lunacalc.js:135 code/lunacalc.js:137
+#: package/contents/code/lunacalc.js:135 package/contents/code/lunacalc.js:137
 msgid "Waxing Crescent"
 msgstr "Wassende maan"
 
-#: code/lunacalc.js:135
+#: package/contents/code/lunacalc.js:135
 msgid "Yesterday was New Moon"
 msgstr "Gisteren was de nieuwe maan"
 
-#: code/lunacalc.js:137
+#: package/contents/code/lunacalc.js:137
 msgid "%1 days since New Moon"
 msgstr "%1 dagen verstreken sinds de nieuwe maan"
 
-#: code/lunacalc.js:143
+#: package/contents/code/lunacalc.js:143
 msgid "Last Quarter"
 msgstr "Laatste kwartier"
 
-#: code/lunacalc.js:149 code/lunacalc.js:151
+#: package/contents/code/lunacalc.js:149 package/contents/code/lunacalc.js:151
 msgid "Waning Crescent"
 msgstr "Afnemende maan"
 
-#: code/lunacalc.js:149
+#: package/contents/code/lunacalc.js:149
 msgid "Tomorrow is New Moon"
 msgstr "Morgen verschijnt de nieuwe maan"
 
-#: code/lunacalc.js:151
+#: package/contents/code/lunacalc.js:151
 msgid "%1 days to New Moon"
 msgstr "Over %1 dagen verschijnt de nieuwe maan"
 
-#: code/lunacalc.js:157
+#: package/contents/code/lunacalc.js:157
 msgid "Full Moon"
 msgstr "Volle maan"
 
-#: code/lunacalc.js:159 code/lunacalc.js:161
+#: package/contents/code/lunacalc.js:159 package/contents/code/lunacalc.js:161
 msgid "Waxing Gibbous"
 msgstr "Vooruitspringende maan"
 
-#: code/lunacalc.js:159
+#: package/contents/code/lunacalc.js:159
 msgid "Tomorrow is Full Moon"
 msgstr "Morgen is het volle maan"
 
-#: code/lunacalc.js:161
+#: package/contents/code/lunacalc.js:161
 msgid "%1 days to Full Moon"
 msgstr "Over %1 dagen is het volle maan"
 
-#: code/lunacalc.js:163 code/lunacalc.js:165
+#: package/contents/code/lunacalc.js:163 package/contents/code/lunacalc.js:165
 msgid "Waning Gibbous"
 msgstr "Afnemende maan"
 
-#: code/lunacalc.js:163
+#: package/contents/code/lunacalc.js:163
 msgid "Yesterday was Full Moon"
 msgstr "Gisteren was het volle maan"
 
-#: code/lunacalc.js:165
+#: package/contents/code/lunacalc.js:165
 msgid "%1 days since Full Moon"
 msgstr "%1 dagen verstreken sinds volle maan"
 
-#: config/config.qml:23
+#: package/contents/config/config.qml:23
 msgid "General"
 msgstr "Algemeen"
+
+#: package/contents/ui/configGeneral.qml:58
+#, fuzzy
+msgid "Pick a color for the moon"
+msgstr "Kies een maankleur"
+
+#: package/contents/ui/configGeneral.qml:69
+msgid "Preview"
+msgstr "Voorbeeld"
+
+#: package/contents/ui/configGeneral.qml:118
+#, fuzzy
+msgid "Show shadow"
+msgstr "Raster tonen"
+
+#: package/contents/ui/configGeneral.qml:124
+msgid "Show grid"
+msgstr "Raster tonen"
+
+#: package/contents/ui/configGeneral.qml:130
+msgid "Tycho"
+msgstr "Tycho"
+
+#: package/contents/ui/configGeneral.qml:136
+msgid "Copernicus"
+msgstr "Copernicus"
+
+#: package/contents/ui/configGeneral.qml:144
+msgid "Disk Color"
+msgstr "Schijfkleur"
+
+#: package/contents/ui/configGeneral.qml:169
+msgid "Latitude"
+msgstr "Breedtegraad"
+
+#: package/contents/ui/configGeneral.qml:210
+#, fuzzy
+msgid "Phase Preview"
+msgstr "Voorbeeld"
+
+#: package/contents/ui/configGeneral.qml:239
+msgid "Date Format"
+msgstr "Datumopmaak"
+
+#: package/contents/ui/configGeneral.qml:252
+msgid "Text date"
+msgstr "Tekstdatum"
+
+#: package/contents/ui/configGeneral.qml:256
+msgid "Short date"
+msgstr "Verkorte datum"
+
+#: package/contents/ui/configGeneral.qml:260
+msgid "Long date"
+msgstr "Volledige datum"
+
+#: package/contents/ui/configGeneral.qml:264
+msgid "ISO date"
+msgstr "ISO-datum"
+
+#: package/contents/ui/configGeneral.qml:268
+msgid "Custom"
+msgstr "Aangepast"
+
+#: package/contents/ui/configGeneral.qml:277
+msgid "Date Format String"
+msgstr "Datumopmaakstring"
+
+#: package/contents/ui/configGeneral.qml:289
+msgid "Background"
+msgstr "Achtergrond"
+
+#: package/contents/ui/configGeneral.qml:295
+msgid "Show background"
+msgstr "Achtergrond tonen"
+
+#: package/contents/ui/configGeneral.qml:305
+msgid "Transparent shadow"
+msgstr "Doorzichtige schaduw"
+
+#: package/contents/ui/LunaWidget.qml:114
+msgid "Last new:"
+msgstr "Vorige nieuwe:"
+
+#: package/contents/ui/LunaWidget.qml:124
+msgid "First quarter:"
+msgstr "Eerste kwartier:"
+
+#: package/contents/ui/LunaWidget.qml:134
+msgid "Full moon:"
+msgstr "Volle maan:"
+
+#: package/contents/ui/LunaWidget.qml:144
+msgid "Third quarter:"
+msgstr "Derde kwartier:"
+
+#: package/contents/ui/LunaWidget.qml:154
+msgid "Next new:"
+msgstr "Volgende nieuwe:"
 
 #: po/rc.js:1
 msgctxt "NAME OF TRANSLATORS"
@@ -94,95 +193,6 @@ msgstr "Heimen Stoffels"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "vistausss@outlook.com"
-
-#: ui/configGeneral.qml:59
-#, fuzzy
-msgid "Pick a color for the moon"
-msgstr "Kies een maankleur"
-
-#: ui/configGeneral.qml:70
-msgid "Preview"
-msgstr "Voorbeeld"
-
-#: ui/configGeneral.qml:118
-msgid "Show grid"
-msgstr "Raster tonen"
-
-#: ui/configGeneral.qml:124
-msgid "Tycho"
-msgstr "Tycho"
-
-#: ui/configGeneral.qml:130
-msgid "Copernicus"
-msgstr "Copernicus"
-
-#: ui/configGeneral.qml:138
-msgid "Disk Color"
-msgstr "Schijfkleur"
-
-#: ui/configGeneral.qml:163
-msgid "Latitude"
-msgstr "Breedtegraad"
-
-#: ui/configGeneral.qml:204
-msgid "Date Format"
-msgstr "Datumopmaak"
-
-#: ui/configGeneral.qml:217
-msgid "Text date"
-msgstr "Tekstdatum"
-
-#: ui/configGeneral.qml:221
-msgid "Short date"
-msgstr "Verkorte datum"
-
-#: ui/configGeneral.qml:225
-msgid "Long date"
-msgstr "Volledige datum"
-
-#: ui/configGeneral.qml:229
-msgid "ISO date"
-msgstr "ISO-datum"
-
-#: ui/configGeneral.qml:233
-msgid "Custom"
-msgstr "Aangepast"
-
-#: ui/configGeneral.qml:242
-msgid "Date Format String"
-msgstr "Datumopmaakstring"
-
-#: ui/configGeneral.qml:254
-msgid "Background"
-msgstr "Achtergrond"
-
-#: ui/configGeneral.qml:260
-msgid "Show background"
-msgstr "Achtergrond tonen"
-
-#: ui/configGeneral.qml:270
-msgid "Transparent shadow"
-msgstr "Doorzichtige schaduw"
-
-#: ui/LunaWidget.qml:114
-msgid "Last new:"
-msgstr "Vorige nieuwe:"
-
-#: ui/LunaWidget.qml:124
-msgid "First quarter:"
-msgstr "Eerste kwartier:"
-
-#: ui/LunaWidget.qml:134
-msgid "Full moon:"
-msgstr "Volle maan:"
-
-#: ui/LunaWidget.qml:144
-msgid "Third quarter:"
-msgstr "Derde kwartier:"
-
-#: ui/LunaWidget.qml:154
-msgid "Next new:"
-msgstr "Volgende nieuwe:"
 
 #~ msgid "Use current latitude"
 #~ msgstr "Huidige breedtegraad gebruiken"
