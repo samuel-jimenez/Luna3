@@ -1,4 +1,9 @@
+
 #!/bin/sh
+
+
+#! /usr/bin/env bash
+# $XGETTEXT `find . -name \*.js -o -name \*.qml` -o $podir/plasma_applet_org.kde.userbase.plasma.luna3.pot
 
 # based on example found here:
 #   https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems
@@ -6,7 +11,7 @@
 BUGADDR="https://github.com/samuel-jimenez/Luna3/issues" # MSGID-Bugs
 
 BASEDIR=".." # root of translatable sources
-METADATA="../../metadata.json"
+METADATA="../package/metadata.json"
 WDIR=$(pwd) # working dir
 
 PROJECT=plasma_applet_$(grep "Id" $METADATA | sed -E 's/^\s+".*": "(.*)",/\1/')

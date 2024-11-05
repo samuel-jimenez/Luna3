@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
+"POT-Creation-Date: 2024-11-05 14:34-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: package/contents/code/lunacalc.js:129
+msgid "First Quarter"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:133 package/contents/code/lunacalc.js:147
+msgid "New Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:135 package/contents/code/lunacalc.js:137
+msgid "Waxing Crescent"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:135
+msgid "Yesterday was New Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:137
+msgid "%1 days since New Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:143
+msgid "Last Quarter"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:149 package/contents/code/lunacalc.js:151
+msgid "Waning Crescent"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:149
+msgid "Tomorrow is New Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:151
+msgid "%1 days to New Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:157
+msgid "Full Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:159 package/contents/code/lunacalc.js:161
+msgid "Waxing Gibbous"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:159
+msgid "Tomorrow is Full Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:161
+msgid "%1 days to Full Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:163 package/contents/code/lunacalc.js:165
+msgid "Waning Gibbous"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:163
+msgid "Yesterday was Full Moon"
+msgstr ""
+
+#: package/contents/code/lunacalc.js:165
+msgid "%1 days since Full Moon"
+msgstr ""
+
+#: package/contents/config/config.qml:23
+msgid "General"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:58
+msgid "Pick a color for the moon"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:69
+msgid "Preview"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:118
+msgid "Show shadow"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:124
+msgid "Show grid"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:130
+msgid "Tycho"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:136
+msgid "Copernicus"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:144
+msgid "Disk Color"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:169
+msgid "Latitude"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:210
+msgid "Phase Preview"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:239
+msgid "Date Format"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:252
+msgid "Text date"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:256
+msgid "Short date"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:260
+msgid "Long date"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:264
+msgid "ISO date"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:268
+msgid "Custom"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:277
+msgid "Date Format String"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:289
+msgid "Background"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:295
+msgid "Show background"
+msgstr ""
+
+#: package/contents/ui/configGeneral.qml:305
+msgid "Transparent shadow"
+msgstr ""
+
+#: package/contents/ui/LunaWidget.qml:114
+msgid "Last new:"
+msgstr ""
+
+#: package/contents/ui/LunaWidget.qml:124
+msgid "First quarter:"
+msgstr ""
+
+#: package/contents/ui/LunaWidget.qml:134
+msgid "Full moon:"
+msgstr ""
+
+#: package/contents/ui/LunaWidget.qml:144
+msgid "Third quarter:"
+msgstr ""
+
+#: package/contents/ui/LunaWidget.qml:154
+msgid "Next new:"
+msgstr ""
+
+#: po/rc.js:1
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#: po/rc.js:2
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""

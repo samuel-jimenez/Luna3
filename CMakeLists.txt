@@ -5,8 +5,15 @@ project(plasma-luna3)
 find_package(ECM 1.4.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-find_package(KF6Plasma REQUIRED)
+find_package(Plasma REQUIRED)
+find_package(KF6I18n REQUIRED)
 
-add_custom_command(OUTPUT shadow.gsb COMMAND "/usr/lib/qt6/bin/qsb package/contents/ui/shadow.frag --qt6 -o shadow.gsb")
+add_subdirectory(src)
+
+
+add_definitions(-DTRANSLATION_DOMAIN=\"plasma_applet_org.kde.userbase.plasma.luna3.pot\")
+
+ki18n_install(po)
 
 plasma_install_package(package org.kde.userbase.plasma.luna3)
+
