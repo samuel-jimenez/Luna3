@@ -67,7 +67,7 @@ Item {
         KSvg.SvgItem {
             id: lunaSvgItem
 
-            imagePath: lunarImage === '' ? '' : Qt.resolvedUrl("../data/" + lunarImage)
+            imagePath: lunarImage === '' ? '' : Qt.resolvedUrl("data/" + lunarImage)
             visible: true
             anchors.centerIn: parent
             width: lunaBackground.width
@@ -79,9 +79,6 @@ Item {
 
         Shape {
             id: lunaCanvas
-
-            property string lunarImage: lunaIcon.lunarImage
-            property string diskColor: lunaIcon.diskColor
 
             opacity: (lunarImage === '') ? 1 : 0
             width: lunaBackground.width

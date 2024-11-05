@@ -22,11 +22,11 @@
 
 */
 
-import "../code/lunacalc.js" as LunaCalc
-import "../code/phases.js" as Phases
 import QtQuick 2.7
 import QtQuick.Controls as QtControls
 import QtQuick.Layouts as QtLayouts
+import "code/lunacalc.js" as LunaCalc
+import "code/phases.js" as Phases
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.plasma.plasmoid
 
