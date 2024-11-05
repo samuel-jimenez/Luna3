@@ -41,9 +41,12 @@ Item {
     property bool showTycho: false
     property bool showCopernicus: false
     property int theta: 45 // Degrees: 0= new moon, 90= first quarter, 180= full moon, 270= third quarter
+    property alias radius: lunaBackground.radius
 
     Item {
         id: lunaBackground
+
+        property int radius: Math.floor(height / 2)
 
         anchors.centerIn: parent
         width: Math.min(parent.width, parent.height)
@@ -92,8 +95,6 @@ Item {
                 strokeWidth: -1 //no stroke
 
                 PathAngleArc {
-                    property int radius: Math.floor(height / 2)
-
                     centerX: radius
                     centerY: radius
                     radiusY: radius
@@ -121,10 +122,10 @@ Item {
             onLatitudeChanged: requestPaint()
             onThetaChanged: requestPaint()
             onShowShadowChanged: requestPaint()
+            onWidthChanged: requestPaint()
             onPaint: {
                 context.reset();
                 if (showShadow) {
-                    var radius = Math.floor(height / 2);
                     var cosTheta = Math.cos(theta / 180 * Math.PI);
                     var counterclockwisep = (theta < 180);
                     context.globalAlpha = 0.9;
@@ -151,7 +152,6 @@ Item {
             id: markers
 
             property int latitude: lunaIcon.latitude
-            property int theta: lunaIcon.theta
             property bool showShadow: lunaIcon.showShadow
             property bool showGrid: lunaIcon.showGrid
             property bool showTycho: lunaIcon.showTycho
@@ -202,7 +202,6 @@ Item {
             anchors.centerIn: parent
             contextType: "2d"
             onLatitudeChanged: requestPaint()
-            onThetaChanged: requestPaint()
             onShowGridChanged: requestPaint()
             onShowTychoChanged: requestPaint()
             onShowCopernicusChanged: requestPaint()
@@ -210,7 +209,6 @@ Item {
             onPaint: {
                 context.reset();
                 if (!showShadow) {
-                    var radius = Math.floor(height / 2);
                     var cosTheta = Math.cos(theta / 180 * Math.PI);
                     var counterclockwisep = (theta < 180);
                     context.globalAlpha = 0.9;
@@ -255,8 +253,6 @@ Item {
                 strokeWidth: -1 //no stroke
 
                 PathAngleArc {
-                    property int radius: Math.floor(height / 2)
-
                     centerX: radius
                     centerY: radius
                     radiusY: radius
