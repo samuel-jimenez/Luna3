@@ -21,8 +21,8 @@
 
 */
 
-import Qt5Compat.GraphicalEffects
-import QtQuick 2.1
+import QtQuick 2.14
+import QtQuick.Shapes
 import org.kde.ksvg as KSvg
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
@@ -45,177 +45,241 @@ Item {
     Item {
         id: lunaBackground
 
-        visible: false
         anchors.centerIn: parent
         width: Math.min(parent.width, parent.height)
         height: Math.min(parent.width, parent.height)
+        visible: false
     }
 
-    KSvg.SvgItem {
-        id: lunaSvgItem
+    Item {
+        id: lunaTexture
 
-        imagePath: lunarImage === '' ? '' : Qt.resolvedUrl("../data/" + lunarImage)
-        visible: false
         anchors.centerIn: parent
         width: lunaBackground.width
         height: lunaBackground.height
-        // Rotation to compensate the moon's image basic position to a north pole view
-        transformOrigin: Item.Center
-        rotation: -lunarImageTweak
-    }
-
-    Canvas {
-        id: lunaCanvas
-
-        property string lunarImage: lunaIcon.lunarImage
-        property string diskColor: lunaIcon.diskColor
-
-        width: lunaBackground.width
-        height: lunaBackground.height
         visible: false
-        anchors.centerIn: parent
-        contextType: "2d"
-        onLunarImageChanged: requestPaint()
-        onDiskColorChanged: requestPaint()
-        onPaint: {
-            var radius = Math.floor(height / 2);
-            context.reset();
-            context.globalAlpha = (lunarImage === '') ? 1 : 0;
-            context.fillStyle = diskColor;
-            context.translate(radius, radius);
-            context.beginPath();
-            context.arc(0, 0, radius, 0, 2 * Math.PI);
-            context.closePath();
-            context.fill();
-        }
-    }
+        layer.enabled: true
+        layer.smooth: true
 
-    Canvas {
-        id: shadow
+        KSvg.SvgItem {
+            id: lunaSvgItem
 
-        property int latitude: lunaIcon.latitude
-        property int theta: lunaIcon.theta
-        property bool showShadow: lunaIcon.showShadow
-        property bool showGrid: lunaIcon.showGrid
-        property bool showTycho: lunaIcon.showTycho
-        property bool showCopernicus: lunaIcon.showCopernicus
-
-        function radians(deg) {
-            return deg / 180 * Math.PI;
+            imagePath: lunarImage === '' ? '' : Qt.resolvedUrl("../data/" + lunarImage)
+            visible: true
+            anchors.centerIn: parent
+            width: lunaBackground.width
+            height: lunaBackground.height
+            // Rotation to compensate the moon's image basic position to a north pole view
+            transformOrigin: Item.Center
+            rotation: latitude - 90 - lunarImageTweak
         }
 
-        function marker(radius, latitude, longitude) {
-            var dy = radius * Math.sin(radians(latitude));
-            var dx = radius * Math.cos(radians(latitude)) * Math.sin(radians(longitude));
-            // console.log("dx: " + dx.toString());
-            // console.log("dy: " + dy.toString());
-            context.beginPath();
-            context.strokeStyle = "#FF0000";
-            context.arc(dx, -dy, 5, 0, 2 * Math.PI);
-            context.moveTo(dx - 5, -dy - 5);
-            context.lineTo(dx + 5, -dy + 5);
-            context.moveTo(dx - 5, -dy + 5);
-            context.lineTo(dx + 5, -dy - 5);
-            context.stroke();
-        }
+        Shape {
+            id: lunaCanvas
 
-        function grid(radius) {
-            context.beginPath();
-            context.strokeStyle = "#FF4040";
-            context.moveTo(0, -radius);
-            context.lineTo(0, radius);
-            context.moveTo(-radius, 0);
-            context.lineTo(radius, 0);
-            context.stroke();
-            context.beginPath();
-            context.strokeStyle = "#40FF40";
-            for (var ll = 10; ll < 65; ll += 10) {
-                var dy = radius * Math.sin(radians(ll));
-                context.moveTo(-radius, dy);
-                context.lineTo(radius, dy);
-                context.moveTo(-radius, -dy);
-                context.lineTo(radius, -dy);
-            }
-            context.stroke();
-        }
+            property string lunarImage: lunaIcon.lunarImage
+            property string diskColor: lunaIcon.diskColor
 
-        width: lunaBackground.width
-        height: lunaBackground.height
-        visible: false
-        anchors.centerIn: parent
-        contextType: "2d"
-        onLatitudeChanged: requestPaint()
-        onThetaChanged: requestPaint()
-        onShowGridChanged: requestPaint()
-        onShowTychoChanged: requestPaint()
-        onShowCopernicusChanged: requestPaint()
-        onShowShadowChanged: requestPaint()
-        onPaint: {
-            var radius = Math.floor(height / 2);
-            var cosTheta = Math.cos(theta / 180 * Math.PI);
-            var counterclockwisep = (theta < 180);
-            context.reset();
-            context.globalAlpha = 0.9;
-            context.translate(radius, radius);
-            if (showShadow) {
-                if (theta != 180) {
-                    context.beginPath();
-                    context.fillStyle = '#000000';
-                    context.strokeStyle = '#000000';
-                    context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
-                    if ((theta % 180) != 90) {
-                        context.scale(cosTheta, 1);
-                        context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, counterclockwisep);
-                    }
-                    context.closePath();
-                    context.fill();
-                    context.stroke();
+            opacity: (lunarImage === '') ? 1 : 0
+            width: lunaBackground.width
+            height: lunaBackground.height
+            visible: true
+            anchors.centerIn: parent
+            preferredRendererType: Shape.CurveRenderer
+
+            ShapePath {
+                fillColor: diskColor
+                strokeWidth: -1 //no stroke
+
+                PathAngleArc {
+                    property int radius: Math.floor(height / 2)
+
+                    centerX: radius
+                    centerY: radius
+                    radiusY: radius
+                    radiusX: radius
+                    startAngle: 0
+                    sweepAngle: 360
                 }
-            } else {
-                // Calibration markers
-                if (showGrid)
-                    grid(radius);
-
-                // Tycho
-                if (showTycho)
-                    marker(radius, -43, -11.5);
-
-                // Copernicus
-                if (showCopernicus)
-                    marker(radius, 9.6, -20);
 
             }
+
         }
+
+        Canvas {
+            id: shadow
+
+            property int latitude: lunaIcon.latitude
+            property int theta: lunaIcon.theta
+            property bool showShadow: lunaIcon.showShadow
+
+            width: lunaBackground.width
+            height: lunaBackground.height
+            visible: true
+            anchors.centerIn: parent
+            contextType: "2d"
+            onLatitudeChanged: requestPaint()
+            onThetaChanged: requestPaint()
+            onShowShadowChanged: requestPaint()
+            onPaint: {
+                context.reset();
+                if (showShadow) {
+                    var radius = Math.floor(height / 2);
+                    var cosTheta = Math.cos(theta / 180 * Math.PI);
+                    var counterclockwisep = (theta < 180);
+                    context.globalAlpha = 0.9;
+                    context.translate(radius, radius);
+                    context.rotate((latitude - 90) / 180 * Math.PI);
+                    if (theta != 180) {
+                        context.beginPath();
+                        context.fillStyle = '#000000';
+                        context.strokeStyle = '#000000';
+                        context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
+                        if ((theta % 180) != 90) {
+                            context.scale(cosTheta, 1);
+                            context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, counterclockwisep);
+                        }
+                        context.closePath();
+                        context.fill();
+                        context.stroke();
+                    }
+                }
+            }
+        }
+
+        Canvas {
+            id: markers
+
+            property int latitude: lunaIcon.latitude
+            property int theta: lunaIcon.theta
+            property bool showShadow: lunaIcon.showShadow
+            property bool showGrid: lunaIcon.showGrid
+            property bool showTycho: lunaIcon.showTycho
+            property bool showCopernicus: lunaIcon.showCopernicus
+
+            function radians(deg) {
+                return deg / 180 * Math.PI;
+            }
+
+            function marker(radius, latitude, longitude) {
+                var dy = radius * Math.sin(radians(latitude));
+                var dx = radius * Math.cos(radians(latitude)) * Math.sin(radians(longitude));
+                // console.log("dx: " + dx.toString());
+                // console.log("dy: " + dy.toString());
+                context.beginPath();
+                context.strokeStyle = "#FF0000";
+                context.arc(dx, -dy, 5, 0, 2 * Math.PI);
+                context.moveTo(dx - 5, -dy - 5);
+                context.lineTo(dx + 5, -dy + 5);
+                context.moveTo(dx - 5, -dy + 5);
+                context.lineTo(dx + 5, -dy - 5);
+                context.stroke();
+            }
+
+            function grid(radius) {
+                context.beginPath();
+                context.strokeStyle = "#FF4040";
+                context.moveTo(0, -radius);
+                context.lineTo(0, radius);
+                context.moveTo(-radius, 0);
+                context.lineTo(radius, 0);
+                context.stroke();
+                context.beginPath();
+                context.strokeStyle = "#40FF40";
+                for (var ll = 10; ll < 65; ll += 10) {
+                    var dy = radius * Math.sin(radians(ll));
+                    context.moveTo(-radius, dy);
+                    context.lineTo(radius, dy);
+                    context.moveTo(-radius, -dy);
+                    context.lineTo(radius, -dy);
+                }
+                context.stroke();
+            }
+
+            width: lunaBackground.width
+            height: lunaBackground.height
+            visible: true
+            anchors.centerIn: parent
+            contextType: "2d"
+            onLatitudeChanged: requestPaint()
+            onThetaChanged: requestPaint()
+            onShowGridChanged: requestPaint()
+            onShowTychoChanged: requestPaint()
+            onShowCopernicusChanged: requestPaint()
+            onShowShadowChanged: requestPaint()
+            onPaint: {
+                context.reset();
+                if (!showShadow) {
+                    var radius = Math.floor(height / 2);
+                    var cosTheta = Math.cos(theta / 180 * Math.PI);
+                    var counterclockwisep = (theta < 180);
+                    context.globalAlpha = 0.9;
+                    context.translate(radius, radius);
+                    context.rotate((latitude - 90) / 180 * Math.PI);
+                    // Calibration markers
+                    if (showGrid)
+                        grid(radius);
+
+                    // Tycho
+                    if (showTycho)
+                        marker(radius, -43, -11.5);
+
+                    // Copernicus
+                    if (showCopernicus)
+                        marker(radius, 9.6, -20);
+
+                }
+            }
+        }
+
     }
 
-    Blend {
-        id: lunaSource
+    ShaderEffectSource {
+        id: lunaMask
 
-        anchors.fill: lunaBackground
-        source: lunaSvgItem
-        foregroundSource: lunaCanvas
-        mode: "normal"
+        anchors.centerIn: parent
+        width: lunaBackground.width
+        height: lunaBackground.height
         visible: false
+
+        sourceItem: Shape {
+            opacity: 1
+            width: lunaBackground.width
+            height: lunaBackground.height
+            visible: true
+            anchors.centerIn: parent
+            preferredRendererType: Shape.CurveRenderer
+
+            ShapePath {
+                fillColor: '#000000'
+                strokeWidth: -1 //no stroke
+
+                PathAngleArc {
+                    property int radius: Math.floor(height / 2)
+
+                    centerX: radius
+                    centerY: radius
+                    radiusY: radius
+                    radiusX: radius
+                    startAngle: 0
+                    sweepAngle: 360
+                }
+
+            }
+
+        }
+
     }
 
-    // Shadow acts as a transparency mask
-    OpacityMask {
-        anchors.fill: lunaBackground
-        source: lunaSource
-        maskSource: shadow
-        invert: true
-        rotation: latitude - 90
-        visible: transparentShadow
-    }
+    ShaderEffect {
+        property variant source: lunaTexture
+        property variant shadow: shadow
+        property variant mask: lunaMask
+        property int transparent: transparentShadow
 
-    // Shadow is printed on top of the moon image
-    Blend {
+        visible: true
         anchors.fill: lunaBackground
-        source: lunaSource
-        foregroundSource: shadow
-        rotation: latitude - 90
-        mode: "normal"
-        visible: !transparentShadow
+        fragmentShader: "shadow.gsb"
     }
 
 }
