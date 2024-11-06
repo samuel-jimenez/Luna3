@@ -18,16 +18,19 @@
     along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 
+import QtPositioning
 import QtQuick 2.7
 import QtQuick.Controls as QtControls
 import QtQuick.Dialogs as QtDialogs
 import QtQuick.Layouts as QtLayouts
 import org.kde.kcmutils as KCM
 import org.kde.kirigami as Kirigami
+import org.kde.plasma.plasma5support as Plasma5Support
 
 KCM.SimpleKCM {
     id: generalPage
 
+    property alias cfg_latitudeAuto: latitudeAuto.checked // 0=Equator, +90=North Pole, -90=South Pole
     property alias cfg_latitude: latitude.value // 0=Equator, +90=North Pole, -90=South Pole
     property alias cfg_phase: phase.value
     property alias cfg_transparentShadow: transparentShadow.checked // boolean
@@ -46,6 +49,19 @@ KCM.SimpleKCM {
     onCfg_lunarIndexChanged: {
         cfg_lunarImage = imageChoices.get(cfg_lunarIndex).filename;
         cfg_lunarImageTweak = imageChoices.get(cfg_lunarIndex).tweak;
+    }
+
+    PositionSource {
+        id: geoSource
+
+        readonly property bool locating: geoSource.active && geoSource.sourceError == PositionSource.NoError && !(geoSource.position.latitudeValid)
+
+        updateInterval: 3600 * 1000
+        active: cfg_latitudeAuto
+        onPositionChanged: {
+            // lbl_place.text = i18n(geoSource.data.location.country);
+            cfg_latitude = Math.round(geoSource.position.coordinate.latitude * 100) / 100;
+        }
     }
 
     ImageChoices {
@@ -187,6 +203,7 @@ KCM.SimpleKCM {
                 from: -90
                 to: 90
                 stepSize: 5
+                enabled: !cfg_latitudeAuto
             }
 
         }
@@ -196,6 +213,12 @@ KCM.SimpleKCM {
 
         QtLayouts.RowLayout {
             spacing: 20
+
+            QtControls.CheckBox {
+                id: latitudeAuto
+
+                text: i18n("Use current latitude")
+            }
 
             QtControls.Label {
                 id: lbl_place
