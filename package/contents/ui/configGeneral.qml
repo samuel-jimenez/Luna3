@@ -19,10 +19,12 @@
 */
 
 import QtPositioning
-import QtQuick 2.7
+import QtQuick
 import QtQuick.Controls as QtControls
 import QtQuick.Dialogs as QtDialogs
 import QtQuick.Layouts as QtLayouts
+import "code/lunacalc.js" as LunaCalc
+import "code/phases.js" as Phases
 import org.kde.kcmutils as KCM
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.plasma5support as Plasma5Support
@@ -30,9 +32,9 @@ import org.kde.plasma.plasma5support as Plasma5Support
 KCM.SimpleKCM {
     id: generalPage
 
+    property alias previewPhase: phase.value
     property alias cfg_latitudeAuto: latitudeAuto.checked // 0=Equator, +90=North Pole, -90=South Pole
     property alias cfg_latitude: latitude.value // 0=Equator, +90=North Pole, -90=South Pole
-    property alias cfg_phase: phase.value
     property alias cfg_transparentShadow: transparentShadow.checked // boolean
     property alias cfg_showBackground: showBackground.checked // boolean
     property alias cfg_dateFormat: dateFormat.currentIndex // code: 0= 1= 2=...
@@ -50,6 +52,9 @@ KCM.SimpleKCM {
         cfg_lunarImage = imageChoices.get(cfg_lunarIndex).filename;
         cfg_lunarImageTweak = imageChoices.get(cfg_lunarIndex).tweak;
     }
+    Component.onCompleted: {
+        previewPhase = LunaCalc.getCurrentPhase(true).terminator;
+    }
 
     PositionSource {
         id: geoSource
@@ -60,7 +65,7 @@ KCM.SimpleKCM {
         active: cfg_latitudeAuto
         onPositionChanged: {
             // lbl_place.text = i18n(geoSource.data.location.country);
-            cfg_latitude = Math.round(geoSource.position.coordinate.latitude * 100) / 100;
+            cfg_latitude = Math.round(geoSource.position.coordinate.latitude);
         }
     }
 
@@ -104,7 +109,7 @@ KCM.SimpleKCM {
                 width: 200
                 height: 200
                 latitude: cfg_latitude
-                theta: cfg_phase
+                theta: previewPhase
                 showShadow: cfg_showShadow
                 transparentShadow: false
                 lunarImage: cfg_lunarImage
@@ -152,6 +157,35 @@ KCM.SimpleKCM {
                     text: i18n("Copernicus")
                 }
 
+            }
+
+        }
+
+        QtControls.Label {
+            text: i18n("Phase Preview")
+            QtLayouts.Layout.preferredWidth: 85
+            horizontalAlignment: Text.AlignRight
+        }
+
+        QtLayouts.RowLayout {
+            spacing: 20
+
+            QtControls.Label {
+                id: lbl_phase
+
+                text: Math.abs(phase.value) + "º "
+                QtLayouts.Layout.preferredWidth: 40
+                horizontalAlignment: Text.AlignRight
+            }
+
+            QtControls.Slider {
+                id: phase
+
+                value: lunaPreview.theta
+                QtLayouts.Layout.fillWidth: true
+                from: 0
+                to: 360
+                stepSize: 1
             }
 
         }
@@ -225,35 +259,6 @@ KCM.SimpleKCM {
 
                 QtLayouts.Layout.fillWidth: true
                 horizontalAlignment: Text.AlignRight
-            }
-
-        }
-
-        QtControls.Label {
-            text: i18n("Phase Preview")
-            QtLayouts.Layout.preferredWidth: 85
-            horizontalAlignment: Text.AlignRight
-        }
-
-        QtLayouts.RowLayout {
-            spacing: 20
-
-            QtControls.Label {
-                id: lbl_phase
-
-                text: Math.abs(phase.value) + "º "
-                QtLayouts.Layout.preferredWidth: 40
-                horizontalAlignment: Text.AlignRight
-            }
-
-            QtControls.Slider {
-                id: phase
-
-                value: lunaPreview.theta
-                QtLayouts.Layout.fillWidth: true
-                from: 0
-                to: 360
-                stepSize: 1
             }
 
         }

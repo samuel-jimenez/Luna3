@@ -6,7 +6,7 @@
       <default>90</default>
     </entry>
     <entry name="latitudeAuto" type="Bool">
-      <default>false</default>
+      <default>true</default>
     </entry>
     <entry name="showBackground" type="Bool">
       <default>false</default>
@@ -21,6 +21,7 @@
       <default>3</default>
     </entry>
     <entry name="dateFormatString" type="String">
+      <default>hh</default>
     </entry>
     <entry name="lunarIndex" type="int">
       <default>1</default>

@@ -21,7 +21,7 @@
 
 */
 
-import QtQuick 2.14
+import QtQuick
 import QtQuick.Shapes
 import org.kde.ksvg as KSvg
 import org.kde.plasma.core as PlasmaCore
