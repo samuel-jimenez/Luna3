@@ -74,7 +74,7 @@ Item {
             height: lunaBackground.height
             // Rotation to compensate the moon's image basic position to a north pole view
             transformOrigin: Item.Center
-            rotation: latitude - 90 - lunarImageTweak
+            rotation: -lunarImageTweak
         }
 
         Shape {
@@ -107,7 +107,6 @@ Item {
         Canvas {
             id: shadow
 
-            property int latitude: lunaIcon.latitude
             property int theta: lunaIcon.theta
             property bool showShadow: lunaIcon.showShadow
 
@@ -116,7 +115,6 @@ Item {
             visible: true
             anchors.centerIn: parent
             contextType: "2d"
-            onLatitudeChanged: requestPaint()
             onThetaChanged: requestPaint()
             onShowShadowChanged: requestPaint()
             onWidthChanged: requestPaint()
@@ -127,7 +125,6 @@ Item {
                     var counterclockwisep = (theta < 180);
                     context.globalAlpha = 0.9;
                     context.translate(radius, radius);
-                    context.rotate((latitude - 90) / 180 * Math.PI);
                     if (theta != 180) {
                         context.beginPath();
                         context.fillStyle = '#000000';
@@ -148,7 +145,6 @@ Item {
         Canvas {
             id: markers
 
-            property int latitude: lunaIcon.latitude
             property bool showShadow: lunaIcon.showShadow
             property bool showGrid: lunaIcon.showGrid
             property bool showTycho: lunaIcon.showTycho
@@ -198,7 +194,6 @@ Item {
             visible: true
             anchors.centerIn: parent
             contextType: "2d"
-            onLatitudeChanged: requestPaint()
             onShowGridChanged: requestPaint()
             onShowTychoChanged: requestPaint()
             onShowCopernicusChanged: requestPaint()
@@ -210,7 +205,6 @@ Item {
                     var counterclockwisep = (theta < 180);
                     context.globalAlpha = 0.9;
                     context.translate(radius, radius);
-                    context.rotate((latitude - 90) / 180 * Math.PI);
                     // Calibration markers
                     if (showGrid)
                         grid(radius);
@@ -270,7 +264,9 @@ Item {
         property variant mask: lunaMask
         property int transparent: transparentShadow
 
+        rotation: latitude - 90
         visible: true
+        antialiasing: true
         anchors.fill: lunaBackground
         fragmentShader: "shadow.gsb"
     }
