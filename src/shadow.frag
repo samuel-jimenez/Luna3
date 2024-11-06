@@ -11,9 +11,14 @@ layout(binding = 1) uniform sampler2D source;
 layout(binding = 2) uniform sampler2D shadow;
 layout(binding = 3) uniform sampler2D mask;
 
-void main() {    fragColor = texture(source, qt_TexCoord0)
-                    * texture(mask, qt_TexCoord0).a
-                    * (1 - texture(shadow, qt_TexCoord0).a * transparent)
-                    * qt_Opacity ;
+void main() {
+    fragColor = vec4(
+        ((1 - transparent)* texture(source, qt_TexCoord0) * (1- texture(shadow, qt_TexCoord0))
+        + transparent * texture(source, qt_TexCoord0)).rgb,
+                     texture(source, qt_TexCoord0).a)
+    * texture(mask, qt_TexCoord0).a
+    * (1 - texture(shadow, qt_TexCoord0).a * transparent)
+    * qt_Opacity ;
 }
+
 

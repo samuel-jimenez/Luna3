@@ -105,44 +105,6 @@ Item {
         }
 
         Canvas {
-            id: shadow
-
-            property int theta: lunaIcon.theta
-            property bool showShadow: lunaIcon.showShadow
-
-            width: lunaBackground.width
-            height: lunaBackground.height
-            visible: true
-            anchors.centerIn: parent
-            contextType: "2d"
-            onThetaChanged: requestPaint()
-            onShowShadowChanged: requestPaint()
-            onWidthChanged: requestPaint()
-            onPaint: {
-                context.reset();
-                if (showShadow) {
-                    var cosTheta = Math.cos(theta / 180 * Math.PI);
-                    var counterclockwisep = (theta < 180);
-                    context.globalAlpha = 0.9;
-                    context.translate(radius, radius);
-                    if (theta != 180) {
-                        context.beginPath();
-                        context.fillStyle = '#000000';
-                        context.strokeStyle = '#000000';
-                        context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
-                        if ((theta % 180) != 90) {
-                            context.scale(cosTheta, 1);
-                            context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, counterclockwisep);
-                        }
-                        context.closePath();
-                        context.fill();
-                        context.stroke();
-                    }
-                }
-            }
-        }
-
-        Canvas {
             id: markers
 
             property bool showShadow: lunaIcon.showShadow
@@ -224,12 +186,61 @@ Item {
     }
 
     ShaderEffectSource {
+        id: shadow
+
+        anchors.centerIn: parent
+        width: lunaBackground.width
+        height: lunaBackground.height
+        visible: false
+        antialiasing: false
+
+        sourceItem: Canvas {
+            property int theta: lunaIcon.theta
+            property bool showShadow: lunaIcon.showShadow
+
+            antialiasing: true
+            width: lunaBackground.width
+            height: lunaBackground.height
+            visible: true
+            anchors.centerIn: parent
+            contextType: "2d"
+            onThetaChanged: requestPaint()
+            onShowShadowChanged: requestPaint()
+            onWidthChanged: requestPaint()
+            onPaint: {
+                context.reset();
+                if (showShadow) {
+                    var cosTheta = Math.cos(theta / 180 * Math.PI);
+                    var counterclockwisep = (theta < 180);
+                    context.globalAlpha = 0.9;
+                    context.translate(radius, radius);
+                    if (theta != 180) {
+                        context.beginPath();
+                        context.fillStyle = '#ffffff';
+                        context.strokeStyle = '#ffffff';
+                        context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
+                        if ((theta % 180) != 90) {
+                            context.scale(cosTheta, 1);
+                            context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, counterclockwisep);
+                        }
+                        context.closePath();
+                        context.fill();
+                        context.stroke();
+                    }
+                }
+            }
+        }
+
+    }
+
+    ShaderEffectSource {
         id: lunaMask
 
         anchors.centerIn: parent
         width: lunaBackground.width
         height: lunaBackground.height
         visible: false
+        antialiasing: false
 
         sourceItem: Shape {
             opacity: 1
@@ -264,6 +275,7 @@ Item {
         property variant mask: lunaMask
         property int transparent: transparentShadow
 
+        opacity: 1
         rotation: latitude - 90
         visible: true
         antialiasing: true
