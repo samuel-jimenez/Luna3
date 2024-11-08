@@ -1,25 +1,31 @@
 (Instructions adapted from gmail-plasmoid:
 http://code.google.com/p/gmail-plasmoid/)
+KDE Ki18n translator's guide: https://api.kde.org/frameworks/ki18n/html/trn_guide.html
 
 This document contains brief instructions on how to create new
 translations for this plasmoid. If any of the instructions are unclear
-or you encounter any difficulties please contact the author at the
-following email address.
+or you encounter any difficulties please contact the author.
 
-Step 4 covers how to install existing translations.
 
-Bill Binder <dxtwjb@gmail.com>
+[Step 4](#step-4-install-the-mo-file) covers how to install existing translations.
+
 
 ---------------------------------------------
 Step 1: Creating a new <locale>.po file
 ---------------------------------------------
-Under the "contents/po" folder, make a copy of
+Under the `po` folder, make a folder for the locale, e.g.: `fr/`
 
-  plasma_applet_org.kde.userbase.plasma.luna3.pot
+Make a copy of
+  `plasma_applet_org.kde.userbase.plasma.luna3.pot`
 
-Name this copy for the locale, e.g:
+Move/rename it to the folder you created, e.g.:
+  `fr/plasma_applet_org.kde.userbase.plasma.luna3.po`
 
-  fr.po
+Bash:
+```bash
+  mkdir -p fr
+  cp plasma_applet_org.kde.userbase.plasma.luna3.pot fr/plasma_applet_org.kde.userbase.plasma.luna3.po
+  ```
 
 You are now ready to start translating.
 
@@ -41,12 +47,12 @@ Step 3: Convert the .po file to an .mo file
 -------------------------------------------
 The plasmoid needs the translation in a .mo file.
 
-Go to contents/po and run ./Messages.sh - this generates the .mo files for
+Go to contents/po and run `./Messages.sh` - this generates the .mo files for
 all the .po files.
 
-The .mo files are placed in the locale directory under contents/po,
+The .mo files are placed in the `locale` directory under `contents`,
 
-e.g. locale/fr/LC_MESSAGES/plasma_applet_org.kde.userbase.plasma.luna3.mo
+e.g. `locale/fr/LC_MESSAGES/plasma_applet_org.kde.userbase.plasma.luna3.mo`
 
 ----------------------------
 Step 4: Install the .mo file
@@ -54,13 +60,13 @@ Step 4: Install the .mo file
 First locate where the plasmoid has been installed.
 
 if it was installed using Add Widgets menu, it will probably be:
-  ~/.local/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/
-Copy the contents/po/locale directory into ~/.local/share.
+  `~/.local/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/`
+Copy the `contents/locale` directory into `~/.local/share`.
 
 If you did a global install of the plasmoid, it's probably under:
-  /usr/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/
-In this case, there will be a /usr/share/locale directory already;
-copy the contents/po/locale directory into /usr/share.
+  `/usr/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/`
+In this case, there will be a `/usr/share/locale` directory already;
+copy the `contents/locale` directory into `/usr/share`.
 
 Logout and back in - it should pick up the translations.
 
@@ -69,14 +75,14 @@ Step 5: Send the translation for inclusion with the widget
 ----------------------------------------------------------
 Once you are happy with the translation please send the .po file to the
 author along with translations for the following two strings (see
-metadata.json):
+`metadata.json`):
 
 For the "add widgets" screen:
    "Luna 3"
    "Display moon phases for your location"
 
 Please send the translations for these two strings only when the
-translation is not yet in metadata.desktop.
+translation is not yet in `metadata.json`.
 
 Alternatively, fork on Github (samuel-jimenez/Luna3), do your changes there, and
 then send a pull request.

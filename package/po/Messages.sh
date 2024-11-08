@@ -1,6 +1,4 @@
-
 #!/bin/sh
-
 
 #! /usr/bin/env bash
 # $XGETTEXT `find . -name \*.js -o -name \*.qml` -o $podir/plasma_applet_org.kde.userbase.plasma.luna3.pot
@@ -10,12 +8,12 @@
 
 BUGADDR="https://github.com/samuel-jimenez/Luna3/issues" # MSGID-Bugs
 
-BASEDIR=".." # root of translatable sources
-METADATA="../package/metadata.json"
-WDIR=$(pwd) # working dir
+WDIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd) # working dir
+BASEDIR=${WDIR}/.. # root of translatable sources
+METADATA=${BASEDIR}/metadata.json
 
-PROJECT=plasma_applet_$(grep "Id" $METADATA | sed -E 's/^\s+".*": "(.*)",/\1/')
-VERSION=$(grep "Version" $METADATA | sed -E 's/^\s+".*": "(.*)",/\1/')
+PROJECT=plasma_applet_$(grep '"Id"' $METADATA | sed -E 's/^\s+".*": "(.*)",/\1/')
+VERSION=$(grep '"Version"' $METADATA | sed -E 's/^\s+".*": "(.*)",/\1/')
 
 RCSCRIPT="$WDIR/rc.js"
 
@@ -65,7 +63,7 @@ echo "Generating mo files"
 catalogs=$(find . -name '*.po')
 for cat in $catalogs; do
 	echo $cat
-	catdir=locale/${cat%.*}/LC_MESSAGES
+	catdir=${BASEDIR}/contents/locale/$(dirname $cat)/LC_MESSAGES
 	mkdir -p $catdir
 	msgfmt $cat -o $catdir/$PROJECT.mo
 done

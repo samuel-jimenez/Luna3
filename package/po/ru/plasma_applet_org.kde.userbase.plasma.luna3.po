@@ -1,0 +1,231 @@
+# plasma-applet-luna-qml language translation file.
+# Copyright (C) 2017 Bill Binder
+# This file is distributed under the same license as the PACKAGE package.
+# Bill Binder <dxtwjb@gmail.com>, 2017
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.1\n"
+"Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
+"POT-Creation-Date: 2024-11-09 18:10-0600\n"
+"PO-Revision-Date: 2017-07-01 14:29+0100\n"
+"Last-Translator: Bill Binder <dxtwjb@gmail.com>\n"
+"Language-Team: n/a\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: contents/config/config.qml:23
+msgid "General"
+msgstr "Общие настройки"
+
+#: contents/ui/code/lunacalc.js:129
+msgid "First Quarter"
+msgstr "Первая четверть"
+
+#: contents/ui/code/lunacalc.js:133 contents/ui/code/lunacalc.js:147
+msgid "New Moon"
+msgstr "Новолуние"
+
+#: contents/ui/code/lunacalc.js:135 contents/ui/code/lunacalc.js:137
+msgid "Waxing Crescent"
+msgstr "Молодая луна"
+
+#: contents/ui/code/lunacalc.js:135
+msgid "Yesterday was New Moon"
+msgstr "Вчера была Новолуние"
+
+#: contents/ui/code/lunacalc.js:137
+msgid "%1 days since New Moon"
+msgstr "%1 дня с новой луны"
+
+#: contents/ui/code/lunacalc.js:143
+msgid "Last Quarter"
+msgstr "Последняя четверть"
+
+#: contents/ui/code/lunacalc.js:149 contents/ui/code/lunacalc.js:151
+msgid "Waning Crescent"
+msgstr "Старая луна"
+
+#: contents/ui/code/lunacalc.js:149
+msgid "Tomorrow is New Moon"
+msgstr "Завтра новолуние"
+
+#: contents/ui/code/lunacalc.js:151
+msgid "%1 days to New Moon"
+msgstr "%1 дня до новолуния"
+
+#: contents/ui/code/lunacalc.js:157
+msgid "Full Moon"
+msgstr "Полнолуние"
+
+#: contents/ui/code/lunacalc.js:159 contents/ui/code/lunacalc.js:161
+msgid "Waxing Gibbous"
+msgstr "Прибывающая луна"
+
+#: contents/ui/code/lunacalc.js:159
+msgid "Tomorrow is Full Moon"
+msgstr "Завтра полнолуние"
+
+#: contents/ui/code/lunacalc.js:161
+msgid "%1 days to Full Moon"
+msgstr "%1 дня до полной луны"
+
+#: contents/ui/code/lunacalc.js:163 contents/ui/code/lunacalc.js:165
+msgid "Waning Gibbous"
+msgstr "Убывающая луна"
+
+#: contents/ui/code/lunacalc.js:163
+msgid "Yesterday was Full Moon"
+msgstr "Вчера была полная луна"
+
+#: contents/ui/code/lunacalc.js:165
+msgid "%1 days since Full Moon"
+msgstr "%1 дня с полной луны"
+
+#: contents/ui/configGeneral.qml:79
+#, fuzzy
+msgid "Pick a color for the moon"
+msgstr "Выберите цвет для луны"
+
+#: contents/ui/configGeneral.qml:90
+msgid "Preview"
+msgstr "Лунное изображение"
+
+#: contents/ui/configGeneral.qml:150
+#, fuzzy
+msgid "Show shadow"
+msgstr "Показывать фон"
+
+#: contents/ui/configGeneral.qml:156
+msgid "Show grid"
+msgstr "Показывать фон"
+
+#: contents/ui/configGeneral.qml:162
+msgid "Tycho"
+msgstr "Тихо"
+
+#: contents/ui/configGeneral.qml:168
+msgid "Copernicus"
+msgstr "Коперник"
+
+#: contents/ui/configGeneral.qml:176
+msgid "Phase"
+msgstr ""
+
+#: contents/ui/configGeneral.qml:207
+#, fuzzy
+msgid "Shadow"
+msgstr "Показывать фон"
+
+#: contents/ui/configGeneral.qml:214
+msgid "Opacity"
+msgstr ""
+
+#: contents/ui/configGeneral.qml:227
+msgid "Transparent"
+msgstr ""
+
+#: contents/ui/configGeneral.qml:255
+msgid "Disk Color"
+msgstr "Цвет луны"
+
+#: contents/ui/configGeneral.qml:280
+msgid "Latitude"
+msgstr ""
+
+#: contents/ui/configGeneral.qml:314
+msgid "Use current latitude"
+msgstr ""
+
+#: contents/ui/configGeneral.qml:320
+msgid "Date Format"
+msgstr "Формат даты"
+
+#: contents/ui/configGeneral.qml:334
+msgid "Text date"
+msgstr "Дата форматирования текста"
+
+#: contents/ui/configGeneral.qml:338
+msgid "Short date"
+msgstr "Краткая дата в формате"
+
+#: contents/ui/configGeneral.qml:342
+msgid "Long date"
+msgstr "Длинная форма дата"
+
+#: contents/ui/configGeneral.qml:346
+msgid "ISO date"
+msgstr "Дата формата ISO"
+
+#: contents/ui/configGeneral.qml:350
+msgid "Custom"
+msgstr "Дата пользовательского формата"
+
+#: contents/ui/configGeneral.qml:359
+msgid "Date Format String"
+msgstr "Строка формата даты"
+
+#: contents/ui/configGeneral.qml:371
+#, fuzzy
+msgid "Background"
+msgstr "Показывать фон"
+
+#: contents/ui/configGeneral.qml:378
+msgid "Show background"
+msgstr "Показывать фон"
+
+#: contents/ui/LunaWidget.qml:114
+msgid "Last new:"
+msgstr "Последняя новолуния:"
+
+#: contents/ui/LunaWidget.qml:124
+msgid "First quarter:"
+msgstr "Первая четверть луны:"
+
+#: contents/ui/LunaWidget.qml:134
+msgid "Full moon:"
+msgstr "Полнолуние:"
+
+#: contents/ui/LunaWidget.qml:144
+msgid "Third quarter:"
+msgstr "Третья четверть луны"
+
+#: contents/ui/LunaWidget.qml:154
+msgid "Next new:"
+msgstr "Следующая новолуние"
+
+#: po/rc.js:1
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Bill Binder"
+
+#: po/rc.js:2
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "dxtwjb@gmail.com"
+
+#, fuzzy
+#~ msgid "Phase Preview"
+#~ msgstr "Лунное изображение"
+
+#~ msgid "Hemisphere"
+#~ msgstr "местоположение"
+
+#~ msgid "Northern"
+#~ msgstr "Северное полушарие"
+
+#~ msgid "Southern"
+#~ msgstr "Южное полушарие"
+
+#~ msgid "Lunar Image"
+#~ msgstr "Лунное изображение"
+
+#~ msgid "Previous image"
+#~ msgstr "Предыдущее изображение"
+
+#~ msgid "Next image"
+#~ msgstr "Следующее изображение"

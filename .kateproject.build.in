@@ -1,0 +1,42 @@
+{
+    "Auto_generated": "This file is auto-generated. Any extra tags or formatting will be lost",
+    "target_sets": [
+        {
+            "cmake_config": "",
+            "loaded_via_cmake": false,
+            "name": "Target Set",
+            "targets": [
+                {
+                    "build_cmd": "make",
+                    "name": "Build",
+                    "run_cmd": "plasmoidviewer -a  package"
+                },
+                {
+                    "build_cmd": "make clean",
+                    "name": "Clean",
+                    "run_cmd": ""
+                },
+                {
+                    "build_cmd": "cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..",
+                    "name": "Config",
+                    "run_cmd": ""
+                },
+                {
+                    "build_cmd": "make install",
+                    "name": "Install",
+                    "run_cmd": ""
+                },
+                {
+                    "build_cmd": "plasmapkg2 -i package",
+                    "name": "install",
+                    "run_cmd": "plasmawindowed -d org.kde.userbase.plasma.luna3"
+                },
+                {
+                    "build_cmd": "plasmapkg2 -u package",
+                    "name": "update",
+                    "run_cmd": "plasmawindowed -d org.kde.userbase.plasma.luna3"
+                }
+            ]
+        }
+    ]
+}

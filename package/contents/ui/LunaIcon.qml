@@ -280,7 +280,7 @@ Item {
         visible: true
         antialiasing: true
         anchors.fill: lunaBackground
-        fragmentShader: "shadow.gsb"
+        fragmentShader: "shadow.qsb"
     }
 
 }

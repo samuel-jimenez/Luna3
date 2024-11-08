@@ -1,0 +1,210 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Vladimir Mikulic <vladimir.mikulic2@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
+"POT-Creation-Date: 2024-11-09 18:10-0600\n"
+"PO-Revision-Date: 2019-10-06 18:41+0100\n"
+"Last-Translator: Vladimir Mikulic <vladimir.mikulic2@gmail.com>\n"
+"Language-Team: Croatian <LL@li.org>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: contents/config/config.qml:23
+msgid "General"
+msgstr "Openito"
+
+#: contents/ui/code/lunacalc.js:129
+msgid "First Quarter"
+msgstr "Prva etvrtina"
+
+#: contents/ui/code/lunacalc.js:133 contents/ui/code/lunacalc.js:147
+msgid "New Moon"
+msgstr "Mladi Mjesec"
+
+#: contents/ui/code/lunacalc.js:135 contents/ui/code/lunacalc.js:137
+msgid "Waxing Crescent"
+msgstr "Rast Polumjeseca"
+
+#: contents/ui/code/lunacalc.js:135
+msgid "Yesterday was New Moon"
+msgstr "Juer je bio Mladi Mjesec"
+
+#: contents/ui/code/lunacalc.js:137
+msgid "%1 days since New Moon"
+msgstr "%1 dana od Mladog Mjeseca"
+
+#: contents/ui/code/lunacalc.js:143
+msgid "Last Quarter"
+msgstr "Zadnja etvrtina"
+
+#: contents/ui/code/lunacalc.js:149 contents/ui/code/lunacalc.js:151
+msgid "Waning Crescent"
+msgstr "Smanjenje Polumjeseca"
+
+#: contents/ui/code/lunacalc.js:149
+msgid "Tomorrow is New Moon"
+msgstr "Sutra je Mladi Mjesec"
+
+#: contents/ui/code/lunacalc.js:151
+msgid "%1 days to New Moon"
+msgstr "%1 dana do Mladog Mjeseca"
+
+#: contents/ui/code/lunacalc.js:157
+msgid "Full Moon"
+msgstr "Puni Mjesec"
+
+#: contents/ui/code/lunacalc.js:159 contents/ui/code/lunacalc.js:161
+msgid "Waxing Gibbous"
+msgstr "Rastui Gibbous"
+
+#: contents/ui/code/lunacalc.js:159
+msgid "Tomorrow is Full Moon"
+msgstr "Sutra je Puni Mjesec"
+
+#: contents/ui/code/lunacalc.js:161
+msgid "%1 days to Full Moon"
+msgstr "%1 dana do Punog Mjeseca"
+
+#: contents/ui/code/lunacalc.js:163 contents/ui/code/lunacalc.js:165
+msgid "Waning Gibbous"
+msgstr "Smanjujuci Gibbous"
+
+#: contents/ui/code/lunacalc.js:163
+msgid "Yesterday was Full Moon"
+msgstr "Juer je bio Puni Mjesec"
+
+#: contents/ui/code/lunacalc.js:165
+msgid "%1 days since Full Moon"
+msgstr "%1 dana od Punog Mjeseca"
+
+#: contents/ui/configGeneral.qml:79
+#, fuzzy
+msgid "Pick a color for the moon"
+msgstr "Odaberi boju mjeseca"
+
+#: contents/ui/configGeneral.qml:90
+msgid "Preview"
+msgstr "Pregled"
+
+#: contents/ui/configGeneral.qml:150
+#, fuzzy
+msgid "Show shadow"
+msgstr "Prikai Reetku"
+
+#: contents/ui/configGeneral.qml:156
+msgid "Show grid"
+msgstr "Prikai Reetku"
+
+#: contents/ui/configGeneral.qml:162
+msgid "Tycho"
+msgstr "Tychov"
+
+#: contents/ui/configGeneral.qml:168
+msgid "Copernicus"
+msgstr "Kopernikov"
+
+#: contents/ui/configGeneral.qml:176
+msgid "Phase"
+msgstr ""
+
+#: contents/ui/configGeneral.qml:207
+#, fuzzy
+msgid "Shadow"
+msgstr "Prikai Reetku"
+
+#: contents/ui/configGeneral.qml:214
+msgid "Opacity"
+msgstr ""
+
+#: contents/ui/configGeneral.qml:227
+#, fuzzy
+msgid "Transparent"
+msgstr "Prozirna sjena"
+
+#: contents/ui/configGeneral.qml:255
+msgid "Disk Color"
+msgstr "Boja Diska"
+
+#: contents/ui/configGeneral.qml:280
+msgid "Latitude"
+msgstr "Geografska irina"
+
+#: contents/ui/configGeneral.qml:314
+msgid "Use current latitude"
+msgstr "Koristi trenutnu geografsku irinu"
+
+#: contents/ui/configGeneral.qml:320
+msgid "Date Format"
+msgstr "Datumski format"
+
+#: contents/ui/configGeneral.qml:334
+msgid "Text date"
+msgstr "Tekst datum"
+
+#: contents/ui/configGeneral.qml:338
+msgid "Short date"
+msgstr "Kratki datum"
+
+#: contents/ui/configGeneral.qml:342
+msgid "Long date"
+msgstr "Dugi datum"
+
+#: contents/ui/configGeneral.qml:346
+msgid "ISO date"
+msgstr "ISO datum"
+
+#: contents/ui/configGeneral.qml:350
+msgid "Custom"
+msgstr "Po elji"
+
+#: contents/ui/configGeneral.qml:359
+msgid "Date Format String"
+msgstr "Datumski Format Tekst"
+
+#: contents/ui/configGeneral.qml:371
+msgid "Background"
+msgstr "Pozadina"
+
+#: contents/ui/configGeneral.qml:378
+msgid "Show background"
+msgstr "Prikai Pozadinu"
+
+#: contents/ui/LunaWidget.qml:114
+msgid "Last new:"
+msgstr "Zadnji novi:"
+
+#: contents/ui/LunaWidget.qml:124
+msgid "First quarter:"
+msgstr "Prva etvrtina"
+
+#: contents/ui/LunaWidget.qml:134
+msgid "Full moon:"
+msgstr "Puni mjesec"
+
+#: contents/ui/LunaWidget.qml:144
+msgid "Third quarter:"
+msgstr "Trea etvrtina"
+
+#: contents/ui/LunaWidget.qml:154
+msgid "Next new:"
+msgstr "Sljedei novi:"
+
+#: po/rc.js:1
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Vaa imena"
+
+#: po/rc.js:2
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Vai email-ovi"
+
+#, fuzzy
+#~ msgid "Phase Preview"
+#~ msgstr "Pregled"
