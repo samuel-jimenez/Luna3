@@ -170,6 +170,10 @@ Item {
 
                 icon.source: "go-previous"
                 onClicked: showPreviousPhases()
+                QtControls.ToolTip.delay: 250
+                QtControls.ToolTip.timeout: 5000
+                QtControls.ToolTip.visible: hovered
+                QtControls.ToolTip.text: i18n("Previous Cycle")
             }
 
             PlasmaComponents.ToolButton {
@@ -177,6 +181,10 @@ Item {
 
                 icon.source: "go-jump-today"
                 onClicked: showTodayPhases()
+                QtControls.ToolTip.delay: 250
+                QtControls.ToolTip.timeout: 5000
+                QtControls.ToolTip.visible: hovered
+                QtControls.ToolTip.text: i18n("Today's Cycle")
             }
 
             PlasmaComponents.ToolButton {
@@ -184,6 +192,10 @@ Item {
 
                 icon.source: "go-next"
                 onClicked: showNextPhases()
+                QtControls.ToolTip.delay: 250
+                QtControls.ToolTip.timeout: 5000
+                QtControls.ToolTip.visible: hovered
+                QtControls.ToolTip.text: i18n("Next Cycle")
             }
 
         }

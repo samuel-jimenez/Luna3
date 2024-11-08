@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
-"POT-Creation-Date: 2024-11-09 18:10-0600\n"
+"POT-Creation-Date: 2024-11-21 09:06-0600\n"
 "PO-Revision-Date: 2019-09-22 13:13+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <kde-i18n-doc@kde.org>\n"
@@ -20,6 +20,15 @@ msgstr ""
 #: contents/config/config.qml:23
 msgid "General"
 msgstr "Algemeen"
+
+#: contents/config/config.qml:29
+#, fuzzy
+msgid "Custom Image"
+msgstr "Aangepast"
+
+#: contents/config/config.qml:35
+msgid "Date Popup"
+msgstr ""
 
 #: contents/ui/code/lunacalc.js:129
 msgid "First Quarter"
@@ -85,97 +94,107 @@ msgstr "Gisteren was het volle maan"
 msgid "%1 days since Full Moon"
 msgstr "%1 dagen verstreken sinds volle maan"
 
-#: contents/ui/configGeneral.qml:79
-#, fuzzy
-msgid "Pick a color for the moon"
-msgstr "Kies een maankleur"
+#: contents/ui/configGeneral.qml:77 contents/ui/configImage.qml:72
+msgid "Moon color"
+msgstr ""
 
-#: contents/ui/configGeneral.qml:90
+#: contents/ui/configGeneral.qml:98 contents/ui/configImage.qml:93
 msgid "Preview"
 msgstr "Voorbeeld"
 
-#: contents/ui/configGeneral.qml:150
+#: contents/ui/configGeneral.qml:113 contents/ui/configImage.qml:108
+msgid "Previous Image"
+msgstr ""
+
+#: contents/ui/configGeneral.qml:144 contents/ui/configImage.qml:139
+#, fuzzy
+msgid "Pick Color"
+msgstr "Schijfkleur"
+
+#: contents/ui/configGeneral.qml:158 contents/ui/configImage.qml:153
+#, fuzzy
+msgid "Next Image"
+msgstr "Volgende nieuwe:"
+
+#: contents/ui/configGeneral.qml:172 contents/ui/configImage.qml:167
 #, fuzzy
 msgid "Show shadow"
 msgstr "Raster tonen"
 
-#: contents/ui/configGeneral.qml:156
-msgid "Show grid"
-msgstr "Raster tonen"
+#: contents/ui/configGeneral.qml:180
+#, fuzzy
+msgid "Phase Preview"
+msgstr "Voorbeeld"
 
-#: contents/ui/configGeneral.qml:162
-msgid "Tycho"
-msgstr "Tycho"
-
-#: contents/ui/configGeneral.qml:168
-msgid "Copernicus"
-msgstr "Copernicus"
-
-#: contents/ui/configGeneral.qml:176
-msgid "Phase"
-msgstr ""
-
-#: contents/ui/configGeneral.qml:207
+#: contents/ui/configGeneral.qml:220
 #, fuzzy
 msgid "Shadow"
 msgstr "Raster tonen"
 
-#: contents/ui/configGeneral.qml:214
+#: contents/ui/configGeneral.qml:226
 msgid "Opacity"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:227
+#: contents/ui/configGeneral.qml:240
 #, fuzzy
 msgid "Transparent"
 msgstr "Doorzichtige schaduw"
 
-#: contents/ui/configGeneral.qml:255
-msgid "Disk Color"
-msgstr "Schijfkleur"
-
-#: contents/ui/configGeneral.qml:280
+#: contents/ui/configGeneral.qml:268 contents/ui/configImage.qml:202
 msgid "Latitude"
 msgstr "Breedtegraad"
 
-#: contents/ui/configGeneral.qml:314
+#: contents/ui/configGeneral.qml:302 contents/ui/configImage.qml:236
 msgid "Use current latitude"
 msgstr "Huidige breedtegraad gebruiken"
 
-#: contents/ui/configGeneral.qml:320
-msgid "Date Format"
-msgstr "Datumopmaak"
-
-#: contents/ui/configGeneral.qml:334
-msgid "Text date"
-msgstr "Tekstdatum"
-
-#: contents/ui/configGeneral.qml:338
-msgid "Short date"
-msgstr "Verkorte datum"
-
-#: contents/ui/configGeneral.qml:342
-msgid "Long date"
-msgstr "Volledige datum"
-
-#: contents/ui/configGeneral.qml:346
-msgid "ISO date"
-msgstr "ISO-datum"
-
-#: contents/ui/configGeneral.qml:350
-msgid "Custom"
-msgstr "Aangepast"
-
-#: contents/ui/configGeneral.qml:359
-msgid "Date Format String"
-msgstr "Datumopmaakstring"
-
-#: contents/ui/configGeneral.qml:371
+#: contents/ui/configGeneral.qml:308
 msgid "Background"
 msgstr "Achtergrond"
 
-#: contents/ui/configGeneral.qml:378
+#: contents/ui/configGeneral.qml:315
 msgid "Show background"
 msgstr "Achtergrond tonen"
+
+#: contents/ui/configImage.qml:173
+msgid "Show grid"
+msgstr "Raster tonen"
+
+#: contents/ui/configImage.qml:179
+msgid "Tycho"
+msgstr "Tycho"
+
+#: contents/ui/configImage.qml:185
+msgid "Copernicus"
+msgstr "Copernicus"
+
+#: contents/ui/configPopup.qml:46
+msgid "Date Format"
+msgstr "Datumopmaak"
+
+#: contents/ui/configPopup.qml:60
+msgid "Text date"
+msgstr "Tekstdatum"
+
+#: contents/ui/configPopup.qml:64
+msgid "Short date"
+msgstr "Verkorte datum"
+
+#: contents/ui/configPopup.qml:68
+msgid "Long date"
+msgstr "Volledige datum"
+
+#: contents/ui/configPopup.qml:72
+msgid "ISO date"
+msgstr "ISO-datum"
+
+#: contents/ui/configPopup.qml:76
+msgid "Custom"
+msgstr "Aangepast"
+
+#: contents/ui/configPopup.qml:85
+msgid "Date Format String"
+msgstr "Datumopmaakstring"
 
 #: contents/ui/LunaWidget.qml:114
 msgid "Last new:"
@@ -197,6 +216,19 @@ msgstr "Derde kwartier:"
 msgid "Next new:"
 msgstr "Volgende nieuwe:"
 
+#: contents/ui/LunaWidget.qml:176
+msgid "Previous Cycle"
+msgstr ""
+
+#: contents/ui/LunaWidget.qml:187
+msgid "Today's Cycle"
+msgstr ""
+
+#: contents/ui/LunaWidget.qml:198
+#, fuzzy
+msgid "Next Cycle"
+msgstr "Volgende nieuwe:"
+
 #: po/rc.js:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
@@ -208,5 +240,8 @@ msgid "Your emails"
 msgstr "vistausss@outlook.com"
 
 #, fuzzy
-#~ msgid "Phase Preview"
-#~ msgstr "Voorbeeld"
+#~ msgid "Pick a color for the moon"
+#~ msgstr "Kies een maankleur"
+
+#~ msgid "Disk Color"
+#~ msgstr "Schijfkleur"

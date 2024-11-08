@@ -40,9 +40,17 @@ PlasmoidItem {
     property int maximumHeight
     property int preferredWidth
     property int preferredHeight
-    property var currentPhase
+    property var currentPhase: {
+        terminator:
+        plasmoid.configuration.currentPhase;
+        text:
+        plasmoid.configuration.currentPhaseText;
+        subText:
+        plasmoid.configuration.currentPhaseSubText;
+    }
     property bool showBackground: plasmoid.configuration.showBackground
     property bool transparentShadow: plasmoid.configuration.transparentShadow
+    property real shadowOpacity: plasmoid.configuration.shadowOpacity
     property int latitude: plasmoid.configuration.latitude
     property int dateFormat: plasmoid.configuration.dateFormat
     property string dateFormatString: plasmoid.configuration.dateFormatString
@@ -67,6 +75,7 @@ PlasmoidItem {
         function updateDetails() {
             // set the correct image for the moon
             currentPhase = LunaCalc.getCurrentPhase(true);
+            plasmoid.configuration.currentPhase = currentPhase.terminator;
             lunaIcon.phaseNumber = 13; //currentPhase.number;
             lunaIcon.theta = currentPhase.terminator;
             lunaIcon.latitude = latitude;
@@ -98,12 +107,13 @@ PlasmoidItem {
             lunarImage: main.lunarImage
             lunarImageTweak: main.lunarImageTweak
             transparentShadow: main.transparentShadow
+            shadowOpacity: main.shadowOpacity
             diskColor: main.diskColor
             anchors.fill: parent
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: plasmoid.expanded = !plasmoid.expanded
+                onClicked: expanded = !expanded
             }
 
         }

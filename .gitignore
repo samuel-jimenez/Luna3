@@ -1,3 +1,4 @@
+.kateproject.build
 *.zip
 *.plasmoid
 /build/

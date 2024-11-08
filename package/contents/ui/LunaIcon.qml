@@ -34,6 +34,7 @@ Item {
     property int latitude: 90 //Degrees: 0=Equator, 90=North Pole, -90=South Pole
     property bool showShadow: true
     property bool transparentShadow: true
+    property real shadowOpacity: 0.9
     property string lunarImage: ''
     property color diskColor: '#ffffff'
     property int lunarImageTweak: 0
@@ -86,6 +87,7 @@ Item {
             visible: true
             anchors.centerIn: parent
             preferredRendererType: Shape.CurveRenderer
+            antialiasing: true
 
             ShapePath {
                 fillColor: diskColor
@@ -94,8 +96,8 @@ Item {
                 PathAngleArc {
                     centerX: radius
                     centerY: radius
-                    radiusY: radius
-                    radiusX: radius
+                    radiusY: radius - 1
+                    radiusX: radius - 1
                     startAngle: 0
                     sweepAngle: 360
                 }
@@ -212,8 +214,10 @@ Item {
                 if (showShadow) {
                     var cosTheta = Math.cos(theta / 180 * Math.PI);
                     var counterclockwisep = (theta < 180);
-                    context.globalAlpha = 0.9;
+                    var scaleTweak = 1.001 + 0.003 * (1 - Math.abs(cosTheta)); //Qt distorts Canvas with scale(), causing a line of pixels to appear around the shadow. Tweak the scale until this gets fixed.
+                    context.globalAlpha = 1;
                     context.translate(radius, radius);
+                    context.scale(scaleTweak, scaleTweak);
                     if (theta != 180) {
                         context.beginPath();
                         context.fillStyle = '#ffffff';
@@ -234,16 +238,18 @@ Item {
     }
 
     ShaderEffectSource {
+
         id: lunaMask
 
         anchors.centerIn: parent
         width: lunaBackground.width
         height: lunaBackground.height
         visible: false
-        antialiasing: false
+        antialiasing: true
 
         sourceItem: Shape {
             opacity: 1
+            antialiasing: true
             width: lunaBackground.width
             height: lunaBackground.height
             visible: true
@@ -257,8 +263,8 @@ Item {
                 PathAngleArc {
                     centerX: radius
                     centerY: radius
-                    radiusY: radius
-                    radiusX: radius
+                    radiusY: radius - 1
+                    radiusX: radius - 1
                     startAngle: 0
                     sweepAngle: 360
                 }
@@ -274,6 +280,7 @@ Item {
         property variant shadow: shadow
         property variant mask: lunaMask
         property int transparent: transparentShadow
+        property real shadow_Opacity: shadowOpacity
 
         opacity: 1
         rotation: latitude - 90

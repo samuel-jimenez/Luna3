@@ -21,8 +21,20 @@ import org.kde.plasma.configuration
 ConfigModel {
     ConfigCategory {
         name: i18n("General")
-        icon: "preferences-desktop-user"
+        icon: "preferences-desktop-default-applications"
         source: "configGeneral.qml"
+    }
+
+    ConfigCategory {
+        name: i18n("Custom Image")
+        icon: "preferences-desktop-color"
+        source: "configImage.qml"
+    }
+
+    ConfigCategory {
+        name: i18n("Date Popup")
+        icon: "preferences-system-time"
+        source: "configPopup.qml"
     }
 
 }

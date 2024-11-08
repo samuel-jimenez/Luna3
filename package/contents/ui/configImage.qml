@@ -31,27 +31,22 @@ KCM.SimpleKCM {
     id: generalPage
 
     property int cfg_currentPhase: 0 // Degrees: 0= new moon, 90= first quarter, 180= full moon, 270= third quarter
-    property alias previewPhase: phase.value
     property alias cfg_latitudeAuto: latitudeAuto.checked // 0=Equator, +90=North Pole, -90=South Pole
     property alias cfg_latitude: latitude.value // 0=Equator, +90=North Pole, -90=South Pole
-    property alias cfg_transparentShadow: transparentShadow.checked // boolean
-    property alias cfg_shadowOpacity: shadowOpacity.value // real in [0,1]
-    property alias cfg_showBackground: showBackground.checked // boolean
+    property bool cfg_transparentShadow: true // boolean
+    property real cfg_shadowOpacity: 0.9 // real in [0,1]
     property alias cfg_diskColor: lunaPreview.diskColor
     property int cfg_lunarIndex: 0 // index into imageChoices
     property string cfg_lunarImage: '' // filename (from imageChoices)
     property int cfg_lunarImageTweak: 0 // rotation angle adjustment for the image (from imageChoices)
     property alias cfg_showShadow: showShadow.checked
-    property bool cfg_showGrid: false
-    property bool cfg_showTycho: false
-    property bool cfg_showCopernicus: false
+    property alias cfg_showGrid: showGrid.checked
+    property alias cfg_showTycho: showTycho.checked
+    property alias cfg_showCopernicus: showCopernicus.checked
 
     onCfg_lunarIndexChanged: {
         cfg_lunarImage = imageChoices.get(cfg_lunarIndex).filename;
         cfg_lunarImageTweak = imageChoices.get(cfg_lunarIndex).tweak;
-    }
-    Component.onCompleted: {
-        previewPhase = cfg_currentPhase;
     }
 
     PositionSource {
@@ -81,7 +76,7 @@ KCM.SimpleKCM {
     }
 
     QtLayouts.ColumnLayout {
-        spacing: 10
+        spacing: 5
         QtLayouts.Layout.fillWidth: true
 
         QtControls.Frame {
@@ -124,7 +119,7 @@ KCM.SimpleKCM {
                         width: 200
                         height: 200
                         latitude: cfg_latitude
-                        theta: previewPhase
+                        theta: cfg_currentPhase
                         showShadow: cfg_showShadow
                         transparentShadow: cfg_transparentShadow
                         shadowOpacity: cfg_shadowOpacity
@@ -172,34 +167,24 @@ KCM.SimpleKCM {
                             text: i18n("Show shadow")
                         }
 
-                    }
+                        QtControls.CheckBox {
+                            id: showGrid
 
-                }
+                            text: i18n("Show grid")
+                        }
 
-                QtControls.Label {
-                    text: i18n("Phase Preview")
-                    QtLayouts.Layout.preferredWidth: 85
-                    horizontalAlignment: Text.AlignRight
-                }
+                        QtControls.CheckBox {
+                            id: showTycho
 
-                QtLayouts.RowLayout {
-                    spacing: 20
+                            text: i18n("Tycho")
+                        }
 
-                    QtControls.Label {
-                        id: lbl_phase
+                        QtControls.CheckBox {
+                            id: showCopernicus
 
-                        text: phase.value + "º "
-                        QtLayouts.Layout.preferredWidth: 40
-                        horizontalAlignment: Text.AlignRight
-                    }
+                            text: i18n("Copernicus")
+                        }
 
-                    QtControls.Slider {
-                        id: phase
-
-                        QtLayouts.Layout.fillWidth: true
-                        from: 0
-                        to: 360
-                        stepSize: 1
                     }
 
                 }
@@ -210,59 +195,8 @@ KCM.SimpleKCM {
 
         QtLayouts.GridLayout {
             columns: 2
-            rowSpacing: 10
+            rowSpacing: 15
             QtLayouts.Layout.fillWidth: true
-
-            QtLayouts.ColumnLayout {
-                spacing: 10
-
-                QtControls.Label {
-                    text: i18n("Shadow")
-                    horizontalAlignment: Text.AlignCenter
-                    font.bold: true
-                }
-
-                QtControls.Label {
-                    text: i18n("Opacity")
-                    QtLayouts.Layout.preferredWidth: 85
-                    horizontalAlignment: Text.AlignRight
-                }
-
-            }
-
-            QtLayouts.ColumnLayout {
-                spacing: 5
-                QtLayouts.Layout.fillWidth: true
-
-                QtControls.CheckBox {
-                    id: transparentShadow
-
-                    text: i18n("Transparent")
-                }
-
-                QtLayouts.RowLayout {
-                    spacing: 20
-
-                    QtControls.Label {
-                        id: lbl_shadowOpacity
-
-                        text: Math.round(shadowOpacity.value * 100) + "%"
-                        QtLayouts.Layout.preferredWidth: 40
-                        horizontalAlignment: Text.AlignRight
-                    }
-
-                    QtControls.Slider {
-                        id: shadowOpacity
-
-                        QtLayouts.Layout.fillWidth: true
-                        from: 0
-                        to: 1
-                        stepSize: 0.05
-                    }
-
-                }
-
-            }
 
             QtControls.Label {
                 text: i18n("Latitude")
@@ -302,17 +236,6 @@ KCM.SimpleKCM {
                     text: i18n("Use current latitude")
                 }
 
-            }
-
-            QtControls.Label {
-                text: i18n("Background")
-                font.bold: true
-            }
-
-            QtControls.CheckBox {
-                id: showBackground
-
-                text: i18n("Show background")
             }
 
         }

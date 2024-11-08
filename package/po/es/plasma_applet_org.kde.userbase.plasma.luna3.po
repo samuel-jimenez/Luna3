@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1\n"
 "Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
-"POT-Creation-Date: 2024-11-09 18:10-0600\n"
+"POT-Creation-Date: 2024-11-21 09:06-0600\n"
 "PO-Revision-Date: 2019-07-21 14:17+0200\n"
 "Last-Translator: Ismael <ismailof@github.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -25,6 +25,15 @@ msgstr ""
 #: contents/config/config.qml:23
 msgid "General"
 msgstr "General"
+
+#: contents/config/config.qml:29
+#, fuzzy
+msgid "Custom Image"
+msgstr "Personalizar"
+
+#: contents/config/config.qml:35
+msgid "Date Popup"
+msgstr ""
 
 #: contents/ui/code/lunacalc.js:129
 msgid "First Quarter"
@@ -90,97 +99,108 @@ msgstr "Ayer hubo luna llena"
 msgid "%1 days since Full Moon"
 msgstr "%1 días desde la luna llena"
 
-#: contents/ui/configGeneral.qml:79
-#, fuzzy
-msgid "Pick a color for the moon"
-msgstr "Seleccione un color para la luna"
+#: contents/ui/configGeneral.qml:77 contents/ui/configImage.qml:72
+msgid "Moon color"
+msgstr ""
 
-#: contents/ui/configGeneral.qml:90
+#: contents/ui/configGeneral.qml:98 contents/ui/configImage.qml:93
 msgid "Preview"
 msgstr "Vista previa"
 
-#: contents/ui/configGeneral.qml:150
+#: contents/ui/configGeneral.qml:113 contents/ui/configImage.qml:108
+#, fuzzy
+msgid "Previous Image"
+msgstr "L'image précédente"
+
+#: contents/ui/configGeneral.qml:144 contents/ui/configImage.qml:139
+#, fuzzy
+msgid "Pick Color"
+msgstr "Color del disco"
+
+#: contents/ui/configGeneral.qml:158 contents/ui/configImage.qml:153
+#, fuzzy
+msgid "Next Image"
+msgstr "L'image suivante"
+
+#: contents/ui/configGeneral.qml:172 contents/ui/configImage.qml:167
 #, fuzzy
 msgid "Show shadow"
 msgstr "Mostrar rejilla"
 
-#: contents/ui/configGeneral.qml:156
-msgid "Show grid"
-msgstr "Mostrar rejilla"
+#: contents/ui/configGeneral.qml:180
+#, fuzzy
+msgid "Phase Preview"
+msgstr "Vista previa"
 
-#: contents/ui/configGeneral.qml:162
-msgid "Tycho"
-msgstr ""
-
-#: contents/ui/configGeneral.qml:168
-msgid "Copernicus"
-msgstr "Copérnico"
-
-#: contents/ui/configGeneral.qml:176
-msgid "Phase"
-msgstr ""
-
-#: contents/ui/configGeneral.qml:207
+#: contents/ui/configGeneral.qml:220
 #, fuzzy
 msgid "Shadow"
 msgstr "Mostrar rejilla"
 
-#: contents/ui/configGeneral.qml:214
+#: contents/ui/configGeneral.qml:226
 msgid "Opacity"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:227
+#: contents/ui/configGeneral.qml:240
 #, fuzzy
 msgid "Transparent"
 msgstr "Sombra transparente"
 
-#: contents/ui/configGeneral.qml:255
-msgid "Disk Color"
-msgstr "Color del disco"
-
-#: contents/ui/configGeneral.qml:280
+#: contents/ui/configGeneral.qml:268 contents/ui/configImage.qml:202
 msgid "Latitude"
 msgstr "Latitud"
 
-#: contents/ui/configGeneral.qml:314
+#: contents/ui/configGeneral.qml:302 contents/ui/configImage.qml:236
 msgid "Use current latitude"
 msgstr "Usar latitud actual"
 
-#: contents/ui/configGeneral.qml:320
-msgid "Date Format"
-msgstr "Formato de fecha"
-
-#: contents/ui/configGeneral.qml:334
-msgid "Text date"
-msgstr "Fecha en texto"
-
-#: contents/ui/configGeneral.qml:338
-msgid "Short date"
-msgstr "Fecha corta"
-
-#: contents/ui/configGeneral.qml:342
-msgid "Long date"
-msgstr "Fecha larga"
-
-#: contents/ui/configGeneral.qml:346
-msgid "ISO date"
-msgstr "Fecha ISO"
-
-#: contents/ui/configGeneral.qml:350
-msgid "Custom"
-msgstr "Personalizar"
-
-#: contents/ui/configGeneral.qml:359
-msgid "Date Format String"
-msgstr "Formato de fecha personalizada"
-
-#: contents/ui/configGeneral.qml:371
+#: contents/ui/configGeneral.qml:308
 msgid "Background"
 msgstr "Fondo"
 
-#: contents/ui/configGeneral.qml:378
+#: contents/ui/configGeneral.qml:315
 msgid "Show background"
 msgstr "Mostrar fondo"
+
+#: contents/ui/configImage.qml:173
+msgid "Show grid"
+msgstr "Mostrar rejilla"
+
+#: contents/ui/configImage.qml:179
+msgid "Tycho"
+msgstr ""
+
+#: contents/ui/configImage.qml:185
+msgid "Copernicus"
+msgstr "Copérnico"
+
+#: contents/ui/configPopup.qml:46
+msgid "Date Format"
+msgstr "Formato de fecha"
+
+#: contents/ui/configPopup.qml:60
+msgid "Text date"
+msgstr "Fecha en texto"
+
+#: contents/ui/configPopup.qml:64
+msgid "Short date"
+msgstr "Fecha corta"
+
+#: contents/ui/configPopup.qml:68
+msgid "Long date"
+msgstr "Fecha larga"
+
+#: contents/ui/configPopup.qml:72
+msgid "ISO date"
+msgstr "Fecha ISO"
+
+#: contents/ui/configPopup.qml:76
+msgid "Custom"
+msgstr "Personalizar"
+
+#: contents/ui/configPopup.qml:85
+msgid "Date Format String"
+msgstr "Formato de fecha personalizada"
 
 #: contents/ui/LunaWidget.qml:114
 msgid "Last new:"
@@ -202,6 +222,20 @@ msgstr "Cuarto menguante:"
 msgid "Next new:"
 msgstr "Próxima luna nueva:"
 
+#: contents/ui/LunaWidget.qml:176
+#, fuzzy
+msgid "Previous Cycle"
+msgstr "L'image précédente"
+
+#: contents/ui/LunaWidget.qml:187
+msgid "Today's Cycle"
+msgstr ""
+
+#: contents/ui/LunaWidget.qml:198
+#, fuzzy
+msgid "Next Cycle"
+msgstr "Próxima luna nueva:"
+
 #: po/rc.js:1
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
@@ -213,8 +247,11 @@ msgid "Your emails"
 msgstr "ismailof@github.com"
 
 #, fuzzy
-#~ msgid "Phase Preview"
-#~ msgstr "Vista previa"
+#~ msgid "Pick a color for the moon"
+#~ msgstr "Seleccione un color para la luna"
+
+#~ msgid "Disk Color"
+#~ msgstr "Color del disco"
 
 #~ msgid "Hemisphere"
 #~ msgstr "Hemisferio"
@@ -227,12 +264,6 @@ msgstr "ismailof@github.com"
 
 #~ msgid "Lunar Image"
 #~ msgstr "Image lunaire"
-
-#~ msgid "Previous image"
-#~ msgstr "L'image précédente"
-
-#~ msgid "Next image"
-#~ msgstr "L'image suivante"
 
 #~ msgid "Light grey image"
 #~ msgstr "Image gris clair"

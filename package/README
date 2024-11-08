@@ -24,7 +24,7 @@ A. Command line, installs to ~/local/share/plasma/plasmoids
 
    Uninstall:  $ plasmapkg2 -r org.kde.userbase.plasma.Luna3
 
-   See README_TRANSLATIONS.txt (Step 4) for installing localisations.
+   See README_TRANSLATIONS.md (Step 4) for installing localizations.
 
 B. Command line, installs to /usr/local/share/plasma/plasmoids
 
@@ -34,7 +34,6 @@ B. Command line, installs to /usr/local/share/plasma/plasmoids
 
    Uninstall: # plasmapkg2 -g -r org.kde.userbase.plasma.Luna3
 
-   See README_TRANSLATIONS.txt (Step 4) for installing localisations.
 
 C. CMake, installs to /usr/local/share/plasma/plasmoids
 
@@ -46,7 +45,6 @@ C. CMake, installs to /usr/local/share/plasma/plasmoids
   3. Run: # cmake <path to source dir>
   4. Run: # make install
 
-  See README_TRANSLATIONS.txt (Step 4) for installing localisations.
 
 Custom Date Formats
 -------------------
