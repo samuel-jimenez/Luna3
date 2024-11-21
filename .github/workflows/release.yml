@@ -1,0 +1,44 @@
+
+on:
+  push:
+    tags:
+        - 'v*'
+name: Release
+
+jobs:
+  build:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build project
+        id: build_project
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          echo "path=Luna3-${VERSION}.plasmoid" >> "$GITHUB_OUTPUT"
+          sed -Eie 's#"Version": "[0-9.]+",#"Version": "${{ github.ref }}",#' package/metadata.json
+          sed -Eie 's#refs/tags/v##' package/metadata.json
+          make plasmoid
+
+      - name: Create Release
+        id: create_release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          title: Release ${{ github.ref_name }}
+          tag: ${{ github.ref_name }}
+        run: gh release create ${tag} -t "${title}"
+
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+          asset_path: ${{ steps.build_project.outputs.path }}
+        run: gh release upload ${tag} "${asset_path}"
+
+
