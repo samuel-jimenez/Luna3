@@ -17,6 +17,11 @@
                     "run_cmd": ""
                 },
                 {
+                    "build_cmd": "make cache",
+                    "name": "Rebuild cache",
+                    "run_cmd": ""
+                },
+                {
                     "build_cmd": "cd build && cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..",
                     "name": "Config",
                     "run_cmd": ""
