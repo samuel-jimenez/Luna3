@@ -13,9 +13,10 @@ jobs:
       packages: write
       contents: write
     steps:
+      - name: Install dependencies
+        run: sudo apt-get install -y libplasma-dev
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Build project
         id: build_project
         run: |
