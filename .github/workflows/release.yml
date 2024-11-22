@@ -5,26 +5,46 @@ on:
         - 'v*'
 name: Release
 
+env:
+  IMAGE_NAME: libplasma
+
 jobs:
   build:
     name: Release
     runs-on: ubuntu-latest
+
     permissions:
       packages: write
       contents: write
+
     steps:
-      - name: Install dependencies
-        run: sudo apt-get install -y libplasma-dev
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Build project
+
+      - name: Install dependencies with buildah
+        run: |
+          ctr=$(buildah from "archlinux")
+          buildah config \
+            --cmd /usr/bin/bash $ctr
+          buildah run "$ctr" -- pacman \
+            --noconfirm -Syu
+          buildah run "$ctr" -- pacman \
+            --noconfirm -Sy \
+            libplasma cmake
+          buildah commit -- "$ctr" "$IMAGE_NAME"
+          buildah rm "$ctr"
+
+      - name: Build project using podman
         id: build_project
         run: |
           VERSION=${GITHUB_REF_NAME#v}
           echo "path=Luna3-${VERSION}.plasmoid" >> "$GITHUB_OUTPUT"
           sed -Eie 's#"Version": "[0-9.]+",#"Version": "${{ github.ref }}",#' package/metadata.json
           sed -Eie 's#refs/tags/v##' package/metadata.json
-          make plasmoid
+          podman run \
+            --mount type=bind,src=${GITHUB_WORKSPACE},dst=/root/,Z \
+            "$IMAGE_NAME" \
+            make plasmoid
 
       - name: Create Release
         id: create_release
