@@ -43,6 +43,7 @@ jobs:
           sed -Eie 's#refs/tags/v##' package/metadata.json
           podman run \
             --mount type=bind,src=${GITHUB_WORKSPACE},dst=/root/,Z \
+            --workdir=/root/ \
             "$IMAGE_NAME" \
             make plasmoid
 
