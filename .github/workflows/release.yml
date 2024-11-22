@@ -7,7 +7,7 @@ name: Release
 
 env:
   IMAGE_NAME: libplasma
-
+  DEPENDENCIES: libplasma gcc make cmake extra-cmake-modules zip
 jobs:
   build:
     name: Release
@@ -30,7 +30,7 @@ jobs:
             --noconfirm -Syu
           buildah run "$ctr" -- pacman \
             --noconfirm -Sy \
-            libplasma gcc make cmake extra-cmake-modules
+            $DEPENDENCIES
           buildah commit -- "$ctr" "$IMAGE_NAME"
           buildah rm "$ctr"
 
