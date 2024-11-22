@@ -30,7 +30,7 @@ jobs:
             --noconfirm -Syu
           buildah run "$ctr" -- pacman \
             --noconfirm -Sy \
-            libplasma cmake
+            libplasma make cmake
           buildah commit -- "$ctr" "$IMAGE_NAME"
           buildah rm "$ctr"
 
