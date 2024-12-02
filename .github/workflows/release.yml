@@ -6,7 +6,7 @@ on:
 name: Release
 
 env:
-  IMAGE_NAME: libplasma
+  IMAGE_NAME: build-image
   DEPENDENCIES: libplasma gcc make cmake extra-cmake-modules zip
 jobs:
   build:

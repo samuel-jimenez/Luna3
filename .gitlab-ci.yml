@@ -1,0 +1,107 @@
+# https://docs.gitlab.com/ee/ci/yaml/index.html
+
+stages:        
+  - prepare  
+  - version     
+  - build 
+  - upload
+  - release
+
+variables:
+  PACKAGE_VERSION: "0.0.0"
+
+prepare-tag:
+  stage: prepare
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+   - echo "This is the 'prepare-tag' script"
+   - export PACKAGE_VERSION=$CI_COMMIT_TAG
+   - echo "PACKAGE_VERSION=${PACKAGE_VERSION}" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env
+
+prepare-tagless:
+  stage: prepare
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - if: $CI_COMMIT_BRANCH
+  script:
+    - echo "This is the 'prepare-tagless' script"     
+    - echo "Installing dependencies..."
+    - apk add git 
+    - git fetch --tags
+    - |
+      LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+      LATEST_VERSION=${LATEST_TAG#v}
+      VERSION_BASE=${LATEST_VERSION%.[0-9]*}
+      LATEST_REVISION=${LATEST_VERSION##[0-9]*.}
+      if [ -z ${LATEST_REVISION##*-rc[0-9]*} ]; then
+          REVISION_BASE=${LATEST_REVISION%-rc[0-9]*}
+          REVISION_EXTENSION=${LATEST_REVISION#[0-9]*-rc}
+          REVISION=${REVISION_BASE}-rc$((${REVISION_EXTENSION}+1))   
+      else
+          REVISION=$((${LATEST_REVISION}+1))-rc0
+      fi
+      PACKAGE_VERSION=${VERSION_BASE}.${REVISION}
+    - echo ${PACKAGE_VERSION}  
+    - echo "PACKAGE_VERSION=${PACKAGE_VERSION}" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env 
+
+version:
+  stage: version
+  script:
+   - export PACKAGE_BINARY=Luna3-${PACKAGE_VERSION}.plasmoid
+   - echo "PACKAGE_BINARY=${PACKAGE_BINARY}" >> build.env
+   - echo "PACKAGE_REGISTRY_URL=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/Luna3/${PACKAGE_VERSION}" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env
+
+build-job:     
+  stage: build
+  image: alpine:edge # Use edge until 3.21-stable
+  artifacts:
+    name: "${PACKAGE_BINARY}"
+    paths:
+      - ${PACKAGE_BINARY}
+  script:
+    - echo "Installing dependencies..."
+    - apk add libplasma-dev g++ make cmake extra-cmake-modules zip bash
+    - echo "Configuring the code..."
+    - |
+      sed -Eie 's/"Version": "[0-9.]+",/"Version": "'"${PACKAGE_VERSION}"'",/' package/metadata.json
+    - echo "Compiling the code..."
+    - make plasmoid
+    - echo "Compile complete."
+
+
+deploy-job:     
+  stage: upload 
+  environment: production
+  script:
+    - echo "Installing dependencies..."
+    - apk add curl
+    - echo "Deploying application..."
+    - |
+      curl --location --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
+           --upload-file ${PACKAGE_BINARY} \
+           "${PACKAGE_REGISTRY_URL}/${PACKAGE_BINARY}"
+    - echo "Application successfully deployed."
+
+
+release:
+  # Caution, as of 2021-02-02 these assets links require a login, see:
+  # https://gitlab.com/gitlab-org/gitlab/-/issues/299384
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - |
+      release-cli create --name "Release ${PACKAGE_VERSION}" --tag-name ${PACKAGE_VERSION} \
+        --assets-link "{\"name\":\"${PACKAGE_BINARY}\",\"url\":\"${PACKAGE_REGISTRY_URL}/${PACKAGE_BINARY}\"}"
