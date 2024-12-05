@@ -138,27 +138,20 @@ function moonphasebylunation(lun, phi)
 		+ T * T * (0.0020691 + 0.00000215 * T))
 
 	// planetary arguments
-	var planetaryArguments =
-		0.000325 * Math.sin(radian(299.77 +  0.107408 * k - 0.009173 * T * T))
-		+ 0.000165 * Math.sin(radian(251.88 +  0.016321 * k))
-		+ 0.000164 * Math.sin(radian(251.83 + 26.651886 * k))
-		+ 0.000126 * Math.sin(radian(349.42 + 36.412478 * k))
-		+ 0.000110 * Math.sin(radian(84.66  + 18.206239 * k))
-		+ 0.000062 * Math.sin(radian(141.74 + 53.303771 * k))
-		+ 0.000060 * Math.sin(radian(207.14 +  2.453732 * k))
-		+ 0.000056 * Math.sin(radian(154.84 +  7.306860 * k))
-		+ 0.000047 * Math.sin(radian(34.52  + 27.261239 * k))
-		+ 0.000042 * Math.sin(radian(207.19 +  0.121824 * k))
-		+ 0.000040 * Math.sin(radian(291.34 +  1.844379 * k))
-		+ 0.000037 * Math.sin(radian(161.72 + 24.198154 * k))
-		+ 0.000035 * Math.sin(radian(239.56 + 25.513099 * k))
-		+ 0.000023 * Math.sin(radian(331.55 +  3.592518 * k))
+	var planetaryArgumentsArray = [
+		[0.000325, 0.000165, 0.000164, 0.000126, 0.000110, 0.000062, 0.000060, 0.000056, 0.000047, 0.000042, 0.000040, 0.000037, 0.000035, 0.000023,],
+		[299.77 +  0.107408 * k - 0.009173 * T * T, 251.88 +  0.016321 * k, 251.83 + 26.651886 * k, 349.42 + 36.412478 * k, 84.66 + 18.206239 * k, 141.74 + 53.303771 * k, 207.14 +  2.453732 * k, 154.84 +  7.306860 * k, 34.52 + 27.261239 * k, 207.19 +  0.121824 * k, 291.34 +  1.844379 * k, 161.72 + 24.198154 * k, 239.56 + 25.513099 * k, 331.55 +  3.592518 * k,]]
+	var planetaryArgumentsCorrection = 0
+	for (var i = 0; i < 14; i++) {
+		planetaryArgumentsCorrection += planetaryArgumentsArray[0][i] * Math.sin(radian(planetaryArgumentsArray[1][i]))
+	}
+
 
 	// added correction for quarter phases
 	var W
 
 	//group First, Last Quarter
-	var orbitalCorrectionIndex = 2-Math.abs(2-phi)
+	var orbitalCorrectionIndex = 2 - Math.abs(2 - phi)
 
 	var orbitalCorrectionCoeffArray = [
 		// New Moon
@@ -168,36 +161,20 @@ function moonphasebylunation(lun, phi)
 		// New Moon
 		[+0.17302, +0.00209, +0.00004, -0.40614, +0.00734, -0.00515, +0.00000, -0.00007, -0.00111, -0.00057, +0.01614, +0.01043, -0.00024, +0.00056, -0.00042, -0.00002, +0.00002, +0.00038, +0.00042, -0.00017, +0.00004, +0.00003, -0.00002, +0.00003, +0.00003, -0.00003,]]
 
+	var orbitalCorrectionEccentricityArray = [E, E * E, 1, 1, E, E, 1, 1, 1, 1, 1, 1, E, E, 1, 1, 1, E, E, 1, 1, 1, 1, 1, 1, 1,]
+
+	var orbitalCorrectionAngleArray = [M, 2.0 * M, 3.0 * M, M1, M1 - M, M1 + M, M1 - 2.0 * M, M1 + 2.0 * M, M1 - 2.0 * F, M1 + 2.0 * F, 2.0 * M1, 2.0 * F, 2.0 * M1 - M, 2.0 * M1 + M, 3.0 * M1, 3.0 * M1 + M, 4.0 * M1, M - 2.0 * F, M + 2.0 * F, O, 2.0 * M1 - 2.0 * F, 2.0 * M1 + 2.0 * F, M1 - M - 2.0 * F, M1 - M + 2.0 * F, M1 + M - 2.0 * F, M1 + M + 2.0 * F,]
+
 	var orbitalCorrectionCoeffs =
 		orbitalCorrectionCoeffArray[orbitalCorrectionIndex]
 
-	var orbitalApproximation =
-		  orbitalCorrectionCoeffs[0] * E     * Math.sin(M)
-		+ orbitalCorrectionCoeffs[1] * E * E * Math.sin(2.0 * M)
-		+ orbitalCorrectionCoeffs[2]         * Math.sin(3.0 * M)
-		+ orbitalCorrectionCoeffs[3]         * Math.sin(M1)
-		+ orbitalCorrectionCoeffs[4] * E     * Math.sin(M1 - M)
-		+ orbitalCorrectionCoeffs[5] * E     * Math.sin(M1 + M)
-		+ orbitalCorrectionCoeffs[6]         * Math.sin(M1 - 2.0 * M)
-		+ orbitalCorrectionCoeffs[7]         * Math.sin(M1 + 2.0 * M)
-		+ orbitalCorrectionCoeffs[8]         * Math.sin(M1 - 2.0 * F)
-		+ orbitalCorrectionCoeffs[9]         * Math.sin(M1 + 2.0 * F)
-		+ orbitalCorrectionCoeffs[10]        * Math.sin(2.0 * M1)
-		+ orbitalCorrectionCoeffs[11]        * Math.sin(2.0 * F)
-		+ orbitalCorrectionCoeffs[12] * E    * Math.sin(2.0 * M1 - M)
-		+ orbitalCorrectionCoeffs[13] * E    * Math.sin(2.0 * M1 + M)
-		+ orbitalCorrectionCoeffs[14]        * Math.sin(3.0 * M1)
-		+ orbitalCorrectionCoeffs[15]        * Math.sin(3.0 * M1 + M)
-		+ orbitalCorrectionCoeffs[16]        * Math.sin(4.0 * M1)
-		+ orbitalCorrectionCoeffs[17] * E    * Math.sin(M - 2.0 * F)
-		+ orbitalCorrectionCoeffs[18] * E    * Math.sin(M + 2.0 * F)
-		+ orbitalCorrectionCoeffs[19]        * Math.sin(O)
-		+ orbitalCorrectionCoeffs[20]        * Math.sin(2.0 * M1 - 2.0 * F)
-		+ orbitalCorrectionCoeffs[21]        * Math.sin(2.0 * M1 + 2.0 * F)
-		+ orbitalCorrectionCoeffs[22]        * Math.sin(M1 - M - 2.0 * F)
-		+ orbitalCorrectionCoeffs[23]        * Math.sin(M1 - M + 2.0 * F)
-		+ orbitalCorrectionCoeffs[24]        * Math.sin(M1 + M - 2.0 * F)
-		+ orbitalCorrectionCoeffs[25]        * Math.sin(M1 + M + 2.0 * F)
+	var orbitalApproximation = 0
+	for (var i = 0; i < 26; i++) {
+		orbitalApproximation +=
+			orbitalCorrectionCoeffs[i]
+			* orbitalCorrectionEccentricityArray[i]
+			* Math.sin(orbitalCorrectionAngleArray[i])
+	}
 
 
 	// this is the first approximation.  all else is for style points! (47.1)
@@ -207,7 +184,7 @@ function moonphasebylunation(lun, phi)
 
 	JDE = JDE
 		+ orbitalApproximation
-		+ planetaryArguments
+		+ planetaryArgumentsCorrection
 
 	// extra correction for quarter phases
 	if (orbitalCorrectionIndex == 1) {
