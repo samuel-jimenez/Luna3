@@ -41,12 +41,9 @@ PlasmoidItem {
     property int preferredWidth
     property int preferredHeight
     property var currentPhase: {
-        terminator:
-        plasmoid.configuration.currentPhase;
-        text:
-        plasmoid.configuration.currentPhaseText;
-        subText:
-        plasmoid.configuration.currentPhaseSubText;
+        terminator: plasmoid.configuration.currentPhase;
+        text: plasmoid.configuration.currentPhaseText;
+        subText: plasmoid.configuration.currentPhaseSubText;
     }
     property bool showBackground: plasmoid.configuration.showBackground
     property bool transparentShadow: plasmoid.configuration.transparentShadow
@@ -74,9 +71,8 @@ PlasmoidItem {
 
         function updateDetails() {
             // set the correct image for the moon
-            currentPhase = LunaCalc.getCurrentPhase(true);
+            currentPhase = LunaCalc.getCurrentPhase();
             plasmoid.configuration.currentPhase = currentPhase.terminator;
-            lunaIcon.phaseNumber = 13; //currentPhase.number;
             lunaIcon.theta = currentPhase.terminator;
             lunaIcon.latitude = latitude;
             main.lunarImage = imageChoices.get(main.lunarIndex).filename;
@@ -115,9 +111,7 @@ PlasmoidItem {
                 anchors.fill: parent
                 onClicked: expanded = !expanded
             }
-
         }
-
     }
 
     fullRepresentation: Item {
@@ -141,7 +135,5 @@ PlasmoidItem {
             dateFormat: dateFormat
             dateFormatString: dateFormatString
         }
-
     }
-
 }

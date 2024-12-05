@@ -30,7 +30,6 @@ import org.kde.plasma.plasmoid
 Item {
     id: lunaIcon
 
-    property int phaseNumber: 0
     property int latitude: 90 //Degrees: 0=Equator, 90=North Pole, -90=South Pole
     property bool showShadow: true
     property bool transparentShadow: true
@@ -101,9 +100,7 @@ Item {
                     startAngle: 0
                     sweepAngle: 360
                 }
-
             }
-
         }
 
         Canvas {
@@ -180,11 +177,9 @@ Item {
                     // Copernicus
                     if (showCopernicus)
                         marker(radius, 9.6, -20);
-
                 }
             }
         }
-
     }
 
     ShaderEffectSource {
@@ -234,11 +229,9 @@ Item {
                 }
             }
         }
-
     }
 
     ShaderEffectSource {
-
         id: lunaMask
 
         anchors.centerIn: parent
@@ -268,11 +261,8 @@ Item {
                     startAngle: 0
                     sweepAngle: 360
                 }
-
             }
-
         }
-
     }
 
     ShaderEffect {
@@ -289,5 +279,4 @@ Item {
         anchors.fill: lunaBackground
         fragmentShader: "shadow.qsb"
     }
-
 }
