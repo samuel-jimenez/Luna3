@@ -26,7 +26,6 @@ import QtQuick
 import QtQuick.Controls as QtControls
 import QtQuick.Layouts as QtLayouts
 import "code/lunacalc.js" as LunaCalc
-import "code/phases.js" as Phases
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.plasma.plasmoid
 
@@ -86,7 +85,7 @@ Item {
     Keys.onLeftPressed: showPreviousPhases()
     Keys.onRightPressed: showNextPhases()
     Keys.onDownPressed: showNextPhases()
-    Keys.onPressed: (event) => {
+    Keys.onPressed: event => {
         if (event.key == Qt.Key_Home)
             showTodayPhases();
         else if (event.key == Qt.Key_PageUp)
@@ -157,7 +156,6 @@ Item {
             PlasmaComponents.Label {
                 id: nextNewText
             }
-
         }
 
         Row {
@@ -197,9 +195,6 @@ Item {
                 QtControls.ToolTip.visible: hovered
                 QtControls.ToolTip.text: i18n("Next Cycle")
             }
-
         }
-
     }
-
 }

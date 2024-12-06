@@ -15,7 +15,6 @@
     along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick
 import org.kde.plasma.configuration
 
 ConfigModel {
@@ -36,5 +35,4 @@ ConfigModel {
         icon: "preferences-system-time"
         source: "configPopup.qml"
     }
-
 }

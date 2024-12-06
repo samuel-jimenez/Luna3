@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/samuel-jimenez/Luna3/issues\n"
-"POT-Creation-Date: 2024-11-21 09:06-0600\n"
+"POT-Creation-Date: 2024-12-06 11:47-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,207 +17,207 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: contents/config/config.qml:23
+#: contents/config/config.qml:22
 msgid "General"
 msgstr ""
 
-#: contents/config/config.qml:29
+#: contents/config/config.qml:28
 msgid "Custom Image"
 msgstr ""
 
-#: contents/config/config.qml:35
+#: contents/config/config.qml:34
 msgid "Date Popup"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:129
-msgid "First Quarter"
-msgstr ""
-
-#: contents/ui/code/lunacalc.js:133 contents/ui/code/lunacalc.js:147
+#: contents/ui/code/lunacalc.js:111
 msgid "New Moon"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:135 contents/ui/code/lunacalc.js:137
-msgid "Waxing Crescent"
+#: contents/ui/code/lunacalc.js:113
+msgid "First Quarter"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:135
-msgid "Yesterday was New Moon"
-msgstr ""
-
-#: contents/ui/code/lunacalc.js:137
-msgid "%1 days since New Moon"
-msgstr ""
-
-#: contents/ui/code/lunacalc.js:143
-msgid "Last Quarter"
-msgstr ""
-
-#: contents/ui/code/lunacalc.js:149 contents/ui/code/lunacalc.js:151
-msgid "Waning Crescent"
-msgstr ""
-
-#: contents/ui/code/lunacalc.js:149
-msgid "Tomorrow is New Moon"
-msgstr ""
-
-#: contents/ui/code/lunacalc.js:151
-msgid "%1 days to New Moon"
-msgstr ""
-
-#: contents/ui/code/lunacalc.js:157
+#: contents/ui/code/lunacalc.js:115
 msgid "Full Moon"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:159 contents/ui/code/lunacalc.js:161
+#: contents/ui/code/lunacalc.js:117
+msgid "Last Quarter"
+msgstr ""
+
+#: contents/ui/code/lunacalc.js:120
+msgid "Waxing Crescent"
+msgstr ""
+
+#: contents/ui/code/lunacalc.js:122
+msgid "Yesterday was New Moon"
+msgstr ""
+
+#: contents/ui/code/lunacalc.js:124
+msgid "%1 days since New Moon"
+msgstr ""
+
+#: contents/ui/code/lunacalc.js:128
+msgid "Waning Crescent"
+msgstr ""
+
+#: contents/ui/code/lunacalc.js:130
+msgid "Tomorrow is New Moon"
+msgstr ""
+
+#: contents/ui/code/lunacalc.js:132
+msgid "%1 days to New Moon"
+msgstr ""
+
+#: contents/ui/code/lunacalc.js:135
 msgid "Waxing Gibbous"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:159
+#: contents/ui/code/lunacalc.js:137
 msgid "Tomorrow is Full Moon"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:161
+#: contents/ui/code/lunacalc.js:139
 msgid "%1 days to Full Moon"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:163 contents/ui/code/lunacalc.js:165
+#: contents/ui/code/lunacalc.js:143
 msgid "Waning Gibbous"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:163
+#: contents/ui/code/lunacalc.js:145
 msgid "Yesterday was Full Moon"
 msgstr ""
 
-#: contents/ui/code/lunacalc.js:165
+#: contents/ui/code/lunacalc.js:147
 msgid "%1 days since Full Moon"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:77 contents/ui/configImage.qml:72
+#: contents/ui/configGeneral.qml:75 contents/ui/configImage.qml:70
 msgid "Moon color"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:98 contents/ui/configImage.qml:93
+#: contents/ui/configGeneral.qml:96 contents/ui/configImage.qml:91
 msgid "Preview"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:113 contents/ui/configImage.qml:108
+#: contents/ui/configGeneral.qml:111 contents/ui/configImage.qml:106
 msgid "Previous Image"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:144 contents/ui/configImage.qml:139
+#: contents/ui/configGeneral.qml:142 contents/ui/configImage.qml:137
 msgid "Pick Color"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:158 contents/ui/configImage.qml:153
+#: contents/ui/configGeneral.qml:155 contents/ui/configImage.qml:150
 msgid "Next Image"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:172 contents/ui/configImage.qml:167
+#: contents/ui/configGeneral.qml:169 contents/ui/configImage.qml:164
 msgid "Show shadow"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:180
+#: contents/ui/configGeneral.qml:175
 msgid "Phase Preview"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:220
+#: contents/ui/configGeneral.qml:212
 msgid "Shadow"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:226
+#: contents/ui/configGeneral.qml:218
 msgid "Opacity"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:240
+#: contents/ui/configGeneral.qml:231
 msgid "Transparent"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:268 contents/ui/configImage.qml:202
+#: contents/ui/configGeneral.qml:257 contents/ui/configImage.qml:195
 msgid "Latitude"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:302 contents/ui/configImage.qml:236
+#: contents/ui/configGeneral.qml:290 contents/ui/configImage.qml:228
 msgid "Use current latitude"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:308
+#: contents/ui/configGeneral.qml:295
 msgid "Background"
 msgstr ""
 
-#: contents/ui/configGeneral.qml:315
+#: contents/ui/configGeneral.qml:302
 msgid "Show background"
 msgstr ""
 
-#: contents/ui/configImage.qml:173
+#: contents/ui/configImage.qml:170
 msgid "Show grid"
 msgstr ""
 
-#: contents/ui/configImage.qml:179
+#: contents/ui/configImage.qml:176
 msgid "Tycho"
 msgstr ""
 
-#: contents/ui/configImage.qml:185
+#: contents/ui/configImage.qml:182
 msgid "Copernicus"
 msgstr ""
 
-#: contents/ui/configPopup.qml:46
+#: contents/ui/configPopup.qml:42
 msgid "Date Format"
 msgstr ""
 
-#: contents/ui/configPopup.qml:60
+#: contents/ui/configPopup.qml:56
 msgid "Text date"
 msgstr ""
 
-#: contents/ui/configPopup.qml:64
+#: contents/ui/configPopup.qml:60
 msgid "Short date"
 msgstr ""
 
-#: contents/ui/configPopup.qml:68
+#: contents/ui/configPopup.qml:64
 msgid "Long date"
 msgstr ""
 
-#: contents/ui/configPopup.qml:72
+#: contents/ui/configPopup.qml:68
 msgid "ISO date"
 msgstr ""
 
-#: contents/ui/configPopup.qml:76
+#: contents/ui/configPopup.qml:72
 msgid "Custom"
 msgstr ""
 
-#: contents/ui/configPopup.qml:85
+#: contents/ui/configPopup.qml:80
 msgid "Date Format String"
 msgstr ""
 
-#: contents/ui/LunaWidget.qml:114
+#: contents/ui/LunaWidget.qml:113
 msgid "Last new:"
 msgstr ""
 
-#: contents/ui/LunaWidget.qml:124
+#: contents/ui/LunaWidget.qml:123
 msgid "First quarter:"
 msgstr ""
 
-#: contents/ui/LunaWidget.qml:134
+#: contents/ui/LunaWidget.qml:133
 msgid "Full moon:"
 msgstr ""
 
-#: contents/ui/LunaWidget.qml:144
+#: contents/ui/LunaWidget.qml:143
 msgid "Third quarter:"
 msgstr ""
 
-#: contents/ui/LunaWidget.qml:154
+#: contents/ui/LunaWidget.qml:153
 msgid "Next new:"
 msgstr ""
 
-#: contents/ui/LunaWidget.qml:176
+#: contents/ui/LunaWidget.qml:174
 msgid "Previous Cycle"
 msgstr ""
 
-#: contents/ui/LunaWidget.qml:187
+#: contents/ui/LunaWidget.qml:185
 msgid "Today's Cycle"
 msgstr ""
 
-#: contents/ui/LunaWidget.qml:198
+#: contents/ui/LunaWidget.qml:196
 msgid "Next Cycle"
 msgstr ""
 

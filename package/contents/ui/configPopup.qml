@@ -18,14 +18,10 @@
     along with this program; if not, see <http://www.gnu.org/licenses/>.
 */
 
-import QtPositioning
 import QtQuick
 import QtQuick.Controls as QtControls
-import QtQuick.Dialogs as QtDialogs
 import QtQuick.Layouts as QtLayouts
 import org.kde.kcmutils as KCM
-import org.kde.kirigami as Kirigami
-import org.kde.plasma.plasma5support as Plasma5Support
 
 KCM.SimpleKCM {
     id: generalPage
@@ -78,7 +74,6 @@ KCM.SimpleKCM {
                         });
                     }
                 }
-
             }
 
             QtControls.Label {
@@ -92,9 +87,6 @@ KCM.SimpleKCM {
                 maximumLength: 24
                 visible: dateFormat.currentIndex == 4
             }
-
         }
-
     }
-
 }
