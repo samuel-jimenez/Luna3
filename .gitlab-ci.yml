@@ -1,9 +1,9 @@
 # https://docs.gitlab.com/ee/ci/yaml/index.html
 
-stages:        
-  - prepare  
-  - version     
-  - build 
+stages:
+  - prepare
+  - version
+  - build
   - upload
   - release
 
@@ -29,9 +29,9 @@ prepare-tagless:
       when: never
     - if: $CI_COMMIT_BRANCH
   script:
-    - echo "This is the 'prepare-tagless' script"     
+    - echo "This is the 'prepare-tagless' script"
     - echo "Installing dependencies..."
-    - apk add git 
+    - apk add git
     - git fetch --tags
     - |
       LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
@@ -41,16 +41,16 @@ prepare-tagless:
       if [ -z ${LATEST_REVISION##*-rc[0-9]*} ]; then
           REVISION_BASE=${LATEST_REVISION%-rc[0-9]*}
           REVISION_EXTENSION=${LATEST_REVISION#[0-9]*-rc}
-          REVISION=${REVISION_BASE}-rc$((${REVISION_EXTENSION}+1))   
+          REVISION=${REVISION_BASE}-rc$((${REVISION_EXTENSION}+1))
       else
           REVISION=$((${LATEST_REVISION}+1))-rc0
       fi
       PACKAGE_VERSION=${VERSION_BASE}.${REVISION}
-    - echo ${PACKAGE_VERSION}  
+    - echo ${PACKAGE_VERSION}
     - echo "PACKAGE_VERSION=${PACKAGE_VERSION}" >> build.env
   artifacts:
     reports:
-      dotenv: build.env 
+      dotenv: build.env
 
 version:
   stage: version
@@ -62,9 +62,8 @@ version:
     reports:
       dotenv: build.env
 
-build-job:     
+build-job:
   stage: build
-  image: alpine:edge # Use edge until 3.21-stable
   artifacts:
     name: "${PACKAGE_BINARY}"
     paths:
@@ -74,14 +73,14 @@ build-job:
     - apk add libplasma-dev g++ make cmake extra-cmake-modules zip bash
     - echo "Configuring the code..."
     - |
-      sed -Eie 's/"Version": "[0-9.]+",/"Version": "'"${PACKAGE_VERSION}"'",/' package/metadata.json
+      sed -Ei 's/"Version": "[0-9.]+",/"Version": "'"${PACKAGE_VERSION}"'",/' package/metadata.json
     - echo "Compiling the code..."
     - make plasmoid
     - echo "Compile complete."
 
 
-deploy-job:     
-  stage: upload 
+deploy-job:
+  stage: upload
   environment: production
   script:
     - echo "Installing dependencies..."
