@@ -22,13 +22,8 @@
 */
 
 import QtQuick
-import QtQuick.Controls as QtControls
 import QtQuick.Layouts as QtLayouts
 import "code/lunacalc.js" as LunaCalc
-import "code/phases.js" as Phases
-import org.kde.ksvg as KSvg
-import org.kde.plasma.components as PlasmaComponents
-import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
 
 PlasmoidItem {

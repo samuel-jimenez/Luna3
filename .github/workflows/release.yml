@@ -39,8 +39,8 @@ jobs:
         run: |
           VERSION=${GITHUB_REF_NAME#v}
           echo "path=Luna3-${VERSION}.plasmoid" >> "$GITHUB_OUTPUT"
-          sed -Eie 's#"Version": "[0-9.]+",#"Version": "${{ github.ref }}",#' package/metadata.json
-          sed -Eie 's#refs/tags/v##' package/metadata.json
+          sed -Ei 's#"Version": "[0-9.]+",#"Version": "${{ github.ref }}",#' package/metadata.json
+          sed -Ei 's#refs/tags/v##' package/metadata.json
           podman run \
             --mount type=bind,src=${GITHUB_WORKSPACE},dst=/root/,Z \
             --workdir=/root/ \
@@ -56,7 +56,7 @@ jobs:
         run: gh release create ${tag} -t "${title}"
 
       - name: Upload Release Asset
-        id: upload-release-asset 
+        id: upload-release-asset
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}

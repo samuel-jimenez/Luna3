@@ -24,8 +24,6 @@ import QtQuick.Controls as QtControls
 import QtQuick.Dialogs as QtDialogs
 import QtQuick.Layouts as QtLayouts
 import org.kde.kcmutils as KCM
-import org.kde.kirigami as Kirigami
-import org.kde.plasma.plasma5support as Plasma5Support
 
 KCM.SimpleKCM {
     id: generalPage
@@ -141,7 +139,6 @@ KCM.SimpleKCM {
                                 colorDialog.visible = true;
                             }
                         }
-
                     }
 
                     QtControls.Button {
@@ -184,13 +181,9 @@ KCM.SimpleKCM {
 
                             text: i18n("Copernicus")
                         }
-
                     }
-
                 }
-
             }
-
         }
 
         QtLayouts.GridLayout {
@@ -227,7 +220,6 @@ KCM.SimpleKCM {
                         stepSize: 5
                         onMoved: cfg_latitudeAuto = false
                     }
-
                 }
 
                 QtControls.CheckBox {
@@ -235,11 +227,7 @@ KCM.SimpleKCM {
 
                     text: i18n("Use current latitude")
                 }
-
             }
-
         }
-
     }
-
 }

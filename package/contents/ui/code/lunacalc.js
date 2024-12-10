@@ -21,6 +21,9 @@
 
 */
 
+
+.import "phases.js" as Phases
+
 var lunation = 0;
 
 
@@ -67,7 +70,7 @@ function getCurrentPhase()
 	var today = new Date().getTime() // this function assumes that today is between phases[0] (last new moon) and phases[4] (next new moon)
 	var phases = getTodayPhases()
 	var terminator
-	var lunaCalc={
+	var lunaCalc = {
 		terminator:terminator,
 		text: "",
 		subText: ""}
