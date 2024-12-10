@@ -7,12 +7,26 @@ translations for this plasmoid. If any of the instructions are unclear
 or you encounter any difficulties please contact the author.
 
 
-[Step 4](#step-4-install-the-mo-file) covers how to install existing translations.
+Existing translations no longer need to be installed. If you previously installed them and are encountering problems, try removing them, e.g.,
+```bash
+rm /usr/share/locale/*/LC_MESSAGES/plasma_applet_org.kde.userbase.plasma.luna3.mo
+rm ~/.local/share/locale/*/LC_MESSAGES/plasma_applet_org.kde.userbase.plasma.luna3.mo
+```
+
 
 
 ---------------------------------------------
 Step 1: Creating a new <locale>.po file
 ---------------------------------------------
+First locate where the plasmoid has been installed.
+
+If it was installed using Add Widgets menu, it will probably be:
+  `~/.local/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/`
+
+If you did a global install of the plasmoid, it's probably under:
+  `/usr/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/`
+
+
 Under the `po` folder, make a folder for the locale, e.g.: `fr/`
 
 Make a copy of
@@ -55,31 +69,31 @@ The .mo files are placed in the `locale` directory under `contents`,
 e.g. `locale/fr/LC_MESSAGES/plasma_applet_org.kde.userbase.plasma.luna3.mo`
 
 ----------------------------
-Step 4: Install the .mo file
+Step 4: Test the .mo file
 ----------------------------
-First locate where the plasmoid has been installed.
+Finally, install the plasmoid and test your translations.
 
-if it was installed using Add Widgets menu, it will probably be:
-  `~/.local/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/`
-Copy the `contents/locale` directory into `~/.local/share`.
+Update the plasmoid installation:
+```bash
+plasmapkg2 -u package
+```
 
-If you did a global install of the plasmoid, it's probably under:
-  `/usr/share/plasma/plasmoids/org.kde.userbase.plasma.luna3/`
-In this case, there will be a `/usr/share/locale` directory already;
-copy the `contents/locale` directory into `/usr/share`.
+Test your translations (if not part of configuration menu):
+```bash
+LANGUAGE=fr plasmawindowed -d org.kde.userbase.plasma.luna3
+```
 
-Logout and back in - it should pick up the translations.
+Or simply logout and back in - it should pick up the translations.
 
 ----------------------------------------------------------
 Step 5: Send the translation for inclusion with the widget
 ----------------------------------------------------------
 Once you are happy with the translation please send the .po file to the
-author along with translations for the following two strings (see
+author along with translations for the following two strings for the "Add Widgets" screen (see
 `metadata.json`):
 
-For the "add widgets" screen:
-   "Luna 3"
-   "Display moon phases for your location"
+ - "Luna 3"
+ - "Display moon phases for your location"
 
 Please send the translations for these two strings only when the
 translation is not yet in `metadata.json`.

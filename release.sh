@@ -9,6 +9,6 @@ VERSION=${1#v}
 VERSION=${VERSION:?Must provide version number.}
 shift
 
-sed -Eie 's#"Version": "[0-9.]+",#"Version": "'"${VERSION}"'",#' package/metadata.json
+sed -Ei 's#"Version": "[0-9.]+",#"Version": "'"${VERSION}"'",#' package/metadata.json
 git commit -a -m "Version ${VERSION}"
 git tag v${VERSION} $@
