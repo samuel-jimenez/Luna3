@@ -1,0 +1,91 @@
+version 3.0.3 (2024-12-11)
+- Update Spanish translation (victorhck)
+- Sync GitLab tags
+
+version 3.0.2 (2024-12-10)
+- As of Plasma6, translations no longer need to be manually installed. Updated translation documentation to reflect this.
+- Fixed bug where CI build systems create extra files.
+
+version 3.0.1 (2024-12-05)
+- Reworked JavaScript lunation code.
+  - Fixed errors due to time zone calculations.
+  - Condensed and cleaned up lunation logic and tooltip messages.
+
+version 3.0.0 (2024-11-22)
+- Ported plasmoid to Plasma 6.
+
+
+
+version 2.1.2 (2019-10-13)
+- localisation, hr (VladimirMikulic)
+version 2.1.1 (2019-09-28)
+- localisation, nl (Vistaus)
+version 2.1 (2019-09-19)
+- Updates by Ismael
+  - localisation, es
+  - option to make shadow transparent
+  - use latitude to set image orientation, replaces the North/South selection
+version 2.1-beta3 (2017-07-02)
+- got localisation working, fr & ru for starters, need help
+- LunaWidget stretches to fit, not fixed size anymore
+- replaced the yellow moon disk with one where the colour can be picked
+- added a custom.svg image - replace this with whatever image you want
+- make calibration marks optional on the config moon image
+- the image matches at the quarters now, was out due to assuming constant rate
+version 2.1-beta2 (2017-06-29)
+- pick lunar image from a list
+- current image shown with callibration grid on config page (Tycho & Copernicus marked)
+version 2.1-beta (2017-05-07)
+- changed the image (edit LunaIcon.qml to use the old one)
+- draws the phase shadow on a full moon image instead of an image per day
+- maintains circular aspect when resized
+version 2.0.3 (2017-03-26)
+- stop trampling over theme
+- fix tooltips for >=Qt5.5
+version 2.0.2 (2017-03-13)
+- Issue 3: use lower version of Layouts so it works with >=Qt5.5
+version 2.0.1 (2017-02-11)
+- zip now now contains the content of the package directory
+version 2.0 (2016-12-01)
+- modified to be a Plasma 5 plasmoid
+
+version 1.4 (2013-05-16):
+- the dialog now scrolls in and out instead of just appearing or disappearing
+  when the plasmoid is added in a panel
+- split tooltip text in a main text and a subtext
+version 1.3 (2012-11-29):
+- scrolling the mouse wheel when the mouse cursor is in the popup dialog
+  navigates to the previous or next moon phases
+- show a more correct description of the current phase in the tooltip
+version 1.2 (2012-11-08):
+- really make the arrow keys and the "Home" key work again in the popup
+  dialog by focusing the dialog each time it is shown
+- show correct moon phase in the tooltip
+- load the popup dialog only when actually requested (namely when the
+  user clicks on the moon image for the first time); this makes the
+  plasmoid load faster
+version 1.1 (2012-07-18):
+- make the arrow keys and the "Home" key work again in the popup dialog
+- allow changing the shown phases in the popup dialog with the "Page Up"
+  and "Page Down" keys
+- allow specifying a custom date format for the dates in the popup
+version 1.0 (2012-05-03):
+- show the dates in the popup dialog using the user's locale
+- allow different formats for the dates in the popup dialog
+- add French translation
+version 0.4 (2011-12-19):
+- use Plasma Components instead of Plasma Widgets for a better layout
+  of the popup dialog (KDE Plasma 4.8+ required)
+version 0.3 (2011-07-07):
+- add tooltip (KDE Plasma 4.7+ required)
+- put the dates of the current month's phases in a separate dialog
+  (KDE Plasma 4.7+ required)
+- the SVG image of the current moon phase is smoother
+version 0.2 (2011-06-30):
+- add configuration dialog which allows to configure the hemisphere and
+  whether the background is drawn
+- remove bug: when today is the 30th or 31st of a month, then the dates
+  in the months with less days are not shown correctly
+- remove bug: the moon image was never updated, now it is updated regularly
+version 0.1 (2011-03-24):
+- first version

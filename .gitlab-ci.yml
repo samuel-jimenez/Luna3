@@ -9,6 +9,7 @@ stages:
 
 variables:
   PACKAGE_VERSION: "0.0.0"
+  CI_BUILD_BRANCH: "testing"
 
 prepare-tag:
   stage: prepare
@@ -27,7 +28,7 @@ prepare-tagless:
   rules:
     - if: $CI_COMMIT_TAG
       when: never
-    - if: $CI_COMMIT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_BUILD_BRANCH
   script:
     - echo "This is the 'prepare-tagless' script"
     - echo "Installing dependencies..."
@@ -54,6 +55,9 @@ prepare-tagless:
 
 version:
   stage: version
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_BUILD_BRANCH
   script:
    - export PACKAGE_TAG=v${PACKAGE_VERSION}
    - export PACKAGE_BINARY=Luna3-${PACKAGE_VERSION}.plasmoid
@@ -66,6 +70,9 @@ version:
 
 build-job:
   stage: build
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_BUILD_BRANCH
   artifacts:
     name: "${PACKAGE_BINARY}"
     paths:
@@ -83,7 +90,9 @@ build-job:
 
 deploy-job:
   stage: upload
-  environment: production
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_BUILD_BRANCH
   script:
     - echo "Installing dependencies..."
     - apk add curl
@@ -92,7 +101,6 @@ deploy-job:
       curl --location --header "JOB-TOKEN: ${CI_JOB_TOKEN}" \
            --upload-file ${PACKAGE_BINARY} \
            "${PACKAGE_REGISTRY_URL}/${PACKAGE_BINARY}"
-    - echo "Application successfully deployed."
 
 
 release:
