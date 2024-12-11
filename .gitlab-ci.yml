@@ -104,5 +104,5 @@ release:
     - if: $CI_COMMIT_TAG
   script:
     - |
-      release-cli create --name "Release ${PACKAGE_TAG}" --tag-name ${PACKAGE_VERSION} \
+      release-cli create --name "Release ${PACKAGE_TAG}" --tag-name ${PACKAGE_TAG} \
         --assets-link "{\"name\":\"${PACKAGE_BINARY}\",\"url\":\"${PACKAGE_REGISTRY_URL}/${PACKAGE_BINARY}\"}"

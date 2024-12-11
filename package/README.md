@@ -1,3 +1,6 @@
+# Luna 3
+-----------
+
 Description
 -----------
 
@@ -14,7 +17,7 @@ which is a port to Plasma 5 of Luna QML 1.4 (https://store.kde.org/p/1002036/)
 Installation
 ------------
 
-#### A. Command line, installs to `~/local/share/plasma/plasmoids`.   
+#### A. Command line, installs to `~/local/share/plasma/plasmoids`   
    This works the same way as loading a new widget from "Add Widgets..."  
  
 Install:

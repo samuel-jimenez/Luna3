@@ -1,3 +1,7 @@
+version 3.0.3 (2024-12-11)
+- Update spanish translation (victorhck)
+- Sync GitLab tags
+
 version 3.0.2 (2024-12-10)
 - As of Plasma6, translations no longer need to be manually installed. Updated translation documentation to reflect this.
 - Fixed bug where CI build systems create extra files.

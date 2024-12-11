@@ -73,7 +73,7 @@
         "Name[uk]": "Луна 3",
         "Name[x-test]": "xxLuna 3xx",
         "Name[zh_CN]": "月相",
-        "Version": "3.0.2",
+        "Version": "3.0.3",
         "Website": "http://userbase.kde.org/Plasma"
     },
     "X-Plasma-API-Minimum-Version": "6.0",

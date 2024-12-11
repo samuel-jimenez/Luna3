@@ -1,9 +1,58 @@
 #!/bin/bash
 
-METADATA="package/metadata.desktop"
-APPNAME=$(grep "X-KDE-PluginInfo-Name" $METADATA | sed 's/.*=//')
+METADATA="package/metadata.json"
+APPNAME=$(grep '"Id"' $METADATA | sed -E 's/^\s+".*": "(.*)",/\1/')
+_basename=$(basename "$0")
 
-if [[ $1 == --install ]]; then
+_SHORT_OPTIONS="h?i"
+_LONG_OPTIONS="help,install"
+_install=0
+
+
+show_help() { echo "Usage: ${_basename} [OPTIONS]...
+Upgrade plasmoid.
+
+Options:
+  -h, --help                display this help text and exit
+  -i, --install             install instead of upgrading
+"; }
+
+
+#canonicalize options
+_args=$(getopt \
+    --longoptions $_LONG_OPTIONS \
+    --name ${_basename} \
+    --options $_SHORT_OPTIONS \
+    -- "$@"
+)
+if [ $? != 0 ] ; then show_help ; exit 1 ;
+else set -- $_args ; fi
+
+
+# Transform long options to short ones
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    '--install')    set -- "$@" '-i'   ;;
+    '--help')       set -- "$@" '-h'   ;;
+    *)              set -- "$@" "$arg" ;;
+  esac
+done
+
+
+while getopts $_SHORT_OPTIONS opt; do
+    case "$opt" in
+    h | ? )
+        show_help
+        exit 0
+        ;;
+    i )
+        _install=1
+        ;;
+    esac
+done
+
+if [ $_install = 1 ]; then
     plasmapkg2 --install package
 else
     plasmapkg2 --upgrade package
