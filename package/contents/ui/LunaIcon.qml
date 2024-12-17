@@ -86,7 +86,6 @@ Item {
             visible: true
             anchors.centerIn: parent
             preferredRendererType: Shape.CurveRenderer
-            antialiasing: true
 
             ShapePath {
                 fillColor: diskColor
@@ -95,8 +94,8 @@ Item {
                 PathAngleArc {
                     centerX: radius
                     centerY: radius
-                    radiusY: radius - 1
-                    radiusX: radius - 1
+                    radiusY: radius
+                    radiusX: radius
                     startAngle: 0
                     sweepAngle: 360
                 }
@@ -183,7 +182,7 @@ Item {
     }
 
     ShaderEffectSource {
-        id: shadow
+        id: lunaLight
 
         anchors.centerIn: parent
         width: lunaBackground.width
@@ -208,24 +207,19 @@ Item {
                 context.reset();
                 if (showShadow) {
                     var cosTheta = Math.cos(theta / 180 * Math.PI);
-                    var counterclockwisep = (theta < 180);
-                    var scaleTweak = 1.001 + 0.003 * (1 - Math.abs(cosTheta)); //Qt distorts Canvas with scale(), causing a line of pixels to appear around the shadow. Tweak the scale until this gets fixed.
+                    var counterclockwisep = (theta > 180);
                     context.globalAlpha = 1;
                     context.translate(radius, radius);
-                    context.scale(scaleTweak, scaleTweak);
-                    if (theta != 180) {
-                        context.beginPath();
-                        context.fillStyle = '#ffffff';
-                        context.strokeStyle = '#ffffff';
-                        context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
-                        if ((theta % 180) != 90) {
-                            context.scale(cosTheta, 1);
-                            context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, counterclockwisep);
-                        }
-                        context.closePath();
-                        context.fill();
-                        context.stroke();
+                    context.beginPath();
+                    context.fillStyle = '#ffffff';
+                    context.strokeStyle = '#ffffff';
+                    context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
+                    if ((theta % 180) != 90) {
+                        context.scale(cosTheta, 1);
+                        context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, !counterclockwisep);
                     }
+                    context.closePath();
+                    context.fill();
                 }
             }
         }
@@ -234,6 +228,7 @@ Item {
     ShaderEffectSource {
         id: lunaMask
 
+        //mask out a nice antialiased circle shape
         anchors.centerIn: parent
         width: lunaBackground.width
         height: lunaBackground.height
@@ -267,7 +262,7 @@ Item {
 
     ShaderEffect {
         property variant source: lunaTexture
-        property variant shadow: shadow
+        property variant light: lunaLight
         property variant mask: lunaMask
         property int transparent: transparentShadow
         property real shadow_Opacity: shadowOpacity

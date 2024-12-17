@@ -9,15 +9,23 @@ layout(std140, binding = 0) uniform buf {
 
 };
 layout(binding = 1) uniform sampler2D source;
-layout(binding = 2) uniform sampler2D shadow;
+layout(binding = 2) uniform sampler2D light;
 layout(binding = 3) uniform sampler2D mask;
 
 void main() {
-    fragColor = vec4(
-        ((1 - transparent) * texture(source, qt_TexCoord0) * (1 - shadow_Opacity * texture(shadow, qt_TexCoord0))
-        + transparent * texture(source, qt_TexCoord0)).rgb,
-                     texture(source, qt_TexCoord0).a)
-    * texture(mask, qt_TexCoord0).a
-    * (1 - shadow_Opacity * texture(shadow, qt_TexCoord0).a * transparent)
-    * qt_Opacity ;
+        float translucentShadow = 1 - shadow_Opacity
+                            + shadow_Opacity * texture(light, qt_TexCoord0).a;
+        fragColor =
+            vec4(
+                (texture(source, qt_TexCoord0)
+                *((1 - transparent)
+                        * translucentShadow
+                    + transparent )).rgb,
+                texture(source, qt_TexCoord0).a)
+            * ((1 - transparent)
+                + transparent
+                    * translucentShadow)
+            * texture(mask, qt_TexCoord0).a
+            * qt_Opacity ;
+
 }
