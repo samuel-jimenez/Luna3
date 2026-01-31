@@ -24,11 +24,7 @@ ConfigModel {
         source: "configGeneral.qml"
     }
 
-    ConfigCategory {
-        name: i18n("Custom Image")
-        icon: "preferences-desktop-color"
-        source: "configImage.qml"
-    }
+
 
     ConfigCategory {
         name: i18n("Date Popup")

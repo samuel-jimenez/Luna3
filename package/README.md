@@ -22,15 +22,15 @@ Installation
  
 Install:
 
-    $ plasmapkg2 -i Luna3-<ver>.plasmoid
+    $ kpackagetool6 -i Luna3-<ver>.plasmoid
 
 Update:
 
-	$ plasmapkg2 -u Luna3-<ver>.plasmoid
+	$ kpackagetool6 -u Luna3-<ver>.plasmoid
 
 Uninstall:
 
-	$ plasmapkg2 -r org.kde.userbase.plasma.Luna3
+	$ kpackagetool6 -r org.kde.userbase.plasma.Luna3
 
 
 
@@ -38,15 +38,15 @@ Uninstall:
 
 Install:
 
-	# plasmapkg2 -g -i Luna3-<ver>.plasmoid
+	# kpackagetool6 -g -i Luna3-<ver>.plasmoid
 
 Update:
 	
-	# plasmapkg2 -g -u Luna3-<ver>.plasmoid
+	# kpackagetool6 -g -u Luna3-<ver>.plasmoid
 
 Uninstall:
 
-	# plasmapkg2 -g -r org.kde.userbase.plasma.Luna3
+	# kpackagetool6 -g -r org.kde.userbase.plasma.Luna3
 
 
 #### C. CMake, installs to `/usr/local/share/plasma/plasmoids`
@@ -91,7 +91,7 @@ License
 Copyright 2019 Ismael <ismailof@github.com>  
 Copyright 2016, 2017 Bill Binder <dxtwjb@gmail.com>  
 Copyright (C) 2011, 2012, 2013 Glad Deschrijver <glad.deschrijver@gmail.com>  
-Copyright (C) 2024 Samuel Jimenez <therealsamueljimenez@gmail.com>
+Copyright (C) 2024-2026 Samuel Jimenez <therealsamueljimenez@gmail.com>
 
 The JavaScript code is based on the C++ code of the original Luna plasmoid
 in the KDE Plasma Workspace. This C++ code is licensed as follows:  
@@ -105,15 +105,20 @@ Several fixes in the changes for 2.1 series were based on the Gealach plasmoid b
 koffeinfriedhof <koffeinfriedhof@gmail.com>, in particular the resizing of the
 LunaWidget when different date formats are selected.
 
-The luna image, `gskbyte13.svg`, was extracted from the luna SVG file created by:
+The lunar image `gskbyte13.svg` was extracted from the luna SVG file created by:
 
 	  Copyright 2009 Jose Alcala (project manager), Dan Gerhards (moon artwork),
 	                 Jeremy M. Todaro (shadows and layout)
 	  (available at http://kde-look.org/content/show.php/luna.svgz+(full+SVG+image)?content=106013
 	  original available at http://www.public-domain-photos.com/free-cliparts/science/astronomy/the_moon_dan_gerhards_01-5094.htm)
 	  released in the public domain
+	  
 
-The luna images, `fife-moon.svg` & `full-moon-dark.svg`, were generated from photos
+The lunar image `the-moon-dan-gerhards-01.svg` was created by Dan Gerhards
+available at https://openclipart.org/detail/118795/the-moon-dan-gerhards-01
+released in the public domain
+
+The lunar images `fife-moon.svg` & `full-moon-dark.svg`, were generated from photos
 by Bill Binder. Released 2017 under Creative Commons Attribution-ShareAlike 3.0
 (http://creativecommons.org/licenses/by-sa/3.0/)
 

@@ -11,15 +11,6 @@
     <entry name="showBackground" type="Bool">
       <default>false</default>
     </entry>
-    <entry name="showGrid" type="Bool">
-      <default>false</default>
-    </entry>
-    <entry name="showTycho" type="Bool">
-      <default>false</default>
-    </entry>
-    <entry name="showCopernicus" type="Bool">
-      <default>false</default>
-    </entry>
     <entry name="showShadow" type="Bool">
       <default>true</default>
     </entry>

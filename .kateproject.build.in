@@ -32,12 +32,12 @@
                     "run_cmd": ""
                 },
                 {
-                    "build_cmd": "plasmapkg2 -i package",
+                    "build_cmd": "kpackagetool6 -i package",
                     "name": "install",
                     "run_cmd": "plasmawindowed -d org.kde.userbase.plasma.luna3"
                 },
                 {
-                    "build_cmd": "plasmapkg2 -u package",
+                    "build_cmd": "kpackagetool6 -u package",
                     "name": "update",
                     "run_cmd": "plasmawindowed -d org.kde.userbase.plasma.luna3"
                 }

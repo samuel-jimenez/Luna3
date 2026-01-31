@@ -37,9 +37,6 @@ Item {
     property string lunarImage: ''
     property color diskColor: '#ffffff'
     property int lunarImageTweak: 0
-    property bool showGrid: false
-    property bool showTycho: false
-    property bool showCopernicus: false
     property int theta: 45 // Degrees: 0= new moon, 90= first quarter, 180= full moon, 270= third quarter
     property alias radius: lunaBackground.radius
 
@@ -101,84 +98,6 @@ Item {
                 }
             }
         }
-
-        Canvas {
-            id: markers
-
-            property bool showShadow: lunaIcon.showShadow
-            property bool showGrid: lunaIcon.showGrid
-            property bool showTycho: lunaIcon.showTycho
-            property bool showCopernicus: lunaIcon.showCopernicus
-
-            function radians(deg) {
-                return deg / 180 * Math.PI;
-            }
-
-            function marker(radius, latitude, longitude) {
-                var dy = radius * Math.sin(radians(latitude));
-                var dx = radius * Math.cos(radians(latitude)) * Math.sin(radians(longitude));
-                // console.log("dx: " + dx.toString());
-                // console.log("dy: " + dy.toString());
-                context.beginPath();
-                context.strokeStyle = "#FF0000";
-                context.arc(dx, -dy, 5, 0, 2 * Math.PI);
-                context.moveTo(dx - 5, -dy - 5);
-                context.lineTo(dx + 5, -dy + 5);
-                context.moveTo(dx - 5, -dy + 5);
-                context.lineTo(dx + 5, -dy - 5);
-                context.stroke();
-            }
-
-            function grid(radius) {
-                context.beginPath();
-                context.strokeStyle = "#FF4040";
-                context.moveTo(0, -radius);
-                context.lineTo(0, radius);
-                context.moveTo(-radius, 0);
-                context.lineTo(radius, 0);
-                context.stroke();
-                context.beginPath();
-                context.strokeStyle = "#40FF40";
-                for (var ll = 10; ll < 65; ll += 10) {
-                    var dy = radius * Math.sin(radians(ll));
-                    context.moveTo(-radius, dy);
-                    context.lineTo(radius, dy);
-                    context.moveTo(-radius, -dy);
-                    context.lineTo(radius, -dy);
-                }
-                context.stroke();
-            }
-
-            width: lunaBackground.width
-            height: lunaBackground.height
-            visible: true
-            anchors.centerIn: parent
-            contextType: "2d"
-            onShowGridChanged: requestPaint()
-            onShowTychoChanged: requestPaint()
-            onShowCopernicusChanged: requestPaint()
-            onShowShadowChanged: requestPaint()
-            onPaint: {
-                context.reset();
-                if (!showShadow) {
-                    var cosTheta = Math.cos(theta / 180 * Math.PI);
-                    var counterclockwisep = (theta < 180);
-                    context.globalAlpha = 0.9;
-                    context.translate(radius, radius);
-                    // Calibration markers
-                    if (showGrid)
-                        grid(radius);
-
-                    // Tycho
-                    if (showTycho)
-                        marker(radius, -43, -11.5);
-
-                    // Copernicus
-                    if (showCopernicus)
-                        marker(radius, 9.6, -20);
-                }
-            }
-        }
     }
 
     ShaderEffectSource {
@@ -205,22 +124,24 @@ Item {
             onWidthChanged: requestPaint()
             onPaint: {
                 context.reset();
-                if (showShadow) {
-                    var cosTheta = Math.cos(theta / 180 * Math.PI);
-                    var counterclockwisep = (theta > 180);
-                    context.globalAlpha = 1;
-                    context.translate(radius, radius);
-                    context.beginPath();
-                    context.fillStyle = '#ffffff';
-                    context.strokeStyle = '#ffffff';
-                    context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
-                    if ((theta % 180) != 90) {
-                        context.scale(cosTheta, 1);
-                        context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, !counterclockwisep);
-                    }
-                    context.closePath();
-                    context.fill();
+                var cosTheta = Math.cos(theta / 180 * Math.PI);
+                var counterclockwisep = (theta > 180);
+                if (!showShadow) {
+                    cosTheta = -1;
+                    counterclockwisep = false;
                 }
+                context.globalAlpha = 1;
+                context.translate(radius, radius);
+                context.beginPath();
+                context.fillStyle = '#ffffff';
+                context.strokeStyle = '#ffffff';
+                context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
+                if ((theta % 180) != 90) {
+                    context.scale(cosTheta, 1);
+                    context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, !counterclockwisep);
+                }
+                context.closePath();
+                context.fill();
             }
         }
     }

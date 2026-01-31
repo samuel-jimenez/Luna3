@@ -75,7 +75,7 @@ Finally, install the plasmoid and test your translations.
 
 Update the plasmoid installation:
 ```bash
-plasmapkg2 -u package
+kpackagetool6 -u package
 ```
 
 Test your translations (if not part of configuration menu):

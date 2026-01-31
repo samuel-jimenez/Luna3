@@ -3,6 +3,8 @@
 METADATA="package/metadata.json"
 APPNAME=$(grep '"Id"' $METADATA | sed -E 's/^\s+".*": "(.*)",/\1/')
 _basename=$(basename "$0")
+_INSTALL_COMMAND=kpackagetool6
+
 
 _SHORT_OPTIONS="h?i"
 _LONG_OPTIONS="help,install"
@@ -42,7 +44,7 @@ done
 
 while getopts $_SHORT_OPTIONS opt; do
     case "$opt" in
-    h | ? )
+    h | \? )
         show_help
         exit 0
         ;;
@@ -53,10 +55,12 @@ while getopts $_SHORT_OPTIONS opt; do
 done
 
 if [ $_install = 1 ]; then
-    plasmapkg2 --install package
+    $_INSTALL_COMMAND --type Plasma/Applet --install package
 else
-    plasmapkg2 --upgrade package
+    $_INSTALL_COMMAND --type Plasma/Applet --upgrade package
 fi
+
+if [ $? != 0 ] ; then exit 1 ; fi
 
 echo
 echo '------------------------------------------------'

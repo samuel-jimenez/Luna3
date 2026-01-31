@@ -40,9 +40,7 @@ KCM.SimpleKCM {
     property string cfg_lunarImage: '' // filename (from imageChoices)
     property int cfg_lunarImageTweak: 0 // rotation angle adjustment for the image (from imageChoices)
     property alias cfg_showShadow: showShadow.checked
-    property bool cfg_showGrid: false
-    property bool cfg_showTycho: false
-    property bool cfg_showCopernicus: false
+
 
     onCfg_lunarIndexChanged: {
         cfg_lunarImage = imageChoices.get(cfg_lunarIndex).filename;
@@ -129,9 +127,6 @@ KCM.SimpleKCM {
                         lunarImage: cfg_lunarImage
                         lunarImageTweak: cfg_lunarImageTweak
                         diskColor: cfg_diskColor
-                        showGrid: cfg_showGrid
-                        showTycho: cfg_showTycho
-                        showCopernicus: cfg_showCopernicus
 
                         MouseArea {
                             anchors.fill: parent
