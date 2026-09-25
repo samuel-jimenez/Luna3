@@ -33,7 +33,7 @@ const LUNATION_OFFSET = 0//lunation of LUNATION_EPOCH using Meeus's Lunation Num
 // LUNATION_EPOCH
 //date of first new moon of 2000 (2000-01-06 18:14:00)
 const LUNATION_EPOCH_MS = 947182440000// number of milliseconds between 1970-01-01 00:00:00 and epoch
-const LUNATION_EPOCH_JD = 2451550.259722222//epoch in JD
+const LUNATION_EPOCH_JD = 2451550.09765//epoch in JD
 
 // milliseconds in one day
 const MS_PER_DAY = 86400000
@@ -132,7 +132,7 @@ function moonphasebylunation(lun, phi)
 		+ T * T * (0.0107438 + T * (0.00001239 + -0.000000058 * T)))
 	// Moon's argument of latitude (47.6)
 	var F = radian(160.7108 + 390.67050274 * k
-		+ T * T * (-0.0016341 * T * (-0.00000227 + 0.000000011 * T)))
+		+ T * T * (-0.0016341 + T * (-0.00000227 + 0.000000011 * T)))
 	// Moon's longitude of ascending node (47.7)
 	var O = radian(124.7746 - 1.56375580 * k
 		+ T * T * (0.0020691 + 0.00000215 * T))
