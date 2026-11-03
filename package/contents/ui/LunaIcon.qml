@@ -22,7 +22,6 @@
 */
 
 import QtQuick
-import QtQuick.Shapes
 import org.kde.ksvg as KSvg
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
@@ -74,29 +73,19 @@ Item {
             rotation: -lunarImageTweak
         }
 
-        Shape {
+        // A round Rectangle rather than a Shape: Shape's CurveRenderer leaves its
+        // node empty after the scene graph is rebuilt (e.g. GPU device loss on VT switch).
+        Rectangle {
             id: lunaCanvas
 
             opacity: (lunarImage === '') ? 1 : 0
-            width: lunaBackground.width
-            height: lunaBackground.height
+            width: 2 * lunaIcon.radius
+            height: 2 * lunaIcon.radius
+            radius: lunaIcon.radius
             visible: true
             anchors.centerIn: parent
-            preferredRendererType: Shape.CurveRenderer
-
-            ShapePath {
-                fillColor: diskColor
-                strokeWidth: -1 //no stroke
-
-                PathAngleArc {
-                    centerX: radius
-                    centerY: radius
-                    radiusY: radius
-                    radiusX: radius
-                    startAngle: 0
-                    sweepAngle: 360
-                }
-            }
+            color: diskColor
+            antialiasing: true
         }
     }
 
@@ -121,27 +110,33 @@ Item {
             contextType: "2d"
             onThetaChanged: requestPaint()
             onShowShadowChanged: requestPaint()
+            onAvailableChanged: if (available) requestPaint()
             onWidthChanged: requestPaint()
             onPaint: {
-                context.reset();
+                // The context is dropped when the scene graph is invalidated (e.g. GPU
+                // device loss on VT switch); getContext() recreates it, `context` doesn't.
+                var ctx = getContext("2d");
+                if (!ctx)
+                    return;
+                ctx.reset();
                 var cosTheta = Math.cos(theta / 180 * Math.PI);
                 var counterclockwisep = (theta > 180);
                 if (!showShadow) {
                     cosTheta = -1;
                     counterclockwisep = false;
                 }
-                context.globalAlpha = 1;
-                context.translate(radius, radius);
-                context.beginPath();
-                context.fillStyle = '#ffffff';
-                context.strokeStyle = '#ffffff';
-                context.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
+                ctx.globalAlpha = 1;
+                ctx.translate(radius, radius);
+                ctx.beginPath();
+                ctx.fillStyle = '#ffffff';
+                ctx.strokeStyle = '#ffffff';
+                ctx.arc(0, 0, radius, -0.5 * Math.PI, 0.5 * Math.PI, counterclockwisep);
                 if ((theta % 180) != 90) {
-                    context.scale(cosTheta, 1);
-                    context.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, !counterclockwisep);
+                    ctx.scale(cosTheta, 1);
+                    ctx.arc(0, 0, radius, 0.5 * Math.PI, -0.5 * Math.PI, !counterclockwisep);
                 }
-                context.closePath();
-                context.fill();
+                ctx.closePath();
+                ctx.fill();
             }
         }
     }
@@ -156,27 +151,20 @@ Item {
         visible: false
         antialiasing: true
 
-        sourceItem: Shape {
-            opacity: 1
-            antialiasing: true
+        // Not a Shape, for the same reason as lunaCanvas above.
+        sourceItem: Item {
             width: lunaBackground.width
             height: lunaBackground.height
-            visible: true
-            anchors.centerIn: parent
-            preferredRendererType: Shape.CurveRenderer
 
-            ShapePath {
-                fillColor: '#000000'
-                strokeWidth: -1 //no stroke
-
-                PathAngleArc {
-                    centerX: radius
-                    centerY: radius
-                    radiusY: radius - 1
-                    radiusX: radius - 1
-                    startAngle: 0
-                    sweepAngle: 360
-                }
+            Rectangle {
+                opacity: 1
+                antialiasing: true
+                width: 2 * (lunaIcon.radius - 1)
+                height: 2 * (lunaIcon.radius - 1)
+                radius: lunaIcon.radius - 1
+                visible: true
+                anchors.centerIn: parent
+                color: '#000000'
             }
         }
     }
